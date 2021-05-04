@@ -1,0 +1,7 @@
+/* Link */
+a {
+  color: var(--primary);
+}
+a:hover {
+  color: var(--primary-darker);
+}

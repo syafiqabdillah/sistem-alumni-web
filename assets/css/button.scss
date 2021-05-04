@@ -1,0 +1,21 @@
+.button {
+  background-color: var(--primary);
+  padding: 0.5em 1em;
+  color: var(--bg);
+  text-align: center;
+  border-radius: 5px;
+  width: 100%;
+
+  &:hover {
+    background-color: var(--primary-darker);
+    cursor: pointer;
+  }
+
+  &.disabled {
+    background-color: grey;
+
+    &:hover {
+      cursor: initial;
+    }
+  }
+}

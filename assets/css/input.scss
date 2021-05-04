@@ -1,0 +1,69 @@
+input,
+select,
+textarea {
+  border-radius: 5px;
+  border: 1px solid lightgray;
+  height: 1.5rem;
+  padding: 0.2rem;
+  margin-top: 0.5rem;
+  width: 100%;
+  outline: none;
+  font-family: 'Poppins';
+  font-size: 12px;
+
+  &:focus {
+    box-shadow: 0 0 3px var(--secondary);
+  }
+
+  &.valid {
+    box-shadow: 0 0 3px var(--primary-darker) !important;
+  }
+
+  &.error {
+    box-shadow: 0 0 3px red;
+  }
+
+  &.radio {
+    display: inline-block;
+    width: initial;
+    height: initial;
+    color: var(--primary);
+  }
+}
+
+select {
+  height: 1.6rem;
+}
+
+textarea {
+  height: initial;
+  resize: none;
+}
+
+label {
+  display: inline-block;
+  font-size: 14px;
+  margin-top: 0.5rem;
+  width: 100%;
+
+  &.radio {
+    width: initial;
+  }
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .back {
+    color: grey;
+    height: 100%;
+    text-align: center;
+    margin-top: 1em;
+    cursor: pointer;
+  }
+}
+.actions > * {
+  flex: 1;
+}

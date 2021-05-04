@@ -1,0 +1,13 @@
+<template>
+  <div></div>
+</template>
+
+<script>
+export default {
+  beforeCreate() {
+    this.$router.push('/home')
+  },
+}
+</script>
+
+<style></style>
