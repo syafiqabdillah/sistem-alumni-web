@@ -1,12 +1,16 @@
 <template>
   <div class="register">
     <div class="container">
-      <RegisterFormEmail v-if="currentPageIs('email')" />
+      <RegisterFormEmail data-aos="fade-up" v-if="currentPageIs('email')" />
       <RegisterFormDataDiri
+        data-aos="fade-up"
         v-if="currentPageIs('data diri')"
-      ></RegisterFormDataDiri>
-      <RegisterFormDataAlumni v-if="currentPageIs('data alumni')" />
-      <RegisterReview v-if="currentPageIs('review')" />
+      />
+      <RegisterFormDataAlumni
+        data-aos="fade-up"
+        v-if="currentPageIs('data alumni')"
+      />
+      <RegisterReview data-aos="fade-up" v-if="currentPageIs('review')" />
     </div>
   </div>
 </template>
@@ -18,7 +22,7 @@ export default {
   name: 'Register',
   mounted() {
     if (!this.currentPage) {
-      this.$store.dispatch('register/setCurrentPage', 'email')
+      this.$store.dispatch('register/setCurrentPage', 'data alumni')
     }
   },
   methods: {

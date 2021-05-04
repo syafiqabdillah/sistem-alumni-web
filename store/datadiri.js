@@ -23,7 +23,7 @@ const INITIAL_FORM = {
 const datadiri = {
   namespaced: true,
   state: () => ({
-    form: INITIAL_FORM,
+    form: MOCK,
     validation: {
       fullname: null,
       birthplace: null,

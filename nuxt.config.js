@@ -19,12 +19,13 @@ export default {
   css: [
     'vueperslides/dist/vueperslides.css',
     '~/assets/icofont/icofont.min.css',
-    '~/assets/css/global.scss'
+    '~/assets/css/global.scss',
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '~/plugins/utils.js',
+    '~/plugins/aos.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

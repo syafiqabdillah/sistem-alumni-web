@@ -10,6 +10,7 @@ const INITIAL_FORM = {
   year_entry_sd: null,
   year_entry_smp: null,
   year_entry_sma: null,
+  activity: null
 }
 
 const datadiri = {
