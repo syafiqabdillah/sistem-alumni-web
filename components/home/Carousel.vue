@@ -1,6 +1,6 @@
 <template>
   <section class="carousel">
-    <vueper-slides autoplay pauseOnHover>
+    <vueper-slides pauseOnHover>
       <vueper-slide
         v-for="(slide, i) in slides"
         :key="i"
@@ -14,7 +14,6 @@
 
 <script>
 import { VueperSlides, VueperSlide } from 'vueperslides'
-import 'vueperslides/dist/vueperslides.css'
 export default {
   name: 'Carousel',
   components: { VueperSlides, VueperSlide },

@@ -52,11 +52,6 @@ export default {
       return this.showMenuMobile ? ' active' : ''
     },
   },
-  watch: {
-    'window.innerWidth'() {
-      console.log('eyo')
-    },
-  },
 }
 </script>
 

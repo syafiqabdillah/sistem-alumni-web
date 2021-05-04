@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <HomeBanner />
+    <HomeBanner id="banner" />
     <HomeWhatWeDo />
     <client-only>
       <HomeCarousel />
