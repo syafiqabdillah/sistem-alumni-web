@@ -1,22 +1,27 @@
 .vueperslide {
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  height: 100%; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat;
+  background-size: cover;
 
   &__title {
-    font-size: 7em;
-    opacity: 0.6;
+    font-size: 2rem;
+    color: white;
+    opacity: 0.8;
+
+    @media (max-width: 500px) {
+      font-size: 1rem;
+    }
   }
 }
 
-.vueperslides__arrow {
-  color: var(--secondary) !important;
-  
-  svg {
-    stroke-width: 2 !important;
-  }
-}
+.vueperslides {
+  &__arrow {
+    color: var(--secondary) !important;
 
-.vueperslide__title {
-  font-size: 2rem;
-  color: white;
-  opacity: .8;
+    svg {
+      stroke-width: 2 !important;
+    }
+  }
 }

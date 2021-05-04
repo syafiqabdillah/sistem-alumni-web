@@ -1,12 +1,12 @@
 <template>
   <section class="what-we-do">
-    <h2 class="title">Kegiatan Alumni</h2>
+    <h2 class="title">Kegiatan Alumni Untuk...</h2>
     <div class="reasons">
-      <div class="reason" v-for="reason in reasons" :key="reason.title">
-        <img :src="reason.image" alt="" />
-        <p class="title">{{ reason.title }}</p>
+      <div class="reason" v-for="activity in activitiies" :key="activity.title">
+        <img :src="activity.image" alt="" />
+        <p class="title">{{ activity.title }}</p>
         <p class="description">
-          {{ reason.description }}
+          {{ activity.description }}
         </p>
       </div>
     </div>
@@ -19,19 +19,19 @@ export default {
   name: 'WhatWeDo',
   data() {
     return {
-      reasons: [
+      activitiies: [
         {
-          title: 'untuk sekolah',
+          title: 'sekolah',
           image: require('~/assets/images/school.svg'),
           description: 'Sosialisasi kampus',
         },
         {
-          title: 'untuk alumni',
+          title: 'alumni',
           image: require('~/assets/images/alumni.svg'),
           description: 'Jalan-jalan alumni, Reuni antar angkatan',
         },
         {
-          title: 'untuk masyarakat',
+          title: 'masyarakat',
           image: require('~/assets/images/charity.svg'),
           description: 'Tajil on the road, Bakti sosial',
         },
@@ -62,16 +62,20 @@ section {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  font-size: 14px;
+  font-size: .9rem;
+
+  @media (min-width: 500px) {
+    font-size: 1rem;
+  }
 
   &:hover img,
   &:focus img {
-    transform: scale(1.2) translateY(-10px);
+    transform: scale(1.3) translateY(-10px);
   }
 
   img {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     object-fit: contain;
     transition: 200ms all linear;
   }
@@ -80,12 +84,7 @@ section {
     margin-top: 0.65rem;
     margin-bottom: 0.25rem;
     font-size: inherit;
-    line-height: 1.6em;
-    min-height: 3.2em;
-
-    @media (min-width: 450px) {
-      min-height: 0;
-    }
+    text-transform: uppercase;
   }
 }
 </style>

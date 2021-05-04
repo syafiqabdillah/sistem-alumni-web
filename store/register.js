@@ -4,15 +4,17 @@ const MOCK = {
   confirmPassword: 'password123',
 }
 
+const INITIAL_STATE = {
+  email: null,
+  password: null,
+  confirmPassword: null,
+}
+
 const register = {
   namespaced: true,
   state: () => ({
     currentPage: '',
-    form: {
-      email: null,
-      password: null,
-      confirmPassword: null,
-    },
+    form: MOCK,
     validation: {
       email: null,
       password: null,

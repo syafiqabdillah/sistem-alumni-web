@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="card">
+    <div class="card" data-aos="fade-up">
       <div class="login">
         <h1 class="title">Masuk ke Sistem Alumni</h1>
         <InputField

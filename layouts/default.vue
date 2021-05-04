@@ -24,6 +24,13 @@ body {
   box-sizing: border-box;
 }
 
+.body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 *,
 *::before,
 *::after {
@@ -31,12 +38,6 @@ body {
   margin: 0;
 }
 
-.body {
-  background-color: var(--bg);
-  min-width: var(--min-width-page);
-  display: flex;
-  flex-direction: column;
-}
 .content {
   margin-top: var(--nav-height);
   flex: 1;

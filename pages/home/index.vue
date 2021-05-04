@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <HomeBanner />
-    <HomeWhatWeDo />
+    <HomeBanner id="banner" />
+    <HomeActivity />
     <client-only>
       <HomeCarousel />
     </client-only>

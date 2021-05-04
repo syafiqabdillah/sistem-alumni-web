@@ -2,7 +2,7 @@
   <footer>
     <div class="copyright">&copy; 2021 Yayasan Asy-Syaamil Bontang</div>
     <div class="socials">
-      <a href="www.asy-syaamil.com" target="_blank"
+      <a href="http://www.asy-syaamil.com" target="_blank"
         >www.asy-syaamil.com<i class="icofont-external-link"></i
       ></a>
     </div>
@@ -17,7 +17,7 @@ export default {
 
 <style scoped lang="scss">
 footer {
-  min-height: 120px;
+  min-height: var(--footer-height);
   padding: 1rem;
   position: relative;
   left: 0;
@@ -25,7 +25,7 @@ footer {
   width: 100%;
   margin-top: auto;
   background-color: var(--dark);
-  color: var(--primary);
+  color: var(--primary-lighter);
   text-align: center;
   font-size: 14px;
   display: flex;

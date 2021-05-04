@@ -3,7 +3,7 @@
     <h1 class="title">Data Alumni</h1>
     <!-- TK -->
     <SelectField
-      label="Tahun Masuk TKIT Qurrota A'yun"
+      label="Tahun masuk TKIT Qurrota A'yun"
       name="year_entry_tk"
       :value="form.year_entry_tk"
       :onChange="handleInputChange"
@@ -11,7 +11,7 @@
     />
     <!-- SD -->
     <SelectField
-      label="Tahun Masuk SDIT Asy-Syaamil"
+      label="Tahun masuk SDIT Asy-Syaamil"
       name="year_entry_sd"
       :value="form.year_entry_sd"
       :onChange="handleInputChange"
@@ -19,7 +19,7 @@
     />
     <!-- SMP -->
     <SelectField
-      label="Tahun Masuk SMPIT Daarul Hikmah"
+      label="Tahun masuk SMPIT Daarul Hikmah"
       name="year_entry_smp"
       :value="form.year_entry_smp"
       :onChange="handleInputChange"
@@ -27,11 +27,21 @@
     />
     <!-- SMA -->
     <SelectField
-      label="Tahun Masuk SMAIT Daarul Hikmah"
+      label="Tahun masuk SMAIT Daarul Hikmah"
       name="year_entry_sma"
       :value="form.year_entry_sma"
       :onChange="handleInputChange"
       :options="year_entry_options_sma"
+    />
+    <InputField
+      id="activity"
+      label="Aktivitas saat ini"
+      type="textarea"
+      :value="form.activity"
+      :onChange="handleInputChange"
+      :onBlur="validateInput"
+      errorMessage="aktivitas tidak boleh kosong"
+      placeholder="Ceritakan aktivitas kamu saat ini"
     />
     <div class="actions">
       <div class="back" @click="kembali">
@@ -72,10 +82,11 @@ export default {
     }),
     formValid() {
       return (
-        this.form.year_entry_tk ||
-        this.form.year_entry_sd ||
-        this.form.year_entry_smp ||
-        this.form.year_entry_sma
+        !this.$isEmpty(this.form.activity) &&
+        (this.form.year_entry_tk ||
+          this.form.year_entry_sd ||
+          this.form.year_entry_smp ||
+          this.form.year_entry_sma)
       )
     },
   },

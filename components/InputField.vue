@@ -7,6 +7,7 @@
       :name="id"
       :type="type"
       :value="value"
+      :placeholder="placeholder"
       @input="onChange"
       @blur="onBlur"
       :class="{
@@ -19,6 +20,7 @@
       :id="id"
       :name="id"
       :value="value"
+      :placeholder="placeholder"
       @input="onChange"
       @blur="onBlur"
       :class="{
@@ -58,6 +60,10 @@ export default {
       type: Boolean,
       default: true,
     },
+    placeholder: {
+      type: String,
+      default: ""
+    }
   },
 }
 </script>
