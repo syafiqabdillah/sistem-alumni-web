@@ -2,6 +2,9 @@
   <div class="home">
     <HomeBanner />
     <HomeWhatWeDo />
+    <client-only>
+      <HomeCarousel />
+    </client-only>
   </div>
 </template>
 

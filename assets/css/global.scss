@@ -4,6 +4,7 @@
 @import './layout.css';
 @import './card.css';
 @import './text.scss';
+@import './vueper.scss';
 
 :root {
   --primary: #007a34;
@@ -12,6 +13,7 @@
   --secondary: #ecae1e;
   --bg: #f7f7f7;
   --grey: #5b5b5b;
+  --dark: #060606;
   --nav-height: 70px;
   --min-width-page: 360px;
   --banner-height: 100vh;
@@ -22,32 +24,9 @@ html {
 .clickable {
   cursor: pointer;
 }
-.cta {
-  margin: 1em 0;
-}
-.cta a {
-  text-decoration: none;
-  color: var(--bg);
-  background-color: var(--primary);
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-}
-.cta a:hover,
-.cta a:active {
-  background-color: var(--primary-darker);
-}
-/* Carosel */
-.slick-dots li button {
-  background-color: var(--secondary) !important;
-  border-radius: 50%;
-}
-.slick-dots li button::before {
-  content: '' !important;
-}
-.slick-dots .slick-active button {
-  background-color: var(--primary) !important;
-  color: white !important;
-}
+
 hr {
   margin: 1em 0;
 }
+// VUEPER
+

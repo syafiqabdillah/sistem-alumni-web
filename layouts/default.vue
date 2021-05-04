@@ -4,6 +4,7 @@
     <div class="content">
       <Nuxt />
     </div>
+    <Footer />
   </div>
 </template>
 
@@ -29,11 +30,15 @@ body {
   box-sizing: border-box;
   margin: 0;
 }
-.content {
-  margin-top: var(--nav-height);
-}
-body {
+
+.body {
   background-color: var(--bg);
   min-width: var(--min-width-page);
+  display: flex;
+  flex-direction: column;
+}
+.content {
+  margin-top: var(--nav-height);
+  flex: 1;
 }
 </style>

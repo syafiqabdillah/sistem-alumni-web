@@ -1,0 +1,22 @@
+.vueperslide {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+
+  &__title {
+    font-size: 7em;
+    opacity: 0.6;
+  }
+}
+
+.vueperslides__arrow {
+  color: var(--secondary) !important;
+  
+  svg {
+    stroke-width: 2 !important;
+  }
+}
+
+.vueperslide__title {
+  font-size: 2rem;
+  color: white;
+  opacity: .8;
+}
