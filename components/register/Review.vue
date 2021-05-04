@@ -40,6 +40,10 @@
       :value="dataalumni.year_entry_sma"
       v-if="dataalumni.year_entry_sma"
     />
+    <RegisterReviewItem
+      label="Aktivitas"
+      :value="dataalumni.activity"
+    />
     <div class="konfirmasi">
       <input
         type="checkbox"
