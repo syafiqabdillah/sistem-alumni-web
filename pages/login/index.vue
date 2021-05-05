@@ -64,6 +64,7 @@ export default {
           )
           setTimeout(() => {
             this.$resetModal(this)
+            location.href = '/profile'
           }, 1700)
         })
         .catch((err) => {

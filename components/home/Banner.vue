@@ -5,14 +5,14 @@
     <div class="text">
       <h1 class="title">
         Alumni Yayasan <br />
-        Asy-Syaamil Bontang
+        Asy Syaamil Bontang
       </h1>
       <div class="tagline">
-        Bergabung dengan alumni Yayasan Asy-Syaamil lainnya dari TK, SD, SMP,
+        Bergabung dengan alumni Yayasan Asy Syaamil lainnya dari TK, SD, SMP,
         hingga SMA
       </div>
       <div class="cta">
-        <NuxtLink to="/register">Menjadi Bagian dari Kami</NuxtLink>
+        <NuxtLink to="/register">Bergabung dengan alumni lainnya</NuxtLink>
       </div>
     </div>
   </section>

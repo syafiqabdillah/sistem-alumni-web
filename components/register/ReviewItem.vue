@@ -34,7 +34,6 @@ export default {
   }
   .value {
     padding-left: .5em;
-    overflow: scroll;
   }
 }
 </style>

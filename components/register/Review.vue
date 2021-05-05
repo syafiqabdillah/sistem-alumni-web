@@ -4,46 +4,9 @@
       Review Form <br />
       Pendataan Alumni
     </h1>
-    <RegisterReviewItem label="Nama lengkap" :value="datadiri.fullname" />
-    <RegisterReviewItem label="Email" :value="register.email" />
-    <RegisterReviewItem
-      label="TTL"
-      :value="`${datadiri.birthplace}, ${datadiri.birthdate}`"
-    />
-    <RegisterReviewItem label="Gender" :value="1 ? 'Laki-laki' : 'Perempuan'" />
-    <RegisterReviewItem label="No HP" :value="datadiri.phone" />
-    <RegisterReviewItem label="Alamat" :value="datadiri.address" />
-    <RegisterReviewItem
-      label="Nama orangtua/wali"
-      v-if="datadiri.parentName"
-      :value="datadiri.parentName"
-    />
-    <RegisterReviewItem
-      label="No HP orangtua/wali"
-      v-if="datadiri.parentPhone"
-      :value="datadiri.parentPhone"
-    />
-    <RegisterReviewItem
-      label="Tahun masuk TKIT Qurrota A'yun"
-      :value="dataalumni.year_entry_tk"
-      v-if="dataalumni.year_entry_tk"
-    />
-    <RegisterReviewItem
-      label="Tahun masuk SDIT Asy-Syaamil"
-      :value="dataalumni.year_entry_sd"
-      v-if="dataalumni.year_entry_sd"
-    />
-    <RegisterReviewItem
-      label="Tahun masuk SMPIT Daarul Hikmah"
-      :value="dataalumni.year_entry_smp"
-      v-if="dataalumni.year_entry_smp"
-    />
-    <RegisterReviewItem
-      label="Tahun masuk SMAIT Daarul Hikmah"
-      :value="dataalumni.year_entry_sma"
-      v-if="dataalumni.year_entry_sma"
-    />
-    <RegisterReviewItem label="Aktivitas" :value="dataalumni.activity" />
+    <RegisterReviewData
+      :data="Object.assign(register, datadiri, dataalumni)"
+     />
     <div class="konfirmasi">
       <input
         type="checkbox"

@@ -1,7 +1,10 @@
 <template>
   <div class="body">
     <Navbar />
-    <div class="content">
+    <div
+      style="margin-top: var(--nav-height);
+  flex: 1;"
+    >
       <Nuxt />
     </div>
     <Footer />
@@ -38,10 +41,5 @@ body {
 *::after {
   box-sizing: border-box;
   margin: 0;
-}
-
-.content {
-  margin-top: var(--nav-height);
-  flex: 1;
 }
 </style>

@@ -6,7 +6,9 @@
       </div>
       <div class="menu">
         <NuxtLink to="/home">Beranda</NuxtLink>
-        <NuxtLink class="login" to="/login">Masuk</NuxtLink>
+        <NuxtLink v-if="loggedIn" to="/profile">Profil</NuxtLink>
+        <NuxtLink v-if="!loggedIn" class="login" to="/login">Masuk</NuxtLink>
+        <a href="#" v-if="loggedIn" @click="logout">Keluar</a>
       </div>
       <div class="menu-mobile">
         <div
@@ -14,13 +16,13 @@
           @click="toggleShowMenuMobile"
         >
           <i :class="{ 'icofont-rounded-down': 'icofont-rounded-down' }"></i>
-          <!-- <i class="icofont-rounded-up" v-else></i> -->
         </div>
         <div
           :class="{ dropdown: 'dropdown', show: showMenuMobile }"
           @click="toggleShowMenuMobile"
         >
           <NuxtLink to="/home">Beranda</NuxtLink>
+          <NuxtLink v-if="loggedIn" to="/profile">Profil</NuxtLink>
           <NuxtLink v-if="!loggedIn" class="login" to="/login">Masuk</NuxtLink>
           <a href="#" v-else @click="logout">Keluar</a>
         </div>
@@ -51,7 +53,7 @@ export default {
       // hapus cookie
       this.$getCookieManager().remove('jwt')
       // alihkan ke beranda
-      location.href = "/"
+      location.href = '/'
     },
   },
   computed: {
@@ -59,8 +61,8 @@ export default {
       return this.showMenuMobile ? ' active' : ''
     },
     loggedIn() {
-      return this.$jwt();
-    }
+      return this.$loggedIn()
+    },
   },
 }
 </script>
@@ -109,18 +111,21 @@ nav > * {
     text-decoration: none;
     color: var(--dark);
     font-weight: 400;
-  }
-  a:hover {
-    color: var(--primary);
-  }
-  .login {
-    background: var(--primary);
-    color: var(--bg);
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-  }
-  .login:hover {
-    background: var(--primary-darker);
+
+    &:hover {
+      color: var(--primary);
+    }
+
+    &.login {
+      background: var(--primary);
+      color: var(--bg);
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+
+      &:hover {
+        background: var(--primary-darker);
+      }
+    }
   }
 }
 .menu-mobile {
@@ -160,20 +165,24 @@ nav > * {
     font-weight: 400;
     width: 100%;
     text-align: center;
-  }
-  a:hover,
-  a:active {
-    color: var(--primary);
-  }
-  .login {
-    background: var(--primary);
-    color: var(--bg);
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-  }
-  .login:hover,
-  .login:active {
-    background: var(--primary-darker);
+
+    &:hover,
+    &:active {
+      color: var(--primary);
+    }
+
+    &.login {
+      background: var(--primary);
+      color: var(--bg);
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+
+      &:hover,
+      &:active {
+        background: var(--primary-darker);
+        color: var(--bg);
+      }
+    }
   }
   &.show {
     transform: scaleY(1);

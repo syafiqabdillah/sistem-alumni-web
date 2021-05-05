@@ -36,8 +36,13 @@ export default ({ app }, inject) => {
   const getCookieManager = () => {
     return Cookie
   }
-  const jwt = () => {
-    return jwt_decode(Cookie.get('jwt'))
+  const getJwtData = () => {
+    const token = Cookie.get('jwt')
+    return jwt_decode(token)
+  }
+  const loggedIn = () => {
+    const token = Cookie.get('jwt')
+    return token
   }
   inject('isMobile', isMobile)
   inject('validateEmail', validateEmail)
@@ -49,5 +54,6 @@ export default ({ app }, inject) => {
   inject('hideModalLoading', hideModalLoading)
   inject('decodeJwt', decodeJwt)
   inject('getCookieManager', getCookieManager)
-  inject('jwt', jwt)
+  inject('getJwtData', getJwtData)
+  inject('loggedIn', loggedIn)
 }
