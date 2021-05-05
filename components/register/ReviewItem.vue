@@ -34,7 +34,7 @@ export default {
   }
   .value {
     padding-left: .5em;
-    font-weight: 500;
+    overflow: scroll;
   }
 }
 </style>

@@ -39,8 +39,7 @@
       type="textarea"
       :value="form.activity"
       :onChange="handleInputChange"
-      :onBlur="validateInput"
-      errorMessage="aktivitas tidak boleh kosong"
+      :onBlur="() => {}"
       placeholder="Ceritakan aktivitas kamu saat ini"
     />
     <div class="actions">
@@ -157,7 +156,6 @@ export default {
   mounted() {
     this.fillYearOptions()
     this.loadSelectedOptions()
-    this.$store.dispatch('dataalumni/resetForm')
   },
 }
 </script>

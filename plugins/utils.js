@@ -1,3 +1,5 @@
+import jwt_decode from 'jwt-decode'
+import Cookie from 'js-cookie'
 export default ({ app }, inject) => {
   const isMobile = () => {
     return window.innerWidth < 500
@@ -9,7 +11,43 @@ export default ({ app }, inject) => {
   const isEmpty = (s) => {
     return !(s && s.length > 0)
   }
+  const showModalSuccess = (context, message) => {
+    context.$store.dispatch('modal/setMessage', message)
+    context.$store.dispatch('modal/setModalSuccess')
+    context.$store.dispatch('modal/showModal')
+  }
+  const showModalError = (context, message) => {
+    context.$store.dispatch('modal/setMessage', message)
+    context.$store.dispatch('modal/setModalError')
+    context.$store.dispatch('modal/showModal')
+  }
+  const resetModal = (context) => {
+    context.$store.dispatch('modal/resetModal')
+  }
+  const showModalLoading = (context) => {
+    context.$store.dispatch('modal/showModalLoading')
+  }
+  const hideModalLoading = (context) => {
+    context.$store.dispatch('modal/hideModalLoading')
+  }
+  const decodeJwt = jwt => {
+    return jwt_decode(jwt)
+  }
+  const getCookieManager = () => {
+    return Cookie
+  }
+  const jwt = () => {
+    return jwt_decode(Cookie.get('jwt'))
+  }
   inject('isMobile', isMobile)
   inject('validateEmail', validateEmail)
   inject('isEmpty', isEmpty)
+  inject('showModalSuccess', showModalSuccess)
+  inject('showModalError', showModalError)
+  inject('resetModal', resetModal)
+  inject('showModalLoading', showModalLoading)
+  inject('hideModalLoading', hideModalLoading)
+  inject('decodeJwt', decodeJwt)
+  inject('getCookieManager', getCookieManager)
+  inject('jwt', jwt)
 }

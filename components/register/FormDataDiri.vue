@@ -80,7 +80,7 @@
       :backFunction="kembali"
       :nextFunction="lanjutkan"
       :nextDisabled="!formValid"
-     />
+    />
   </div>
 </template>
 
@@ -147,9 +147,7 @@ export default {
       )
     },
   },
-  mounted() {
-    this.$store.dispatch('datadiri/resetForm')
-  },
+  mounted() {},
 }
 </script>
 

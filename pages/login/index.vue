@@ -16,7 +16,9 @@
         />
         <label for="password">Password</label>
         <input type="password" id="password" v-model="form.password" />
-        <div :class="{ button: 'button', disabled: !formValid }">Masuk</div>
+        <div @click="login" :class="{ button: 'button', disabled: !formValid }">
+          Masuk
+        </div>
       </div>
       <div class="no-account">
         belum mendaftar sebagai alumni? <br />
@@ -32,30 +34,51 @@ export default {
   data() {
     return {
       form: {
-        email: null,
-        password: null,
+        email: 'abdillah.syafiq@gmail.com',
+        password: 'password123',
       },
       validation: {
-        email: null
-      }
+        email: true,
+      },
     }
   },
   methods: {
     handleInputChange(e) {
-      this.form[e.target.name] = e.target.value;
-      this.validateInput(e);
+      this.form[e.target.name] = e.target.value
+      this.validateInput(e)
     },
     validateInput(e) {
-      this.validation[e.target.name] = this.$validateEmail(e.target.value);
-    }
+      this.validation[e.target.name] = this.$validateEmail(e.target.value)
+    },
+    login(e) {
+      e.preventDefault()
+      this.$showModalLoading(this)
+      this.$axios
+        .$post('users/login', this.form)
+        .then((jwt) => {
+          this.$getCookieManager().set('jwt', jwt)
+          const user = this.$decodeJwt(jwt)
+          this.$showModalSuccess(
+            this,
+            `Selamat datang kembali, ${user.fullname}`
+          )
+          setTimeout(() => {
+            this.$resetModal(this)
+          }, 1700)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+        .finally(() => {
+          setTimeout(() => {
+            this.$hideModalLoading(this)
+          }, 1700)
+        })
+    },
   },
   computed: {
     formValid() {
-      return (
-        this.form.email &&
-        this.validation.email &&
-        this.form.password
-      )
+      return this.form.email && this.validation.email && this.form.password
     },
   },
 }

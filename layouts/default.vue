@@ -5,6 +5,8 @@
       <Nuxt />
     </div>
     <Footer />
+    <ModalLoading />
+    <Modal />
   </div>
 </template>
 

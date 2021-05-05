@@ -1,7 +1,7 @@
 const MOCK = {
   fullname: 'Syafiq Abdillah',
   birthplace: 'Bontang',
-  birthdate: '03/03/1997',
+  birthdate: '1997-03-03',
   gender: '1',
   phone: '085249903865',
   address: 'Jl. Kepodang S-22 BTN PKT Bontang',

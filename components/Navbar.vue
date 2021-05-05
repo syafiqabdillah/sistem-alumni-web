@@ -6,7 +6,7 @@
       </div>
       <div class="menu">
         <NuxtLink to="/home">Beranda</NuxtLink>
-        <NuxtLink to="/login">Masuk</NuxtLink>
+        <NuxtLink class="login" to="/login">Masuk</NuxtLink>
       </div>
       <div class="menu-mobile">
         <div
@@ -21,7 +21,8 @@
           @click="toggleShowMenuMobile"
         >
           <NuxtLink to="/home">Beranda</NuxtLink>
-          <NuxtLink to="/login">Masuk</NuxtLink>
+          <NuxtLink v-if="!loggedIn" class="login" to="/login">Masuk</NuxtLink>
+          <a href="#" v-else @click="logout">Keluar</a>
         </div>
         <div
           @click="toggleShowMenuMobile"
@@ -46,11 +47,20 @@ export default {
     toggleShowMenuMobile() {
       this.showMenuMobile = !this.showMenuMobile
     },
+    logout() {
+      // hapus cookie
+      this.$getCookieManager().remove('jwt')
+      // alihkan ke beranda
+      location.href = "/"
+    },
   },
   computed: {
     activeShowMenuMobile() {
       return this.showMenuMobile ? ' active' : ''
     },
+    loggedIn() {
+      return this.$jwt();
+    }
   },
 }
 </script>
@@ -103,13 +113,13 @@ nav > * {
   a:hover {
     color: var(--primary);
   }
-  a:last-child {
+  .login {
     background: var(--primary);
     color: var(--bg);
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
   }
-  a:last-child:hover {
+  .login:hover {
     background: var(--primary-darker);
   }
 }
@@ -138,7 +148,7 @@ nav > * {
   padding: 0 1em 1em;
   gap: 1em;
   align-items: center;
-  z-index: 100;
+  z-index: 99;
   transform: scaleY(0);
   transform-origin: top;
   transition: transform 200ms linear;
@@ -155,14 +165,14 @@ nav > * {
   a:active {
     color: var(--primary);
   }
-  a:last-child {
+  .login {
     background: var(--primary);
     color: var(--bg);
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
   }
-  a:last-child:hover,
-  a:last-child:active {
+  .login:hover,
+  .login:active {
     background: var(--primary-darker);
   }
   &.show {

@@ -1,13 +1,13 @@
+const INITIAL_FORM = {
+  email: null,
+  password: null,
+  confirmPassword: null,
+}
+
 const MOCK = {
   email: 'abdillah.syafiq@gmail.com',
   password: 'password123',
   confirmPassword: 'password123',
-}
-
-const INITIAL_STATE = {
-  email: null,
-  password: null,
-  confirmPassword: null,
 }
 
 const register = {
@@ -48,9 +48,7 @@ const register = {
     },
     // Reset Form
     resetForm(state) {
-      state.form.email = ''
-      state.form.password = ''
-      state.form.confirmPassword = ''
+      state.form = INITIAL_FORM
     },
     // Set current page
     setCurrentPage(state, page) {

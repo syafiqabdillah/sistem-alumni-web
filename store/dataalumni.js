@@ -3,6 +3,7 @@ const MOCK = {
   year_entry_sd: 2003,
   year_entry_smp: 2009,
   year_entry_sma: null,
+  activity: "kerja"
 }
 
 const INITIAL_FORM = {
@@ -16,7 +17,7 @@ const INITIAL_FORM = {
 const datadiri = {
   namespaced: true,
   state: () => ({
-    form: INITIAL_FORM,
+    form: MOCK,
   }),
   mutations: {
     setInput(state, payload) {

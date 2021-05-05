@@ -1,6 +1,9 @@
 <template>
   <div class="card">
-    <h1 class="title">Review Form <br> Pendataan Alumni</h1>
+    <h1 class="title">
+      Review Form <br />
+      Pendataan Alumni
+    </h1>
     <RegisterReviewItem label="Nama lengkap" :value="datadiri.fullname" />
     <RegisterReviewItem label="Email" :value="register.email" />
     <RegisterReviewItem
@@ -40,10 +43,7 @@
       :value="dataalumni.year_entry_sma"
       v-if="dataalumni.year_entry_sma"
     />
-    <RegisterReviewItem
-      label="Aktivitas"
-      :value="dataalumni.activity"
-    />
+    <RegisterReviewItem label="Aktivitas" :value="dataalumni.activity" />
     <div class="konfirmasi">
       <input
         type="checkbox"
@@ -77,6 +77,7 @@ export default {
   data() {
     return {
       confirmed: false,
+      loadingRegister: true,
     }
   },
   computed: {
@@ -93,8 +94,55 @@ export default {
     kembali() {
       this.$store.dispatch('register/setCurrentPage', 'data alumni')
     },
+    showModalSuccess() {
+      this.$store.dispatch(
+        'modal/setMessage',
+        'Berhasil mendaftar sebagai alumni'
+      )
+      this.$store.dispatch('modal/setModalSuccess')
+      this.$store.dispatch('modal/showModal')
+    },
+    showModalError() {
+      this.$store.dispatch('modal/setMessage', 'Gagal mendaftar sebagai alumni')
+      this.$store.dispatch('modal/setModalError')
+      this.$store.dispatch('modal/showModal')
+    },
     submit() {
-      alert('eyo')
+      const data = {
+        email: this.register.email,
+        password: this.register.password,
+        fullname: this.datadiri.fullname,
+        birthplace: this.datadiri.birthplace,
+        birthdate: this.datadiri.birthdate,
+        gender: this.datadiri.gender,
+        phone: this.datadiri.phone,
+        address: this.datadiri.address,
+        parent_name: this.datadiri.parentName,
+        parent_phone: this.datadiri.parentPhone,
+        year_entry_tk: this.dataalumni.year_entry_tk,
+        year_entry_sd: this.dataalumni.year_entry_sd,
+        year_entry_smp: this.dataalumni.year_entry_smp,
+        year_entry_sma: this.dataalumni.year_entry_sma,
+        activity: this.dataalumni.activity,
+      }
+      this.$store.dispatch('modal/showModalLoading')
+      this.$axios
+        .$post('users', data)
+        .then(() => {
+          this.showModalSuccess()
+          this.$store.dispatch('register/resetForm')
+          this.$store.dispatch('datadiri/resetForm')
+          this.$store.dispatch('dataalumni/resetForm')
+          this.$store.dispatch('register/setCurrentPage', 'email')
+        })
+        .catch(() => {
+          this.showModalError()
+          this.confirmed = false;
+        })
+        .finally(() => {
+          console.log('done')
+          this.$store.dispatch('modal/hideModalLoading')
+        })
     },
   },
 }
@@ -107,6 +155,7 @@ export default {
   align-items: center;
   text-align: center;
   padding-bottom: 1em;
+  margin-top: 2.5em;
 
   input {
     width: 20px;
