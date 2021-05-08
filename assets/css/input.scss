@@ -1,9 +1,9 @@
-input,
-select,
-textarea {
+input.asy,
+select.asy,
+textarea.asy {
   border-radius: 5px;
   border: 1px solid lightgray;
-  height: 1.5rem;
+  height: 1.75rem;
   padding: 0.3rem .5rem;
   margin-top: 0.5rem;
   width: 100%;
@@ -31,16 +31,16 @@ textarea {
   }
 }
 
-select {
+select.asy {
   height: 1.8rem;
 }
 
-textarea {
+textarea.asy {
   height: initial;
   resize: none;
 }
 
-label {
+label.asy {
   display: inline-block;
   font-size: 14px;
   margin-top: 0.5rem;

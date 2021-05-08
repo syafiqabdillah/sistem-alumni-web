@@ -73,7 +73,6 @@ export default {
   position: fixed;
   top: 0;
   z-index: 99;
-  min-width: var(--min-width-page);
 }
 nav {
   height: var(--nav-height);

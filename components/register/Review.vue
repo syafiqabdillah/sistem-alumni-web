@@ -5,7 +5,7 @@
       Pendataan Alumni
     </h1>
     <RegisterReviewData
-      :data="Object.assign(register, datadiri, dataalumni)"
+      :data="Object.assign(dataemail, datadiri, dataalumni)"
      />
     <div class="konfirmasi">
       <input
@@ -45,7 +45,7 @@ export default {
   },
   computed: {
     ...mapState({
-      register: (state) => state.register.form,
+      dataemail: (state) => state.dataemail.form,
       datadiri: (state) => state.datadiri.form,
       dataalumni: (state) => state.dataalumni.form,
     }),
@@ -72,8 +72,8 @@ export default {
     },
     submit() {
       const data = {
-        email: this.register.email,
-        password: this.register.password,
+        email: this.dataemail.email,
+        password: this.dataemail.password,
         fullname: this.datadiri.fullname,
         birthplace: this.datadiri.birthplace,
         birthdate: this.datadiri.birthdate,

@@ -1,18 +1,21 @@
 <template>
   <div>
-    <label for="fullname">{{ label }} <span v-if="required">*</span></label>
+    <label class="asy" for="fullname">{{ label }} <span v-if="required">*</span></label>
     <input
+      :ref="id"
       v-if="type !== 'textarea'"
       :id="id"
       :name="id"
       :type="type"
       :value="value"
       :placeholder="placeholder"
+      autocomplete="off"
       @input="onChange"
       @blur="onBlur"
       :class="{
         valid: valid === true,
         error: valid === false,
+        asy: 'asy'
       }"
     />
     <textarea
@@ -26,6 +29,7 @@
       :class="{
         valid: valid === true,
         error: valid === false,
+        asy: 'asy'
       }"
       :rows="rows"
     />
@@ -50,7 +54,10 @@ export default {
     },
     value: null,
     onChange: Function,
-    onBlur: Function,
+    onBlur: {
+      type: Function,
+      default: () => {}
+    },
     errorMessage: String,
     rows: {
       type: Number,

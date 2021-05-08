@@ -1,12 +1,12 @@
 <template>
   <div>
-    <label>{{ label }}
+    <label class="asy">{{ label }}
       <span v-if="required">*</span>
     </label>
     <div class="options">
       <div class="option" v-for="option in options" :key="option.id">
         <input
-          class="radio"
+          class="radio asy"
           type="radio"
           :id="option.id"
           :name="name"
@@ -14,7 +14,7 @@
           :checked="option.value == value"
           @input="onChange"
         />
-        <label :for="option.id" class="radio">{{ option.label }}</label>
+        <label :for="option.id" class="radio asy">{{ option.label }}</label>
       </div>
     </div>
   </div>

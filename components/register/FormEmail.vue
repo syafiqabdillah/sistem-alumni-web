@@ -1,63 +1,36 @@
 <template>
   <div class="card">
     <h1 class="title">Daftar sebagai Alumni</h1>
-    <label for="email">Email</label>
-    <input
-      type="email"
-      :class="{
-        valid: $store.state.register.validation.email === true,
-        error: $store.state.register.validation.email === false,
-      }"
+    <InputField
       id="email"
-      ref="email"
-      @input="handleEmailChange"
-      @blur="validateEmail"
-      :value="email"
-      autocomplete="off"
+      label="Email"
+      type="text"
+      :value="form.email"
+      :onChange="handleInputChange"
+      :onBlur="validateInput"
+      :valid="validation.email"
+      errorMessage="email tidak sesuai format"
     />
-    <small
-      class="text-red"
-      v-if="$store.state.register.validation.email === false"
-    >
-      format email tidak sesuai
-    </small>
-    <label for="password">Password</label>
-    <input
-      @blur="validatePassword"
-      :class="{
-        valid: $store.state.register.validation.password === true,
-        error: $store.state.register.validation.password === false,
-      }"
-      type="password"
+    <InputField
       id="password"
-      @input="handlePasswordChange"
-      :value="password"
-      autocomplete="off"
-    />
-    <small
-      class="text-red"
-      v-if="$store.state.register.validation.password === false"
-    >
-      panjang password setidaknya 8 karakter
-    </small>
-    <label for="confirm-password">Ketik ulang password</label>
-    <input
-      @blur="validateConfirmPassword"
-      :class="{
-        valid: $store.state.register.validation.confirmPassword === true,
-        error: $store.state.register.validation.confirmPassword === false,
-      }"
+      label="password"
       type="password"
-      id="confirm-password"
-      @input="handleConfirmPasswordChange"
-      :value="confirmPassword"
+      :value="form.password"
+      :onChange="handleInputChange"
+      :onBlur="validateInput"
+      :valid="validation.password"
+      errorMessage="password minimal 8 karakter"
     />
-    <small
-      class="text-red"
-      v-if="$store.state.register.validation.confirmPassword === false"
-    >
-      konfirmasi password tidak sesuai
-    </small>
+    <InputField
+      id="confirmPassword"
+      label="Konfirmasi password"
+      type="password"
+      :value="form.confirmPassword"
+      :onChange="handleInputChange"
+      :onBlur="validateInput"
+      :valid="validation.confirmPassword"
+      errorMessage="konfirmasi tidak sesuai"
+    />
     <Navigator
       :showBackButton="false"
       :nextDisabled="!formValid"
@@ -71,56 +44,18 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 export default {
-  data() {
-    return {
-      isTyping: false,
-    }
-  },
   methods: {
-    handleEmailChange(e) {
-      this.$store.dispatch('register/setEmail', e.target.value)
-      this.validateEmail()
+    handleInputChange(e) {
+      const key = e.target.name
+      const value = e.target.value
+      this.$store.dispatch('dataemail/setInput', { key, value })
     },
-    handlePasswordChange(e) {
-      this.$store.dispatch('register/setPassword', e.target.value)
-      this.validatePassword()
-      if (this.confirmPassword) {
-        this.validateConfirmPassword()
-      }
-    },
-    handleConfirmPasswordChange(e) {
-      this.$store.dispatch('register/setConfirmPassword', e.target.value)
-      this.validateConfirmPassword()
-      if (this.password) {
-        this.validatePassword()
-      }
-    },
-    validateEmail() {
-      const email = this.$store.state.register.form.email
-      if (!this.$isEmpty(email)) {
-        const isEmailValid = this.$validateEmail(email)
-        this.$store.dispatch('register/setValidationEmail', isEmailValid)
-      }
-    },
-    validatePassword() {
-      const password = this.$store.state.register.form.password
-      if (!this.$isEmpty(password)) {
-        const isPasswordValid = password.length >= 8
-        this.$store.dispatch('register/setValidationPassword', isPasswordValid)
-      }
-    },
-    validateConfirmPassword() {
-      const password = this.$store.state.register.form.password
-      const confirmPassword = this.$store.state.register.form.confirmPassword
-      if (!this.$isEmpty(confirmPassword)) {
-        const isConfirmPasswordValid = password === confirmPassword
-        this.$store.dispatch(
-          'register/setValidationConfirmPassword',
-          isConfirmPasswordValid
-        )
-      }
+    validateInput(e) {
+      const key = e.target.name
+      const value = e.target.value
+      this.$store.dispatch('dataemail/validate', { key, value })
     },
     lanjutkan() {
       this.$store.dispatch('register/setCurrentPage', 'data diri')
@@ -129,19 +64,18 @@ export default {
   computed: {
     formValid() {
       return (
-        this.$store.state.register.validation.email &&
-        this.$store.state.register.validation.password &&
-        this.$store.state.register.validation.confirmPassword
+        this.validation.email &&
+        this.validation.password &&
+        this.validation.confirmPassword
       )
     },
     ...mapState({
-      email: (state) => state.register.form.email,
-      password: (state) => state.register.form.password,
-      confirmPassword: (state) => state.register.form.confirmPassword,
+      form: (state) => state.dataemail.form,
+      validation: (state) => state.dataemail.validation,
     }),
   },
   mounted() {
-    this.$refs.email.focus()
+    // this.$refs.email.focus()
   },
 }
 </script>

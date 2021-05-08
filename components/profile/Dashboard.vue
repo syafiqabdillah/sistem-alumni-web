@@ -1,14 +1,20 @@
 <template>
   <div class="dashboard">
     <div class="card">
-      <h3 class="title">dashboard</h3>
+      <h3 class="title">dashboard admin</h3>
+
+      <!-- User Table -->
+      <ProfileTableUser />
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Dashboard"
+  name: 'Dashboard',
+  data() {
+    return {}
+  },
 }
 </script>
 

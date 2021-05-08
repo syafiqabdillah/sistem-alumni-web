@@ -31,11 +31,12 @@ export default {
   .label {
     max-width: 150px;
     color: var(--grey);
+    padding-right: 1em;
   }
   .value {
-    padding-left: .5em;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    overflow-x: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }
 </style>

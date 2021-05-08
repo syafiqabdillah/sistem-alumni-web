@@ -22,7 +22,7 @@ export default {
   name: 'Register',
   mounted() {
     if (!this.currentPage) {
-      this.$store.dispatch('register/setCurrentPage', 'email')
+      this.$store.dispatch('register/setCurrentPage', 'review')
     }
   },
   methods: {

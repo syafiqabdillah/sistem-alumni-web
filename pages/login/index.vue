@@ -14,8 +14,13 @@
           :required="false"
           errorMessage="email tidak sesuai format"
         />
-        <label for="password">Password</label>
-        <input type="password" id="password" v-model="form.password" />
+        <InputField 
+          id="password"
+          label="password"
+          type="password"
+          :value="form.password"
+          :onChange="handleInputChange"
+        />
         <div @click="login" :class="{ button: 'button', disabled: !formValid }">
           Masuk
         </div>

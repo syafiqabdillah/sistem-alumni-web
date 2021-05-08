@@ -58,6 +58,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 2px solid lightgray;
 
     &.active {
       border: 2px solid var(--primary-lighter);

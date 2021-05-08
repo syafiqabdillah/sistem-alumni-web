@@ -17,15 +17,17 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '~/assets/css/global.scss',
     'vueperslides/dist/vueperslides.css',
     '~/assets/icofont/icofont.min.css',
-    '~/assets/css/global.scss',
+    'vue-good-table/dist/vue-good-table.css',
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '~/plugins/utils.js',
-    '~/plugins/aos.js'
+    '~/plugins/aos.js',
+    '~/plugins/vue-good-table.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

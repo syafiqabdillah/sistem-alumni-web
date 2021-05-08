@@ -1,10 +1,10 @@
 <template>
-  <section class="what-we-do">
+  <section class="activity">
     <h2 class="title">Kegiatan Alumni</h2>
     <div class="reasons">
       <div class="reason" v-for="activity in activitiies" :key="activity.title">
         <img :src="activity.image" alt="" />
-        <p class="title">{{ activity.title }}</p>
+        <p class="title">untuk <br> {{ activity.title }}</p>
         <p class="description">
           {{ activity.description }}
         </p>
@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  name: 'WhatWeDo',
+  name: 'Activity',
   data() {
     return {
       activitiies: [
@@ -45,8 +45,15 @@ export default {
 section {
   padding: 2em 1em;
 }
+.activity {
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .reasons {
   display: flex;
+  width: 100%;
   max-width: 590px;
   margin: 0 auto;
   padding: 1em 0;
@@ -54,10 +61,14 @@ section {
   & > * {
     flex: 1;
   }
+
+  @media(max-width: 500px) {
+    flex-direction: column;
+  }
 }
 .reason {
   margin-top: 1em;
-  width: 60px;
+  min-width: 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -81,6 +92,7 @@ section {
   }
 
   p.title {
+    font-weight: 700;
     margin-top: 0.65rem;
     margin-bottom: 0.25rem;
     font-size: inherit;

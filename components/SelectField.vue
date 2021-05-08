@@ -1,9 +1,10 @@
 <template>
   <div>
-    <label :for="name">{{ label }}</label>
-    <select :name="name" :id="name" :value="value" @input="onChange">
-      <option :value="null" :selected="!value"></option>
+    <label class="asy" :for="name">{{ label }}</label>
+    <select class="asy" :name="name" :id="name" :value="value" @input="onChange">
+      <option class="asy" :value="null" :selected="!value"></option>
       <option
+        class="asy"
         v-for="item in options"
         :key="item.value"
         :value="item.value"

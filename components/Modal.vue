@@ -81,6 +81,7 @@ export default {
 
   i {
     font-size: 2em;
+    margin-bottom: .5em;
 
     .success {
       color: var(--primary);

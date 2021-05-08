@@ -1,12 +1,12 @@
 const MOCK = {
-  fullname: 'Syafiq Abdillah',
+  fullname: 'Syafiq Abdillah U',
   birthplace: 'Bontang',
   birthdate: '1997-03-03',
-  gender: '1',
+  gender: 1,
   phone: '085249903865',
-  address: 'Jl. Kepodang S-22 BTN PKT Bontang',
-  parentName: '',
-  parentPhone: '',
+  address: 'Jl. Kepodang S22',
+  parentName: 'Isro Umarghani',
+  parentPhone: null,
 }
 
 const INITIAL_FORM = {
@@ -24,16 +24,7 @@ const datadiri = {
   namespaced: true,
   state: () => ({
     form: MOCK,
-    validation: {
-      fullname: null,
-      birthplace: null,
-      birthdate: null,
-      gender: null,
-      phone: null,
-      address: null,
-      parentName: null,
-      parentPhone: null,
-    },
+    validation: Object.assign({}, INITIAL_FORM)
   }),
   mutations: {
     setInput(state, payload) {
@@ -62,7 +53,7 @@ const datadiri = {
       }
     },
     resetForm(state) {
-      state.form = INITIAL_FORM
+      state.form = Object.assign({}, INITIAL_FORM)
     },
   },
   actions: {
