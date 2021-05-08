@@ -34,6 +34,8 @@ export default {
   }
   .value {
     padding-left: .5em;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 </style>

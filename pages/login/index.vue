@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" v-if="!loggedIn">
     <div class="card" data-aos="fade-up">
       <div class="login">
         <h1 class="title">Masuk ke Sistem Alumni</h1>
@@ -42,6 +42,11 @@ export default {
       },
     }
   },
+  beforeMount() {
+    if (this.loggedIn) {
+      this.$router.push('/');
+    }
+  },
   methods: {
     handleInputChange(e) {
       this.form[e.target.name] = e.target.value
@@ -81,6 +86,9 @@ export default {
     formValid() {
       return this.form.email && this.validation.email && this.form.password
     },
+    loggedIn() {
+      return this.$loggedIn();
+    }
   },
 }
 </script>

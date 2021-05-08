@@ -1,6 +1,6 @@
 <template>
   <section class="what-we-do">
-    <h2 class="title">Kegiatan Alumni Untuk...</h2>
+    <h2 class="title">Kegiatan Alumni</h2>
     <div class="reasons">
       <div class="reason" v-for="activity in activitiies" :key="activity.title">
         <img :src="activity.image" alt="" />

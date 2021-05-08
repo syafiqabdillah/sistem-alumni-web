@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="review-data">
     <RegisterReviewItem label="Nama lengkap" :value="data.fullname" />
     <RegisterReviewItem label="Email" :value="data.email" />
     <RegisterReviewItem
@@ -52,9 +52,10 @@ export default {
 </script>
 
 <style scoped>
-.container {
+.review-data {
   width: 100%;
   display: flex;
   flex-direction: column;
+  
 }
 </style>

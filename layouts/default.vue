@@ -1,15 +1,14 @@
 <template>
-  <div class="body">
+  <div id="app">
     <Navbar />
-    <div
-      style="margin-top: var(--nav-height);
-  flex: 1;"
-    >
+    <div style="margin-top: var(--nav-height); width: 100%; flex: 1">
       <Nuxt />
     </div>
-    <Footer />
+    
     <ModalLoading />
     <Modal />
+
+    <Footer />
   </div>
 </template>
 
@@ -27,10 +26,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  display: table;
 }
 
-.body {
-  min-height: 100vh;
+#app {
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

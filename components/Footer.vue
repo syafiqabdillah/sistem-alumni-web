@@ -17,19 +17,19 @@ export default {
 
 <style scoped lang="scss">
 footer {
+  flex: 0;
+  display: table-row;
+  height: 0;
   min-height: var(--footer-height);
   padding: 1rem;
-  position: relative;
-  left: 0;
-  bottom: 0;
   width: 100%;
-  margin-top: auto;
   background-color: var(--dark);
   color: var(--primary-lighter);
   text-align: center;
   font-size: 14px;
   display: flex;
   gap: 1em;
+  z-index: 1;
   flex-direction: column;
   align-items: center;
   justify-content: center;
