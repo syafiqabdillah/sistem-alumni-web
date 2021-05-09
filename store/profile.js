@@ -1,7 +1,7 @@
 const profile = {
   namespaced: true,
   state: () => ({
-    activePage: 'dashboard',
+    activePage: 'user',
     menus: [
       {
         title: 'user',

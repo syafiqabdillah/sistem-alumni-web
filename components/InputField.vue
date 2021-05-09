@@ -9,7 +9,6 @@
       :type="type"
       :value="value"
       :placeholder="placeholder"
-      autocomplete="off"
       @input="onChange"
       @blur="onBlur"
       :class="{

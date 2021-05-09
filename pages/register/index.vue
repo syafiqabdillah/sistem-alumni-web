@@ -1,6 +1,6 @@
 <template>
   <div class="register">
-    <div class="container">
+    <div class="container w-656">
       <RegisterFormEmail data-aos="fade-up" v-if="currentPageIs('email')" />
       <RegisterFormDataDiri
         data-aos="fade-up"

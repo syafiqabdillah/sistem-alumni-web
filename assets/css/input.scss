@@ -5,7 +5,7 @@ textarea.asy {
   border: 1px solid lightgray;
   height: 1.75rem;
   padding: 0.3rem .5rem;
-  margin-top: 0.5rem;
+  margin: .5rem 0 .75rem;
   width: 100%;
   outline: none;
   font-family: 'Poppins';
@@ -55,15 +55,18 @@ label.asy {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 8px;
+
+  & > * {
+    flex: 1;
+  }
 
   .back {
     color: grey;
-    height: 100%;
     text-align: center;
-    margin-top: 1em;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-}
-.actions > * {
-  flex: 1;
 }

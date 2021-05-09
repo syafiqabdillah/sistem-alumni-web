@@ -1,29 +1,37 @@
 <template>
   <div class="container" v-if="!loggedIn">
-    <div class="card" data-aos="fade-up">
+    <div class="card w-500" data-aos="fade-up">
       <div class="login">
-        <h1 class="title">Masuk ke Sistem Alumni</h1>
-        <InputField
-          id="email"
-          label="Email"
-          type="text"
-          :value="form.email"
-          :onChange="handleInputChange"
-          :onBlur="validateInput"
-          :valid="validation.email"
-          :required="false"
-          errorMessage="email tidak sesuai format"
-        />
-        <InputField 
-          id="password"
-          label="password"
-          type="password"
-          :value="form.password"
-          :onChange="handleInputChange"
-        />
-        <div @click="login" :class="{ button: 'button', disabled: !formValid }">
+        <h1 class="title">Sistem Alumni Asy Syaamil</h1>
+        <form @submit="formValid ? login : () => {}" id="login">
+          <InputField
+            id="email"
+            label="Email"
+            type="text"
+            :value="form.email"
+            :onChange="handleInputChange"
+            :onBlur="validateInput"
+            :valid="validation.email"
+            :required="false"
+            errorMessage="email tidak sesuai format"
+          />
+          <InputField
+            id="password"
+            label="password"
+            type="password"
+            :value="form.password"
+            :onChange="handleInputChange"
+          />
+        </form>
+        <button
+          type="submit"
+          @click="login"
+          :class="{ disabled: !formValid }"
+          form="login"
+          value="Masuk"
+        >
           Masuk
-        </div>
+        </button>
       </div>
       <div class="no-account">
         belum mendaftar sebagai alumni? <br />
@@ -39,8 +47,8 @@ export default {
   data() {
     return {
       form: {
-        email: 'abdillah.syafiq@gmail.com',
-        password: 'password123',
+        email: null,
+        password: null,
       },
       validation: {
         email: true,
@@ -49,7 +57,7 @@ export default {
   },
   beforeMount() {
     if (this.loggedIn) {
-      this.$router.push('/');
+      this.$router.push('/')
     }
   },
   methods: {
@@ -92,8 +100,8 @@ export default {
       return this.form.email && this.validation.email && this.form.password
     },
     loggedIn() {
-      return this.$loggedIn();
-    }
+      return this.$loggedIn()
+    },
   },
 }
 </script>

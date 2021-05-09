@@ -12,9 +12,11 @@
 <script>
 export default {
   name: 'Dashboard',
-  data() {
-    return {}
-  },
+  head() {
+    return {
+      title: "Dashboard Admin"
+    }
+  }
 }
 </script>
 

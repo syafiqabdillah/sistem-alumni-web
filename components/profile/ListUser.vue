@@ -1,15 +1,15 @@
 <template>
-  <div class="list-user">
-    <ProfileListUserItem
-      :user="user"
-      v-for="user in tableuser.data"
-      :key="user.id"
-      :showModalDetailUser="showModalDetailUser"
-    />
-    <ProfileModalDetailUser
-      :user="selectedUser"
-      v-if="selectedUser"
-    />
+  <div>
+    <div class="list-user" v-if="!tableuser.loading">
+      <ProfileListUserItem
+        :user="user"
+        v-for="user in tableuser.data"
+        :key="user.id"
+        :showDetail="showDetail"
+        :verifikasi="verifikasi"
+      />
+    </div>
+    <Loading :showMessage="false" v-else />
   </div>
 </template>
 
@@ -31,8 +31,12 @@ export default {
     }),
   },
   methods: {
-    showModalDetailUser(user) {
-      this.selectedUser = user;
+    showDetail(user) {
+      this.$store.dispatch('dashboard/setSelectedUser', user)
+      this.$router.push('/profile/verification/' + user.email)
+    },
+    verifikasi(user) {
+      alert('verifikasi user ' + user.fullname)
     },
     fetchUserData() {
       this.$store.dispatch('dashboard/setLoading', true)

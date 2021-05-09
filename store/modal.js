@@ -1,13 +1,23 @@
+const INITIAL_STATE = {
+  // Modal Notification
+  message: '',
+  showModal: false,
+  isModalSuccess: null,
+  isModalError: null,
+  // Modal Loading
+  showModalLoading: false,
+  // Modal Confirmation
+  messageConfirmation: '',
+  showModalConfirmation: false,
+}
+
 const modal = {
   namespaced: true,
-  state: () => ({
-    showModal: false,
-    message: '',
-    showModalLoading: false,
-    isModalSuccess: null,
-    isModalError: null,
-  }),
+  state: () => Object.assign({}, INITIAL_STATE),
   mutations: {
+    setMessage(state, message) {
+      state.message = message
+    },
     showModal(state) {
       state.showModal = true
     },
@@ -20,9 +30,6 @@ const modal = {
     hideModalLoading(state) {
       state.showModalLoading = false
     },
-    setMessage(state, message) {
-      state.message = message
-    },
     resetModal(state) {
       state.showModal = false
       state.isModalError = null
@@ -33,6 +40,16 @@ const modal = {
     },
     setModalError(state) {
       state.isModalError = true
+    },
+    setMessageConfirmation(state, payload) {
+      state.messageConfirmation = payload
+    },
+    setModalConfirmationVisibility(state, payload) {
+      state.showModalConfirmation = payload
+    },
+    resetModalConfirmation(state) {
+      state.messageConfirmation = ''
+      state.showModalConfirmation = false
     },
   },
   actions: {
@@ -59,7 +76,16 @@ const modal = {
     },
     setModalError(state) {
       state.commit('setModalError')
-    }
+    },
+    setMessageConfirmation(state, payload) {
+      state.commit('setMessageConfirmation', payload)
+    },
+    setModalConfirmationVisibility(state, payload) {
+      state.commit('setModalConfirmationVisibility', payload)
+    },
+    resetModalConfirmation(state) {
+      state.commit('resetModalConfirmation')
+    },
   },
 }
 

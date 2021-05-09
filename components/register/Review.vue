@@ -6,7 +6,7 @@
     </h1>
     <RegisterReviewData
       :data="Object.assign(dataemail, datadiri, dataalumni)"
-     />
+    />
     <div class="konfirmasi">
       <input
         type="checkbox"
@@ -93,20 +93,24 @@ export default {
         .$post('users', data)
         .then(() => {
           this.showModalSuccess()
-          this.$store.dispatch('register/resetForm')
-          this.$store.dispatch('datadiri/resetForm')
-          this.$store.dispatch('dataalumni/resetForm')
-          this.$store.dispatch('register/setCurrentPage', 'email')
+          setTimeout(() => {
+      this.$store.dispatch('dataemail/resetForm')
+      this.$store.dispatch('datadiri/resetForm')
+      this.$store.dispatch('dataalumni/resetForm')
+      this.$router.push('/login')
+          }, 1700)
         })
         .catch(() => {
           this.showModalError()
-          this.confirmed = false;
+          this.confirmed = false
         })
         .finally(() => {
-          console.log('done')
           this.$store.dispatch('modal/hideModalLoading')
         })
     },
+  },
+  mounted() {
+    console.log(process.env.isProduction)
   },
 }
 </script>
@@ -117,13 +121,14 @@ export default {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding-bottom: 1em;
-  margin-top: 2.5em;
+  margin-bottom: 1em;
+  font-size: 0.9rem;
 
   input {
     width: 20px;
     height: 20px;
     margin-top: 0;
+    margin-bottom: 1em;
   }
 
   label {

@@ -2,7 +2,7 @@
   <div>
     <label class="asy" :for="name">{{ label }}</label>
     <select class="asy" :name="name" :id="name" :value="value" @input="onChange">
-      <option class="asy" :value="null" :selected="!value"></option>
+      <option class="asy" :value="null" :selected="!value">--bukan alumni--</option>
       <option
         class="asy"
         v-for="item in options"

@@ -10,7 +10,6 @@
         </p>
       </div>
     </div>
-    <h2 class="title"></h2>
   </section>
 </template>
 
@@ -50,6 +49,10 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+.title {
+  margin-bottom: 1em;
+  font-weight: 700;
 }
 .reasons {
   display: flex;

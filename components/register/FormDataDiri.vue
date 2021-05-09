@@ -152,18 +152,8 @@ export default {
 </script>
 
 <style scoped>
-.actions {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.actions > * {
-  flex: 1;
-}
-.back {
-  color: grey;
-  height: 100%;
-  text-align: center;
-  margin-top: 1em;
+.card {
+  max-width: 500px;
+  margin: 0 auto;
 }
 </style>

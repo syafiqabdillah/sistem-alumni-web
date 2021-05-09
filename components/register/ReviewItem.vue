@@ -29,7 +29,7 @@ export default {
   }
 
   .label {
-    max-width: 150px;
+    /* max-width: 150px; */
     color: var(--grey);
     padding-right: 1em;
   }
@@ -38,5 +38,8 @@ export default {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+  .value::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
 }
 </style>

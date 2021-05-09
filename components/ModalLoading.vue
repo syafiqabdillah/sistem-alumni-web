@@ -7,7 +7,7 @@
           <img :src="ring.outer" alt="" class="outer-ring" />
         </div>
 
-        <h2>Loading...</h2>
+        <p>Harap menunggu...</p>
       </div>
     </div>
   </div>
@@ -72,7 +72,7 @@ export default {
   padding: 1em;
   border: 1px solid var(--grey);
   border-radius: 0.5rem;
-  width: 250px; /* Could be more or less, depending on screen size */
+  width: 300px; /* Could be more or less, depending on screen size */
   height: 120px;
   display: flex;
   flex-direction: column;
@@ -84,6 +84,10 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  p {
+    padding-left: .5em;
+  }
 
   .rotating-thingy {
     position: relative;

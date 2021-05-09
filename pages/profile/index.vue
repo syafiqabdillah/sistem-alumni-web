@@ -28,6 +28,11 @@ export default {
       return this.$loggedIn()
     },
   },
+  head() {
+    return {
+      title: "Profil Alumni"
+    }
+  }
 }
 </script>
 
@@ -36,7 +41,7 @@ export default {
   height: 100%;
   width: 100%;
   margin-left: 60px;
-  padding: 3em 1em;
+  padding: 1.5em 1em;
   background: var(--bg);
   display: flex;
   flex-direction: column;

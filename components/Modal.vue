@@ -5,9 +5,33 @@
         <i class="icofont-close"></i>
       </span>
       <div class="modal-body">
-        <i class="icofont-check-circled" style="color: var(--primary)" v-if="modal.isModalSuccess"></i>
-        <i class="icofont-close-squared" style="color: red" v-if="modal.isModalError"></i>
+        <i
+          class="icofont-check-circled"
+          style="color: var(--primary)"
+          v-if="modal.isModalSuccess"
+        ></i>
+        <i
+          class="icofont-close-squared"
+          style="color: red"
+          v-if="modal.isModalError"
+        ></i>
         <p>{{ modal.message }}</p>
+        <hr />
+        <div class="shares" v-if="modal.isModalSuccess">
+          <p>Ajak teman yang lain</p>
+          <div class="socials">
+            <div class="social" v-for="social in socials" :key="social.name">
+              <ShareNetwork
+                :network="social.name"
+                :url="host"
+                title="Bergabung ke komunitas alumni yayasan Asy Syaamil (TK, SD, SMP, SMA)"
+                description="Bersama alumni, kita menebar kebermanfaatan untuk alumni, sekolah, dan masyarakat"
+              >
+                <i :class="social.icon" :style="'color: ' + social.color"></i>
+              </ShareNetwork>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -17,7 +41,20 @@
 import { mapState } from 'vuex'
 export default {
   data() {
-    return {}
+    return {
+      socials: [
+        {
+          name: 'whatsapp',
+          icon: 'icofont-whatsapp',
+          color: '#1CA951',
+        },
+        {
+          name: 'facebook',
+          icon: 'icofont-facebook',
+          color: '#1160C1',
+        },
+      ],
+    }
   },
   props: {
     showCloseButton: {
@@ -38,6 +75,9 @@ export default {
     ...mapState({
       modal: (state) => state.modal,
     }),
+    host() {
+      return process.env.iisProduction ? window.location.host : 'www.google.com'
+    },
   },
 }
 </script>
@@ -80,8 +120,8 @@ export default {
   text-align: center;
 
   i {
-    font-size: 2em;
-    margin-bottom: .5em;
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
 
     .success {
       color: var(--primary);
@@ -97,5 +137,21 @@ h2 {
 }
 #close:hover {
   cursor: pointer;
+}
+.shares {
+  .socials {
+    display: flex;
+    justify-content: center;
+    gap: 1.5em;
+  }
+  .social {
+    margin-top: 1em;
+  }
+  a {
+    text-decoration: none;
+  }
+  i {
+    font-size: 2rem;
+  }
 }
 </style>

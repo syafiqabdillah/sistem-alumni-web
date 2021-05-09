@@ -1,5 +1,5 @@
 <template>
-  <div class="list-user-item">
+  <div class="list-user-item" data-aos="fade-left">
     <div class="card">
       <div class="detail">
         <div class="fullname">
@@ -21,11 +21,11 @@
         </div>
       </div>
       <div class="action">
-        <div class="button grey" @click="showModalDetailUser(user)">
+        <div class="button grey" @click="showDetail(user)">
           <i class="icofont-ui-search"></i>
           detail
         </div>
-        <div class="button">
+        <div class="button" @click="verifikasi(user)">
           <i class="icofont-ui-check"></i>
           verifikasi
         </div>
@@ -37,14 +37,10 @@
 <script>
 export default {
   name: 'ListUserItem',
-  data() {
-    return {
-      selectedUser: null,
-    }
-  },
   props: {
     user: Object,
-    showModalDetailUser: Function,
+    showDetail: Function,
+    verifikasi: Function
   },
 }
 </script>

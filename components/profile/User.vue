@@ -20,9 +20,4 @@ export default {
 .title {
   margin-bottom: 1em;
 }
-.card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 </style>

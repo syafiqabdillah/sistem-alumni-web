@@ -54,8 +54,11 @@ export default {
 <style scoped>
 .review-data {
   width: 100%;
+  max-width: 400px;
+  padding: 1em 0;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  
+  align-items: center;
 }
 </style>

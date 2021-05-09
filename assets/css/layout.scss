@@ -1,5 +1,14 @@
 .container {
+  width: 100%;
   display: flex;
   justify-content: center;
   padding: 2em;
+}
+.w-500 {
+  max-width: 500px;
+  margin: 0 auto;
+}
+.w-656 {
+  max-width: 656px;
+  margin: 0 auto;
 }

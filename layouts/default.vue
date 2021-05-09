@@ -4,9 +4,10 @@
     <div style="margin-top: var(--nav-height); width: 100%; flex: 1">
       <Nuxt />
     </div>
-    
+
     <ModalLoading />
     <Modal />
+    <ModalConfirmation />
 
     <Footer />
   </div>

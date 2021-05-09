@@ -81,6 +81,10 @@ export default {
 </script>
 
 <style scoped>
+.card {
+  max-width: 500px;
+  margin: 0 auto;
+}
 .button {
   margin-top: 1rem;
 }

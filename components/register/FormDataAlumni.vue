@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card w-500">
     <h1 class="title">Data Alumni</h1>
     <!-- TK -->
     <SelectField
@@ -42,19 +42,11 @@
       :onBlur="() => {}"
       placeholder="Ceritakan aktivitas kamu saat ini"
     />
-    <div class="actions">
-      <div class="back" @click="kembali">
-        <i class="icofont-arrow-left"></i>
-        kembali
-      </div>
-      <div
-        :class="{ button: 'button', disabled: !formValid }"
-        @click="lanjutkan"
-      >
-        Lanjutkan
-        <i class="icofont-arrow-right"></i>
-      </div>
-    </div>
+    <Navigator
+      :backFunction="kembali"
+      :nextFunction="lanjutkan"
+      :nextDisabled="!formValid"
+    />
   </div>
 </template>
 
@@ -160,4 +152,6 @@ export default {
 }
 </script>
 
-<style></style>
+<style scoped>
+
+</style>

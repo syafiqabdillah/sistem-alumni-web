@@ -1,7 +1,5 @@
-.button {
-  background-color: var(--primary);
+.button, button[type=submit] {
   padding: 0.5em 1em;
-  color: var(--bg);
   text-align: center;
   border-radius: 5px;
   width: 100%;
@@ -9,6 +7,25 @@
   justify-content: center;
   align-items: center;
   gap: 8px;
+  border: none;
+  font-size: 1rem;
+  font-family: 'Poppins';
+  box-shadow: none;
+
+  &.green {
+    background-color: var(--primary);
+    color: var(--bg);
+  }
+
+  &.white {
+    background-color: white;
+    color: grey;
+
+    &:hover {
+      background-color: white;
+      color: grey;
+    }
+  }
 
   &:hover {
     background-color: var(--primary-darker);
@@ -17,6 +34,7 @@
 
   &.disabled {
     background-color: grey;
+    color: var(--bg);
 
     &:hover {
       cursor: initial;
@@ -45,6 +63,7 @@
     &:hover,
     &:active {
       background-color: var(--primary-darker);
+      color: var(--bg);
     }
   }
 }

@@ -15,7 +15,7 @@
   --grey: #5b5b5b;
   --dark: #060606;
   --nav-height: 70px;
-  --footer-height: 200px;
+  --footer-height: 150px;
   --min-width-page: 360px;
   --banner-height: 100vh;
   --soft-white: #FBFAF5;
@@ -28,7 +28,8 @@ html {
 }
 
 hr {
-  margin: 1em 0;
+  margin: 1em;
+  width: 100%;
 }
 
 table.vgt-table {

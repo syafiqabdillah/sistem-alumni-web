@@ -1,11 +1,11 @@
 <template>
   <div class="actions">
-    <div v-if="showBackButton" class="back" @click="backFunction">
+    <div v-if="showBackButton" class="button white back" @click="backFunction">
       <i class="icofont-arrow-left"></i>
       {{ backText }}
     </div>
     <div
-      :class="{ button: 'button', disabled: nextDisabled }"
+      :class="{ 'button green': 'button green', disabled: nextDisabled }"
       @click="nextFunction"
     >
       {{ nextText }}
