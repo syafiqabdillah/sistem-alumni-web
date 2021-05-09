@@ -76,7 +76,7 @@ export default {
       modal: (state) => state.modal,
     }),
     host() {
-      return process.env.iisProduction ? window.location.host : 'www.google.com'
+      return process.env.isProduction ? window.location.host : 'www.google.com'
     },
   },
 }
