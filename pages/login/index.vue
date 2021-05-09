@@ -25,6 +25,7 @@
         </form>
         <button
           type="submit"
+          class="green"
           @click="login"
           :class="{ disabled: !formValid }"
           form="login"
