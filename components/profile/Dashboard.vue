@@ -4,7 +4,7 @@
       <h3 class="title">dashboard admin</h3>
 
       <!-- User Table -->
-      <ProfileTableUser />
+      <ProfileListUser />
     </div>
   </div>
 </template>
@@ -22,5 +22,8 @@ export default {
 .card {
   width: 100%;
   max-width: initial;
+}
+.title {
+  margin-bottom: 1em;
 }
 </style>

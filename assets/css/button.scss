@@ -5,6 +5,10 @@
   text-align: center;
   border-radius: 5px;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 
   &:hover {
     background-color: var(--primary-darker);
@@ -16,6 +20,14 @@
 
     &:hover {
       cursor: initial;
+    }
+  }
+
+  &.grey {
+    background-color: grey;
+
+    &:hover {
+      background-color: darkgray;
     }
   }
 }

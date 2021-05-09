@@ -34,6 +34,7 @@ export default {
 <style lang="scss" scoped>
 .content {
   height: 100%;
+  width: 100%;
   margin-left: 60px;
   padding: 3em 1em;
   background: var(--bg);

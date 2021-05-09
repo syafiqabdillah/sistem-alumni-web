@@ -5,6 +5,7 @@ import datadiri from './datadiri'
 import dataalumni from './dataalumni'
 import modal from './modal'
 import profile from './profile'
+import dashboard from './dashboard';
 
 new Vuex.Store({
   state: {},
@@ -17,5 +18,6 @@ new Vuex.Store({
     dataalumni,
     modal,
     profile,
+    dashboard
   },
 })
