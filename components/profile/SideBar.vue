@@ -6,7 +6,7 @@
         active: profile.activePage === menu.title,
       }"
       data-aos="fade-right"
-      v-for="menu in profile.menus"
+      v-for="menu in availableMenu"
       :key="menu.title"
       @click="setActivePage(menu.title)"
     >
@@ -31,6 +31,13 @@ export default {
     ...mapState({
       profile: (state) => state.profile,
     }),
+    availableMenu() {
+      return this.$getJwtData()['is_admin']
+        ? this.profile.menus
+        : this.profile.menus.filter((menu) => {
+            return menu.admin_only === false
+          })
+    },
   },
 }
 </script>

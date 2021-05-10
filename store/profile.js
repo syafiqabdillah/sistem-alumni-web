@@ -6,10 +6,12 @@ const profile = {
       {
         title: 'user',
         icon: 'icofont-user',
+        admin_only: false
       },
       {
         title: 'dashboard',
         icon: 'icofont-dashboard-web',
+        admin_only: true
       },
     ],
   }),

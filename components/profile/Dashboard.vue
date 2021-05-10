@@ -21,10 +21,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.card {
-  width: 100%;
-  max-width: initial;
-}
 .title {
   margin-bottom: 1em;
 }

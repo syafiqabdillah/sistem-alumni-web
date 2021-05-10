@@ -52,7 +52,7 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseUrl: "https://sistem-alumni-asysyaamil-api.herokuapp.com"
+    baseUrl: "http://localhost:8000"
   },
 
   publicRuntimeConfig: {

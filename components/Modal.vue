@@ -16,8 +16,8 @@
           v-if="modal.isModalError"
         ></i>
         <p>{{ modal.message }}</p>
-        <hr />
-        <div class="shares" v-if="modal.isModalSuccess">
+        <hr v-if="modal.showShareSocial" />
+        <div class="shares" v-if="modal.showShareSocial">
           <p>Ajak teman yang lain</p>
           <div class="socials">
             <div class="social" v-for="social in socials" :key="social.name">

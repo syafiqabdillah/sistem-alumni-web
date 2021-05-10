@@ -17,7 +17,7 @@ const INITIAL_FORM = {
 const datadiri = {
   namespaced: true,
   state: () => ({
-    form: MOCK,
+    form: Object.assign({}, INITIAL_FORM),
   }),
   mutations: {
     setInput(state, payload) {

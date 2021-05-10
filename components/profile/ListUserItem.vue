@@ -25,7 +25,7 @@
           <i class="icofont-ui-search"></i>
           detail
         </div>
-        <div class="button" @click="verifikasi(user)">
+        <div class="button green" @click="verifikasi(user)">
           <i class="icofont-ui-check"></i>
           verifikasi
         </div>
@@ -64,6 +64,7 @@ export default {
 }
 .list-user-item {
   width: 100%;
+  margin-bottom: 1em;
 }
 .card {
   box-shadow: none;
