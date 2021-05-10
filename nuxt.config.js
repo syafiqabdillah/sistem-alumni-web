@@ -74,5 +74,11 @@ export default {
 
   env: {
     isProduction: process.env.NODE_ENV === 'production'
+  },
+
+  target: 'static',
+
+  generate: {
+    fallback: true
   }
 }
