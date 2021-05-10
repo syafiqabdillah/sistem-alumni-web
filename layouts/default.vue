@@ -35,7 +35,8 @@ body {
 
 #app {
   height: 100vh;
-  min-width: var(--min-width-page);
+  min-width: 300px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
