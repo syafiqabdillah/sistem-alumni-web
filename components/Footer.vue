@@ -24,7 +24,7 @@ footer {
   padding: 1rem;
   width: 100%;
   background-color: var(--dark);
-  color: var(--primary-lighter);
+  color: var(--bg);
   text-align: center;
   font-size: 14px;
   display: flex;
@@ -36,7 +36,11 @@ footer {
 }
 a {
   text-decoration: none;
-  color: var(--secondary);
+  color: var(--primary-lighter);
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 i {
   margin-left: 5px;

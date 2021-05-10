@@ -4,11 +4,17 @@
     <div class="reasons">
       <div class="reason" v-for="activity in activitiies" :key="activity.title">
         <img :src="activity.image" alt="" />
-        <p class="title">untuk <br> {{ activity.title }}</p>
+        <p class="title">
+          untuk <br />
+          {{ activity.title }}
+        </p>
         <p class="description">
           {{ activity.description }}
         </p>
       </div>
+    </div>
+    <div class="cta">
+      <NuxtLink to="/register">Bergabung Sekarang</NuxtLink>
     </div>
   </section>
 </template>
@@ -41,11 +47,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-section {
-  padding: 2em 1em;
+.cta {
+  display: flex;
+  justify-content: center;
 }
 .activity {
   min-height: 400px;
+  padding: 3em 1em;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -65,7 +73,7 @@ section {
     flex: 1;
   }
 
-  @media(max-width: 500px) {
+  @media (max-width: 500px) {
     flex-direction: column;
   }
 }
@@ -76,7 +84,7 @@ section {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  font-size: .9rem;
+  font-size: 0.9rem;
 
   @media (min-width: 500px) {
     font-size: 1rem;

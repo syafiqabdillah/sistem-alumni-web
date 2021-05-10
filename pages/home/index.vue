@@ -1,10 +1,7 @@
 <template>
   <div class="home">
-    <HomeBanner id="banner" />
+    <HomeBanner/>
     <HomeActivity />
-    <client-only>
-      <HomeCarousel />
-    </client-only>
   </div>
 </template>
 
