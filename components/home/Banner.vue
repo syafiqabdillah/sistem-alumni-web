@@ -11,7 +11,7 @@
         Menebar manfaat untuk sesama alumni, sekolah, dan masyarakat
       </div>
       <div class="cta">
-        <NuxtLink to="/register">Bergabung dengan Kami</NuxtLink>
+        <NuxtLink :to="cta.link">{{cta.text}}</NuxtLink>
       </div>
     </div>
   </section>
@@ -68,6 +68,15 @@ export default {
     currentImage() {
       return this.images[this.currentIndex]
     },
+    cta() {
+      return this.$loggedIn() ? {
+        link: "/profile",
+        text: "Ke Halaman Profil"
+      } : {
+        link: "/register",
+        text: "Bergabung dengan Kami"
+      }
+    }
   },
 }
 </script>

@@ -31,6 +31,9 @@ export default {
     ...mapState({
       profile: (state) => state.profile,
     }),
+    userData() {
+      return this.$getJwtData();
+    },
     availableMenu() {
       return this.$getJwtData()['is_admin']
         ? this.profile.menus

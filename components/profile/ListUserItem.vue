@@ -40,7 +40,7 @@ export default {
   props: {
     user: Object,
     showDetail: Function,
-    verifikasi: Function
+    verifikasi: Function,
   },
 }
 </script>
@@ -76,8 +76,12 @@ export default {
   justify-content: space-between;
   transition: all 200ms;
 
-  @media (max-width: 500px) {
+  @media (max-width: 650px) {
     flex-direction: column;
+
+    .button {
+      margin-top: 0;
+    }
   }
 
   &:hover {

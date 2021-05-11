@@ -27,6 +27,9 @@ export default {
     loggedIn() {
       return this.$loggedIn()
     },
+    userData() {
+      return this.$getJwtData()
+    }
   },
   head() {
     return {

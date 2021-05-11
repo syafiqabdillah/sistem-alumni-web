@@ -35,6 +35,11 @@ export default {
       currentPage: (state) => state.register.currentPage,
     }),
   },
+  beforeMount() {
+    if (this.$loggedIn()) {
+      this.$router.push('/')
+    }
+  },
 }
 </script>
 

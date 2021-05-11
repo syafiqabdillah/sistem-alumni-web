@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="cta">
-      <NuxtLink to="/register">Bergabung Sekarang</NuxtLink>
+      <NuxtLink :to="cta.link">{{cta.text}}</NuxtLink>
     </div>
   </section>
 </template>
@@ -43,6 +43,17 @@ export default {
       ],
     }
   },
+  computed: {
+    cta() {
+      return this.$loggedIn() ? {
+        link: "/profile",
+        text: "Ke Halaman Profil"
+      } : {
+        link: "/register",
+        text: "Bergabung Sekarang"
+      }
+    }
+  }
 }
 </script>
 
