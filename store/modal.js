@@ -10,6 +10,18 @@ const INITIAL_STATE = {
   // Modal Confirmation
   messageConfirmation: '',
   showModalConfirmation: false,
+  socials: [
+    {
+      name: 'whatsapp',
+      icon: 'icofont-whatsapp',
+      color: '#1CA951',
+    },
+    {
+      name: 'facebook',
+      icon: 'icofont-facebook',
+      color: '#1160C1',
+    },
+  ],
 }
 
 const modal = {

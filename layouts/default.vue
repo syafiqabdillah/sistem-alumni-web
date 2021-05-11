@@ -2,7 +2,10 @@
   <div id="app">
     <Navbar v-if="showNavbar" />
     <div style="width: 100%; height: var(--nav-height)" v-if="showNavbar"></div>
-    <Nuxt />
+    <div class="body">
+      <Nuxt />
+    </div>
+
     <ModalLoading />
     <Modal />
     <ModalConfirmation />
@@ -38,15 +41,20 @@ body {
   width: 100%;
   margin: 0;
   display: table;
+  background-color: var(--bg);
 }
 
 #app {
   min-height: 100vh;
   min-width: 300px;
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+}
+
+.body {
+  flex: 1;
 }
 
 *,

@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card w-500 no-shadow">
     <h1 class="title">Daftar sebagai Alumni</h1>
     <InputField
       id="email"

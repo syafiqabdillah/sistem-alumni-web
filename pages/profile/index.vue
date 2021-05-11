@@ -1,6 +1,6 @@
 <template>
   <div class="profile" v-if="loggedIn">
-    <ProfileSideBar />
+     <ProfileSideBar />
     <div class="content">
       <ProfileUser data-aos="fade-up" v-if="profile.activePage === 'user'" />
       <ProfileDashboard
@@ -41,7 +41,8 @@ export default {
   height: 100%;
   width: 100%;
   margin-left: 60px;
-  padding: 1.5em 1em;
+  padding: 1.5em;
+  padding-left: 0;
   background: var(--bg);
   display: flex;
   flex-direction: column;
@@ -58,6 +59,7 @@ export default {
   display: flex;
   height: 100%;
   z-index: 2;
+  position: relative;
 
   & > * {
     flex: 1;

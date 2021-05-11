@@ -81,6 +81,7 @@ img {
   top: 0;
   left: 0;
   z-index: -2;
+  background-color: var(--dark);
   filter: grayscale(1) brightness(0.3);
 }
 .banner {

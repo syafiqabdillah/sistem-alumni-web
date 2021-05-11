@@ -6,7 +6,7 @@
     </div>
     <div
       :class="{ 'button green': 'button green', disabled: nextDisabled }"
-      @click="nextFunction"
+      @click="next"
     >
       {{ nextText }}
       <i class="icofont-arrow-right" v-if="showNextIcon"></i>
@@ -17,6 +17,13 @@
 <script>
 export default {
   name: 'Navigator',
+  methods: {
+    next() {
+      if (!this.nextDisabled) {
+        this.nextFunction()
+      }
+    }
+  },
   props: {
     showBackButton: {
       type: Boolean,

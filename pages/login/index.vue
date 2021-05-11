@@ -1,6 +1,6 @@
 <template>
   <div class="container" v-if="!loggedIn">
-    <div class="card w-500" data-aos="fade-up">
+    <div class="card w-500 no-shadow" data-aos="fade-up">
       <div class="login">
         <h1 class="title">Sistem Alumni Asy Syaamil</h1>
         <form @submit="formValid ? login : () => {}" id="login">
@@ -71,33 +71,32 @@ export default {
     },
     login(e) {
       e.preventDefault()
-      this.$showModalLoading(this)
-      this.$axios
-        .$post('users/login', this.form)
-        .then((jwt) => {
-          this.$getCookieManager().set('jwt', jwt)
-          const user = this.$decodeJwt(jwt)
-          this.$showModalSuccess(
-            this,
-            `Selamat datang kembali, ${user.fullname}`
-          )
-          setTimeout(() => {
-            this.$resetModal(this)
-            location.href = '/profile'
-          }, 1700)
-        })
-        .catch((err) => {
-          console.log(err)
-          this.$showModalError(
-            this,
-            `Gagal login`
-          )
-        })
-        .finally(() => {
-          setTimeout(() => {
-            this.$hideModalLoading(this)
-          }, 1700)
-        })
+      if (this.formValid) {
+        this.$showModalLoading(this)
+        this.$axios
+          .$post('users/login', this.form)
+          .then((jwt) => {
+            this.$getCookieManager().set('jwt', jwt)
+            const user = this.$decodeJwt(jwt)
+            this.$showModalSuccess(
+              this,
+              `Selamat datang kembali, ${user.fullname}`
+            )
+            setTimeout(() => {
+              this.$resetModal(this)
+              location.href = '/profile'
+            }, 1700)
+          })
+          .catch((err) => {
+            console.log(err)
+            this.$showModalError(this, `Gagal login`)
+          })
+          .finally(() => {
+            setTimeout(() => {
+              this.$hideModalLoading(this)
+            }, 1700)
+          })
+      }
     },
   },
   computed: {
@@ -111,9 +110,8 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .title {
-  font-size: 24px;
   font-weight: 600;
   margin-bottom: 1rem;
 }
