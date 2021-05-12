@@ -87,6 +87,7 @@ export default {
 
   p {
     padding-left: .5em;
+    margin: 0;
   }
 
   .rotating-thingy {
