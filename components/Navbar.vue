@@ -4,6 +4,9 @@
       <div class="brand" @click="toPage('/home')">
         <img src="~/assets/images/logo.jpeg" alt="" />
       </div>
+      <div class="page-title">
+        {{ pageTitle }}
+      </div>
       <div class="menu">
         <NuxtLink to="/home">Beranda</NuxtLink>
         <NuxtLink v-if="loggedIn" to="/profile">Profil</NuxtLink>
@@ -63,6 +66,9 @@ export default {
     loggedIn() {
       return this.$loggedIn()
     },
+    pageTitle() {
+      return this.$store.state.navbar.title;
+    }
   },
 }
 </script>
@@ -105,7 +111,7 @@ nav > * {
     display: none;
   }
   @media (min-width: 500px) {
-    display: flex;
+    display: none;
   }
 
   a {
@@ -131,7 +137,7 @@ nav > * {
 }
 .menu-mobile {
   @media (min-width: 500px) {
-    display: none;
+    display: flex;
   }
 }
 .toggle {

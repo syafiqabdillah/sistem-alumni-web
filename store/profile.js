@@ -9,7 +9,7 @@ const profile = {
         admin_only: false
       },
       {
-        title: 'admin',
+        title: 'verification',
         icon: 'icofont-dashboard-web',
         admin_only: true
       },

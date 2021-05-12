@@ -51,9 +51,9 @@ export default {
 
 <style lang="scss" scoped>
 .sidebar {
-  position: absolute;
+  position: fixed;
   left: 0;
-  top: 0;
+  top: var(--nav-height);
   max-width: 60px;
   height: 100%;
   padding: 20px 10px;

@@ -49,6 +49,12 @@ export default ({ app }, inject) => {
       context.$router.push('/')
     }
   }
+  const setNavbarTitle = (context, title) => {
+    context.$store.dispatch('navbar/setTitle', title)
+  }
+  const resetNavbarTitle = (context) => {
+    context.$store.dispatch('navbar/resetTitle')
+  }
   inject('isMobile', isMobile)
   inject('validateEmail', validateEmail)
   inject('isEmpty', isEmpty)
@@ -62,4 +68,6 @@ export default ({ app }, inject) => {
   inject('getJwtData', getJwtData)
   inject('loggedIn', loggedIn)
   inject('preventUnauthorizedAccess', preventUnauthorizedAccess)
+  inject('setNavbarTitle', setNavbarTitle)
+  inject('resetNavbarTitle', resetNavbarTitle)
 }

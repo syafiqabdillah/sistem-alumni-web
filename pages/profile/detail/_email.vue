@@ -1,5 +1,5 @@
 <template>
-  <div class="detail-user">
+  <div class="detail-user" data-aos="fade-up">
     <div class="container">
       <div class="card">
         <h2 class="title">Detail Data Alumni</h2>
@@ -40,6 +40,10 @@ export default {
   },
   mounted() {
     this.fetchAlumni()
+    this.$store.dispatch('navbar/setTitle', 'Detail Data Alumni')
+  },
+  beforeDestroy() {
+    this.$store.dispatch('navbar/resetTitle')
   },
   methods: {
     kembali() {

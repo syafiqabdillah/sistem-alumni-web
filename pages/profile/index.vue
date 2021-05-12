@@ -3,9 +3,9 @@
      <ProfileSideBar />
     <div class="content">
       <ProfileUser data-aos="fade-up" v-if="profile.activePage === 'user'" />
-      <ProfileDashboard
+      <ProfileVerification
         data-aos="fade-up"
-        v-if="profile.activePage === 'admin'"
+        v-if="profile.activePage === 'verification'"
       />
     </div>
   </div>
@@ -48,7 +48,7 @@ export default {
   height: 100%;
   width: 100%;
   margin-left: 60px;
-  padding: 1.5em;
+  padding: 1.25em;
   padding-left: 0;
   background: var(--bg);
   display: flex;

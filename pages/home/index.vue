@@ -1,7 +1,7 @@
 <template>
-  <div class="home">
-    <HomeBanner/>
-    <HomeActivity />
+  <div class="home" >
+    <HomeBanner data-aos="fade-up"/>
+    <HomeActivity data-aos="fade-up"/>
   </div>
 </template>
 

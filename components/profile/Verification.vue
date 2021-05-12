@@ -1,7 +1,6 @@
 <template>
   <div class="dashboard">
     <div class="card">
-      <h3 class="title">Verifikasi Data Alumni</h3>
       <div class="tabs" v-if="!loadingUsers">
         <div
           :class="{
@@ -45,6 +44,10 @@ export default {
   },
   mounted() {
     this.$store.dispatch('dashboard/fetchUserData')
+    this.$setNavbarTitle(this, 'Verifikasi Data Alumni')
+  },
+  beforeDestroy() {
+    this.$resetNavbarTitle(this);
   },
   data() {
     return {
@@ -99,6 +102,7 @@ export default {
   }
 }
 .tab {
+  flex: 1;
   padding: 0.25em 1em;
   border-radius: 5px;
   &:hover {

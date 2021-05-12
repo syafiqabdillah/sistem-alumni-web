@@ -1,6 +1,5 @@
 <template>
   <div class="card">
-    <h3 class="title">profil alumni</h3>
     <RegisterReviewData :data="profile" />
   </div>
 </template>
@@ -10,12 +9,16 @@ export default {
   name: 'User',
   computed: {
     profile() {
-      return this.$getJwtData();
-    }
+      return this.$getJwtData()
+    },
+  },
+  mounted() {
+    this.$setNavbarTitle(this, 'Profil Alumni')
+  },
+  beforeDestroy() {
+    this.$resetNavbarTitle(this)
   },
 }
 </script>
 
-<style scoped lang="scss">
-
-</style>
+<style scoped lang="scss"></style>

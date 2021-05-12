@@ -9,7 +9,7 @@
         :verifikasi="verifikasi"
       />
     </div>
-    <EmptyState v-else />
+    <EmptyState data-aos="fade-up" v-else />
   </div>
 </template>
 

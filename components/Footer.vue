@@ -29,7 +29,8 @@ footer {
   font-size: 14px;
   display: flex;
   gap: 1em;
-  z-index: 1;
+  z-index: 2;
+  -webkit-transform: translate3d(0, 0, 0);
   flex-direction: column;
   align-items: center;
   justify-content: center;
