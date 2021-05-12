@@ -27,6 +27,21 @@ const dashboard = {
     },
     setLoading(state, payload) {
       state.commit('setLoading', payload)
+    },
+    fetchUserData(state) {
+      state.commit('setUserData', [])
+      state.commit('setLoading', true)
+      this.$axios
+        .get('users')
+        .then((res) => {
+          state.commit('setUserData', res.data)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+        .finally(() => {
+          state.commit('setLoading', false)
+        })
     }
   },
 }

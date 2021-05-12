@@ -39,7 +39,7 @@ export default {
       this.$store.dispatch('modal/resetModalConfirmation')
     },
     confirm() {
-      this.close();
+      this.close()
       this.$showModalLoading(this)
       const adminJwt = this.$getCookieManager().get('jwt')
       const data = {
@@ -56,7 +56,7 @@ export default {
           setTimeout(() => {
             this.$resetModal(this)
             this.$router.push('/profile?menu=admin')
-          }, 1700)
+          }, 3000)
         })
         .catch((err) => {
           console.log(err)

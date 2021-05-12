@@ -21,7 +21,7 @@
         </div>
       </div>
       <div class="action">
-        <div class="button grey" @click="showDetail(user)">
+        <div class="button grey sm" @click="showDetail(user)">
           <i class="icofont-ui-search"></i>
           detail
         </div>
@@ -60,7 +60,7 @@ export default {
 }
 .list-user-item {
   width: 100%;
-  margin-bottom: 1em;
+  margin-bottom: .5em;
 }
 .card {
   box-shadow: none;
@@ -82,7 +82,7 @@ export default {
   }
 
   &:hover {
-    border-color: var(--primary);
+    border-color: var(--primary-lighter);
   }
 }
 </style>

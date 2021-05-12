@@ -37,14 +37,14 @@ export default {
   name: 'Dashboard',
   head() {
     return {
-      title: 'Dashboard Admin',
+      title: 'Verifikasi Data Alumni',
     }
   },
   beforeMount() {
     this.$preventUnauthorizedAccess(this)
   },
   mounted() {
-    this.fetchUserData()
+    this.$store.dispatch('dashboard/fetchUserData')
   },
   data() {
     return {
@@ -64,7 +64,7 @@ export default {
   computed: {
     ...mapState({
       users: (state) => state.dashboard.users.data,
-      loadingUsers: state => state.dashboard.users.loading
+      loadingUsers: (state) => state.dashboard.users.loading,
     }),
     unverifiedUsers() {
       return this.users.filter((user) => {
@@ -81,35 +81,25 @@ export default {
     setActiveTab(tabName) {
       this.activeTab = tabName
     },
-    fetchUserData() {
-      this.$store.dispatch('dashboard/setLoading', true)
-      this.$axios
-        .get('users')
-        .then((res) => {
-          this.$store.dispatch('dashboard/setUserData', res.data)
-        })
-        .catch((err) => {
-          console.log(err)
-        })
-        .finally(() => {
-          this.$store.dispatch('dashboard/setLoading', false)
-        })
-    },
   },
 }
 </script>
 
 <style scoped lang="scss">
 .tabs {
-  font-size: 14px;
   display: flex;
   justify-content: center;
   gap: 1em;
   margin-bottom: 1rem;
   overflow-x: scroll;
+  color: grey;
+
+  @media (max-width: 500px) {
+    font-size: 14px;
+  }
 }
 .tab {
-  padding: .25em 1em;
+  padding: 0.25em 1em;
   border-radius: 5px;
   &:hover {
     cursor: pointer;

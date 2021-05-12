@@ -22,6 +22,7 @@ export default {
   },
   mounted() {
     this.$router.push('/profile?page=' + this.profile.activePage)
+    window.scroll(0, 0)
   },
   computed: {
     ...mapState({
