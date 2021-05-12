@@ -68,7 +68,8 @@ export default {
   pwa: {
     manifest: {
       lang: 'en',
-      name: 'Sistem Alumni Asy Syaamil'
+      short_name: 'Sistem Alumni Asy Syaamil',
+      name: 'Asy Syaamil'
     }
   },
 
