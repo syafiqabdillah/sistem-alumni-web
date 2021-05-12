@@ -1,5 +1,5 @@
 <template>
-  <div class="list-user-item" data-aos="fade-left">
+  <div class="list-user-item" data-aos="fade-up">
     <div class="card">
       <div class="detail">
         <div class="fullname">

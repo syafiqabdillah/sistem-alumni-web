@@ -5,11 +5,11 @@
     <div class="body">
       <Nuxt />
     </div>
-
+    <Footer />
     <ModalLoading />
     <Modal />
     <ModalConfirmation />
-    <Footer />
+    
   </div>
 </template>
 
@@ -42,7 +42,11 @@ body {
   width: 100%;
   margin: 0;
   display: table;
-  /* background-color: var(--bg); */
+}
+
+body {
+  background-color: var(--bg);
+  z-index: -1000;
 }
 
 h1, h2, h3, h5 {
@@ -50,14 +54,11 @@ h1, h2, h3, h5 {
   font-weight: 700;
 }
 
-body {
-  background-color: var(--bg);
-}
-
 #app {
   min-height: 100vh;
   min-width: 300px;
   width: 100%;
+  max-width: 100vw;
   height: 100%;
   display: flex;
   flex-direction: column;

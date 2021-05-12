@@ -1,6 +1,6 @@
 <template>
   <section class="banner">
-    <img :src="currentImage.src" :alt="currentImage.alt">
+    <img :src="currentImage.src" :alt="currentImage.alt" />
     <!-- <div class="blur"></div> -->
     <div class="text">
       <h1 class="title">
@@ -11,7 +11,7 @@
         Menebar manfaat untuk sesama alumni, sekolah, dan masyarakat
       </div>
       <div class="cta">
-        <NuxtLink :to="cta.link">{{cta.text}}</NuxtLink>
+        <NuxtLink :to="cta.link">{{ cta.text }}</NuxtLink>
       </div>
     </div>
   </section>
@@ -69,14 +69,16 @@ export default {
       return this.images[this.currentIndex]
     },
     cta() {
-      return this.$loggedIn() ? {
-        link: "/profile",
-        text: "Ke Halaman Profil"
-      } : {
-        link: "/register",
-        text: "Bergabung dengan Kami"
-      }
-    }
+      return this.$loggedIn()
+        ? {
+            link: '/profile',
+            text: 'Ke Halaman Profil',
+          }
+        : {
+            link: '/register',
+            text: 'Bergabung dengan Kami',
+          }
+    },
   },
 }
 </script>
@@ -89,9 +91,23 @@ img {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: -2;
+  /* z-index: -2; */
   background-color: var(--dark);
   filter: grayscale(1) brightness(0.3);
+}
+.text {
+  padding: 1em;
+  color: var(--bg);
+  max-width: 45ch;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+
+  @media (min-width: 500px) {
+    padding: 1em 5em;
+    max-width: 65ch;
+  }
+  -webkit-transform: translate3d(0, 0, 0);
 }
 .banner {
   position: relative;
@@ -99,20 +115,6 @@ img {
   flex-direction: column;
   justify-content: center;
   min-height: 100vh;
-
-  .text {
-    padding: 1em;
-    color: var(--bg);
-    max-width: 45ch;
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-
-    @media (min-width: 500px) {
-      padding: 1em 5em;
-      max-width: 65ch;
-    }
-  }
 
   .title {
     text-align: left;
@@ -128,6 +130,5 @@ img {
   .tagline {
     font-size: 1.15rem;
   }
-
 }
 </style>
