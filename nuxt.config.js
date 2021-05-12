@@ -17,6 +17,8 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    'bootstrap/dist/css/bootstrap.css',
+    'bootstrap-vue/dist/bootstrap-vue.css',
     'vueperslides/dist/vueperslides.css',
     '~/assets/icofont/icofont.min.css',
     'vue-good-table/dist/vue-good-table.css',
@@ -28,6 +30,7 @@ export default {
     '~/plugins/utils.js',
     '~/plugins/aos.js',
     '~/plugins/vue-good-table.js',
+    '~/plugins/bootstrap.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

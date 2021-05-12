@@ -22,7 +22,7 @@ export default {
   props: {
     message: {
       type: String,
-      default: "Loading..."
+      default: "Mohon tunggu..."
     },
     showMessage: {
       type: Boolean,
@@ -77,6 +77,10 @@ export default {
     to {
       transform: rotate(360deg);
     }
+  }
+
+  p {
+    margin: 0;
   }
 }
 </style>

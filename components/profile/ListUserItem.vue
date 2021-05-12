@@ -25,7 +25,7 @@
           <i class="icofont-ui-search"></i>
           detail
         </div>
-        <div class="button green" @click="verifikasi(user)">
+        <div v-if="!user.verified_date" class="button green" @click="verifikasi(user)">
           <i class="icofont-ui-check"></i>
           verifikasi
         </div>

@@ -8,7 +8,7 @@
       data-aos="fade-right"
       v-for="menu in availableMenu"
       :key="menu.title"
-      @click="setActivePage(menu.title)"
+      @click="chooseMenu(menu.title)"
     >
       <i :class="menu.icon"></i>
     </div>
@@ -26,6 +26,10 @@ export default {
     ...mapActions({
       setActivePage: 'profile/setActivePage',
     }),
+    chooseMenu(title) {
+      this.setActivePage(title)
+      this.$router.push('/profile?page=' + title)
+    }
   },
   computed: {
     ...mapState({

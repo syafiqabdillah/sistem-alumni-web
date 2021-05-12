@@ -8,12 +8,8 @@
         <i class="icofont-question"></i>
         <p>{{ modal.messageConfirmation }}</p>
         <div class="actions">
-          <div class="button grey" @click="close">
-            Tidak
-          </div>
-          <div class="button green" @click="confirm">
-            Ya
-          </div>
+          <div class="button grey" @click="close">Tidak</div>
+          <div class="button green" @click="confirm">Ya</div>
         </div>
       </div>
     </div>
@@ -32,19 +28,48 @@ export default {
       type: Boolean,
       default: true,
     },
-    confirm: {
-      type: Function,
-      default: () => {}
+  },
+  beforeMount() {
+    if (!this.$loggedIn() || !this.$getJwtData()['is_admin']) {
+      this.$router.push('/')
     }
   },
   methods: {
     close() {
       this.$store.dispatch('modal/resetModalConfirmation')
     },
+    confirm() {
+      this.close();
+      this.$showModalLoading(this)
+      const adminJwt = this.$getCookieManager().get('jwt')
+      const data = {
+        email: this.selectedUser.email,
+        jwt: adminJwt,
+      }
+      this.$axios
+        .post('users/verify', data)
+        .then(() => {
+          this.$showModalSuccess(
+            this,
+            `Berhasil verifikasi data ${this.selectedUser.fullname}. Mengembalikan ke halaman admin.`
+          )
+          setTimeout(() => {
+            this.$resetModal(this)
+            this.$router.push('/profile?menu=admin')
+          }, 1700)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+        .finally(() => {
+          this.$hideModalLoading(this)
+        })
+    },
   },
   computed: {
     ...mapState({
       modal: (state) => state.modal,
+      selectedUser: (state) => state.dashboard.users.selectedUser,
     }),
   },
 }
@@ -96,7 +121,7 @@ export default {
     color: var(--bg);
     background-color: var(--primary);
     border-radius: 50%;
-    padding: .35em;
+    padding: 0.35em;
   }
 }
 h2 {

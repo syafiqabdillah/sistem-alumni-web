@@ -73,9 +73,11 @@ export default {
   position: fixed;
   top: 0;
   z-index: 99;
+  padding: 0;
 }
 nav {
   height: var(--nav-height);
+  width: 100%;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 25%);
   padding: 1em;
   background-color: #f7f7f7;

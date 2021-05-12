@@ -2,14 +2,14 @@
   <div class="detail-user">
     <div class="container">
       <div class="card">
-        <h2 class="title">Form Verifikasi Data Alumni</h2>
+        <h2 class="title">Detail Data Alumni</h2>
         <Loading v-if="loading" :showMessage="false" />
         <RegisterReviewData v-if="!loading" :data="selectedUser" />
         <div class="actions" v-if="!loading">
           <Navigator
             :backFunction="kembali"
             :nextFunction="verifikasi"
-            :nextDisabled="!formValid"
+            :showNextButton="!selectedUser.verified_date" 
             nextText="Verifikasi"
             :showNextIcon="false"
           />
@@ -23,12 +23,15 @@
 import { mapState } from 'vuex'
 export default {
   name: 'DetailUser',
+  beforeMount() {
+    this.$preventUnauthorizedAccess(this)
+  },
   mounted() {
     this.fetchAlumni()
   },
   methods: {
     kembali() {
-      this.$router.push('/profile')
+      window.history.back();
     },
     verifikasi() {
       this.$store.dispatch(
@@ -36,6 +39,9 @@ export default {
         `Apakah yakin ingin verifikasi data untuk alumni ${this.selectedUser.fullname}?`
       )
       this.$store.dispatch('modal/setModalConfirmationVisibility', true)
+    },
+    confirmVerification() {
+      alert(`verifikasi ${this.selectedUser.fullname}`)
     },
     fetchAlumni() {
       this.$store.dispatch('dashboard/setLoading', true)

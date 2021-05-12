@@ -30,7 +30,7 @@ export default ({ app }, inject) => {
   const hideModalLoading = (context) => {
     context.$store.dispatch('modal/hideModalLoading')
   }
-  const decodeJwt = jwt => {
+  const decodeJwt = (jwt) => {
     return jwt_decode(jwt)
   }
   const getCookieManager = () => {
@@ -44,6 +44,11 @@ export default ({ app }, inject) => {
     const token = Cookie.get('jwt')
     return token
   }
+  const preventUnauthorizedAccess = (context) => {
+    if (!loggedIn() || !getJwtData()['is_admin']) {
+      context.$router.push('/')
+    }
+  }
   inject('isMobile', isMobile)
   inject('validateEmail', validateEmail)
   inject('isEmpty', isEmpty)
@@ -56,4 +61,5 @@ export default ({ app }, inject) => {
   inject('getCookieManager', getCookieManager)
   inject('getJwtData', getJwtData)
   inject('loggedIn', loggedIn)
+  inject('preventUnauthorizedAccess', preventUnauthorizedAccess)
 }

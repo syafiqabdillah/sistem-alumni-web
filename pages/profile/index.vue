@@ -5,7 +5,7 @@
       <ProfileUser data-aos="fade-up" v-if="profile.activePage === 'user'" />
       <ProfileDashboard
         data-aos="fade-up"
-        v-if="profile.activePage === 'dashboard'"
+        v-if="profile.activePage === 'admin'"
       />
     </div>
   </div>
@@ -19,6 +19,9 @@ export default {
     if (!this.loggedIn) {
       this.$router.push('/')
     }
+  },
+  mounted() {
+    this.$router.push('/profile?page=' + this.profile.activePage)
   },
   computed: {
     ...mapState({

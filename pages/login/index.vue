@@ -10,10 +10,7 @@
             type="text"
             :value="form.email"
             :onChange="handleInputChange"
-            :onBlur="validateInput"
-            :valid="validation.email"
-            :required="false"
-            errorMessage="email tidak sesuai format"
+            :valid="null"
           />
           <InputField
             id="password"
@@ -27,7 +24,6 @@
           type="submit"
           class="green"
           @click="login"
-          :class="{ disabled: !formValid }"
           form="login"
           value="Masuk"
         >

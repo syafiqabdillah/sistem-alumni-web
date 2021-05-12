@@ -17,7 +17,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.title {
-  margin-bottom: 1em;
-}
+
 </style>

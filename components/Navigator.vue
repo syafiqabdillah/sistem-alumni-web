@@ -7,6 +7,7 @@
     <div
       :class="{ 'button green': 'button green', disabled: nextDisabled }"
       @click="next"
+      v-if="showNextButton"
     >
       {{ nextText }}
       <i class="icofont-arrow-right" v-if="showNextIcon"></i>
@@ -28,6 +29,10 @@ export default {
     showBackButton: {
       type: Boolean,
       default: true,
+    },
+    showNextButton: {
+      type: Boolean,
+      default: true
     },
     backFunction: Function,
     nextFunction: Function,
