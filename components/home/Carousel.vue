@@ -30,7 +30,7 @@ export default {
         },
         {
           title: 'Tim Berbagi Tajil',
-          image: require('~/assets/images/tajil.jpg')
+          image: require('~/assets/images/tajil.JPG')
         },
         {
           title: 'Reuni Alumni',

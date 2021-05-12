@@ -45,7 +45,7 @@ export default {
           alt: 'Rihlah2',
         },
         {
-          src: require('~/assets/images/tajil.jpg'),
+          src: require('~/assets/images/tajil.JPG'),
           alt: 'Tajil',
         },
         {
