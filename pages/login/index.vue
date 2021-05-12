@@ -108,7 +108,6 @@ export default {
 
 <style scoped>
 .title {
-  font-weight: 600;
   margin-bottom: 1rem;
 }
 .button {
