@@ -109,7 +109,7 @@ export default {
   overflow-x: scroll;
 }
 .tab {
-  padding: 0 1em;
+  padding: .25em 1em;
   border-radius: 5px;
   &:hover {
     cursor: pointer;

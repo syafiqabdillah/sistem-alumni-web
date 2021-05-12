@@ -25,10 +25,6 @@
           <i class="icofont-ui-search"></i>
           detail
         </div>
-        <div v-if="!user.verified_date" class="button green" @click="verifikasi(user)">
-          <i class="icofont-ui-check"></i>
-          verifikasi
-        </div>
       </div>
     </div>
   </div>
@@ -75,6 +71,7 @@ export default {
   gap: 8px;
   justify-content: space-between;
   transition: all 200ms;
+  padding: 1em;
 
   @media (max-width: 650px) {
     flex-direction: column;
