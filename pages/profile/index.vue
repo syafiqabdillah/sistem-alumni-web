@@ -1,11 +1,10 @@
 <template>
   <div class="profile" v-if="loggedIn">
-     <ProfileSideBar />
+    <ProfileSideBar />
     <div class="content">
       <ProfileUser v-if="profile.activePage === 'user'" />
-      <ProfileVerification
-        v-if="profile.activePage === 'verification'"
-      />
+      <ProfileOtherAlumni v-if="profile.activePage === 'group'" />
+      <ProfileVerification v-if="profile.activePage === 'verification'" />
     </div>
   </div>
 </template>
@@ -20,7 +19,11 @@ export default {
     }
   },
   mounted() {
-    this.$router.push('/profile?page=' + this.profile.activePage)
+    if (this.$route.query.page !== undefined) {
+      const page = this.$route.query.page
+      this.$router.push('/profile?page=' + page)
+      this.$store.dispatch('profile/setActivePage', page)
+    }
     window.scroll(0, 0)
   },
   computed: {
@@ -32,13 +35,13 @@ export default {
     },
     userData() {
       return this.$getJwtData()
-    }
+    },
   },
   head() {
     return {
-      title: "Profil Alumni"
+      title: 'Profil Alumni',
     }
-  }
+  },
 }
 </script>
 

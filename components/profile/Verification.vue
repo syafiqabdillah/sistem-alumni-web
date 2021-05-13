@@ -54,7 +54,7 @@ export default {
     return {
       tabs: [
         {
-          text: 'Belum terverifikasi',
+          text: 'Belum Terverifikasi',
           key: 'unverified',
           icon: 'icofont-info-circle',
         },
@@ -97,7 +97,6 @@ export default {
   justify-content: center;
   gap: 1em;
   margin-bottom: 1rem;
-  overflow-x: scroll;
   color: grey;
   font-size: 14px;
 }
@@ -105,7 +104,11 @@ export default {
   flex: 1;
   padding: 0.25em 1em;
   border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  gap: 4px;
   &:hover {
     cursor: pointer;
 

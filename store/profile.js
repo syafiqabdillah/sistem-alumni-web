@@ -7,13 +7,22 @@ const profile = {
         title: 'user',
         icon: 'icofont-user',
         admin_only: false,
-        text: 'Profil'
+        verified_only: false,
+        text: 'Profil',
+      },
+      {
+        title: 'group',
+        icon: 'icofont-users',
+        admin_only: false,
+        verified_only: true,
+        text: 'Alumni',
       },
       {
         title: 'verification',
-        icon: 'icofont-dashboard-web',
+        icon: 'icofont-verification-check',
         admin_only: true,
-        text: 'Verifikasi'
+        verified_only: true,
+        text: 'Verifikasi',
       },
     ],
   }),

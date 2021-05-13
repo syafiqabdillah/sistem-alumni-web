@@ -27,6 +27,10 @@ export default {
     showMessage: {
       type: Boolean,
       default: true
+    },
+    size: {
+      type: String,
+      default: "md"
     }
   }
 }

@@ -32,7 +32,6 @@ export default {
     }),
     chooseMenu(title) {
       if (this.profile.activePage !== title) {
-        console.log(`klik ${title}`)
         this.setActivePage(title)
         this.$router.push('/profile?page=' + title)
       }
@@ -69,20 +68,30 @@ export default {
   display: flex;
   margin-bottom: 1em;
   align-items: center;
-
+  transition: 200ms all;
   z-index: 2;
 
   &:hover {
     cursor: pointer;
+
+    @media (min-width: 850px) {
+      transform: translateX(8px);
+    }
   }
 
-  &.active .menu-icon {
-    border: 2px solid var(--primary-lighter);
-  }
+  &.active {
+    @media (min-width: 850px) {
+      transform: translateX(8px);
+    }
 
-  &.active .menu-text {
-    color: var(--primary);
-    font-weight: 500;
+    .menu-icon {
+      border: 2px solid var(--primary-lighter);
+    }
+
+    .menu-text {
+      color: var(--primary);
+      font-weight: 500;
+    }
   }
 }
 .menu-icon {
