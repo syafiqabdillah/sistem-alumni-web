@@ -16,6 +16,7 @@
           v-if="modal.isModalError"
         ></i>
         <p>{{ modal.message }}</p>
+        <p v-for="message in modal.messages" :key="message">{{ message }}</p>
         <hr v-if="modal.showShareSocial" />
         <div class="shares" v-if="modal.showShareSocial">
           <p>Ajak teman yang lain</p>

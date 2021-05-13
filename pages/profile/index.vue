@@ -1,7 +1,7 @@
 <template>
   <div class="profile" v-if="loggedIn">
     <ProfileSideBar />
-    <div class="content">
+    <div class="profile-content">
       <ProfileUser v-if="profile.activePage === 'user'" />
       <ProfileOtherAlumni v-if="profile.activePage === 'group'" />
       <ProfileVerification v-if="profile.activePage === 'verification'" />
@@ -46,12 +46,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.content {
+.profile-content {
   height: 100%;
   width: 100%;
-  margin-left: 60px;
-  padding: 1.25em;
-  padding-left: 0;
+  margin: 0 1em 0 60px;
+  padding: 1.25em 0;
   background: var(--bg);
   display: flex;
   flex-direction: column;

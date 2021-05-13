@@ -1,5 +1,5 @@
 <template>
-  <div class="card unit" data-aos="fade-up" data-aos-offset="0">
+  <div class="card unit" data-aos="fade-up">
     <img :src="unit.src" :alt="unit.name" />
     <div class="text">
       <div class="name">
@@ -11,6 +11,12 @@
         >
         <div v-else>...</div>
       </div>
+    </div>
+    <div
+      class="to-alumni-page button green"
+      @click.self="toAlumniPage(unit.key)"
+    >
+      Lihat Halaman Alumni
     </div>
   </div>
 </template>
@@ -38,6 +44,21 @@ export default {
       })
       .finally(() => {})
   },
+  methods: {
+    toAlumniPage(unitKey) {
+      console.log(unitKey)
+      const messages = [
+        '🛠️',
+        'Fitur sedang dalam pengembangan',
+        'Harap menunggu kabar dari kami'
+      ]
+      this.$store.dispatch(
+        'modal/setMessages',
+        messages
+      )
+      this.$store.dispatch('modal/showModal')
+    },
+  },
 }
 </script>
 
@@ -48,6 +69,7 @@ export default {
 .unit {
   position: relative;
   height: 140px;
+  transition: 200ms all;
 
   .text {
     z-index: 1;
@@ -55,14 +77,17 @@ export default {
     width: 100%;
     height: 100%;
     display: flex;
+    flex-direction: column;
+    gap: 4px;
     justify-content: space-between;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
 
     .count {
       display: flex;
       align-items: flex-end;
       text-align: right;
       justify-content: flex-end;
+      font-weight: 500;
 
       .bold {
         font-size: 1.65rem;
@@ -81,6 +106,16 @@ export default {
     filter: grayscale(1) brightness(0.3);
   }
 
+  .to-alumni-page {
+    display: none;
+    position: absolute;
+    margin: 0;
+    border-radius: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
   &:hover,
   &:active {
     transform: scale(0.9);
@@ -92,6 +127,10 @@ export default {
 
     img {
       filter: none;
+    }
+
+    .to-alumni-page {
+      display: block;
     }
   }
 }

@@ -11,6 +11,11 @@
 <script>
 export default {
   name: 'OtherAlumni',
+  head() {
+    return {
+      title: 'Alumni Terdaftar',
+    }
+  },
   data() {
     return {
       units: [
@@ -42,7 +47,7 @@ export default {
     }
   },
   mounted() {
-    this.$setNavbarTitle(this, 'Alumni Lainnya')
+    this.$setNavbarTitle(this, 'Alumni Terdaftar')
   },
   beforeDestroy() {
     this.$resetNavbarTitle(this)

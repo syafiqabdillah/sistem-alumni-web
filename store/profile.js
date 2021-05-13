@@ -14,7 +14,7 @@ const profile = {
         title: 'group',
         icon: 'icofont-users',
         admin_only: false,
-        verified_only: true,
+        verified_only: false,
         text: 'Alumni',
       },
       {

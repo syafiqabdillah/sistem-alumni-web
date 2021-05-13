@@ -80,9 +80,6 @@ export default {
   }
 
   &.active {
-    @media (min-width: 850px) {
-      transform: translateX(8px);
-    }
 
     .menu-icon {
       border: 2px solid var(--primary-lighter);

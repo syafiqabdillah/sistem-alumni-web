@@ -1,6 +1,7 @@
 const INITIAL_STATE = {
   // Modal Notification
   message: '',
+  messages: [],
   showModal: false,
   showShareSocial: false,
   isModalSuccess: null,
@@ -30,6 +31,9 @@ const modal = {
   mutations: {
     setMessage(state, message) {
       state.message = message
+    },
+    setMessages(state, messages) {
+      state.messages = messages
     },
     setShareSocialVisibility(state, payload) {
       state.showShareSocial = payload
@@ -87,6 +91,9 @@ const modal = {
     },
     setMessage(state, message) {
       state.commit('setMessage', message)
+    },
+    setMessages(state, messages) {
+      state.commit('setMessages', messages)
     },
     resetModal(state) {
       state.commit('resetModal')
