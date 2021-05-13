@@ -1,6 +1,7 @@
 <template>
   <div class="profile" v-if="loggedIn">
     <ProfileSideBar />
+    <ProfileBottomMenu />
     <div class="profile-content">
       <ProfileUser v-if="profile.activePage === 'user'" />
       <ProfileOtherAlumni v-if="profile.activePage === 'group'" />
@@ -61,6 +62,10 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  @media (max-width: 500px) {
+    margin: 0 1em;
   }
 }
 .profile {

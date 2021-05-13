@@ -1,5 +1,5 @@
 <template>
-  <div class="sidebar">
+  <div class="bottom-menu">
     <div
       v-for="menu in availableMenu"
       :key="menu.title"
@@ -22,7 +22,7 @@
 <script>
 import { mapState, mapActions } from 'vuex'
 export default {
-  name: 'Sidebar',
+  name: 'BottomMenu',
   data() {
     return {}
   },
@@ -55,21 +55,27 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.sidebar {
+<style scoped lang="scss">
+.bottom-menu {
   position: fixed;
+  z-index: 1;
   left: 0;
-  top: var(--nav-height);
-  padding: 20px 10px;
+  bottom: 0;
+  width: 100%;
+  height: var(--nav-height);
   background-color: var(--bg);
+  display: flex;
+  justify-content: space-evenly;
+  box-shadow: 0 -4px 4px rgba(0, 0, 0, .25);
 
-  @media (max-width: 500px) {
+  @media (min-width: 500px) {
     display: none;
   }
 }
 .menu {
   display: flex;
-  margin-bottom: 1em;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   transition: 200ms all;
   z-index: 2;
@@ -83,11 +89,9 @@ export default {
   }
 
   &.active {
-
     .menu-icon {
-      border: 2px solid var(--primary-lighter);
+      color: var(--primary);
     }
-
     .menu-text {
       color: var(--primary);
       font-weight: 500;
@@ -102,23 +106,16 @@ export default {
   align-items: center;
   border-radius: 50%;
   font-size: 20px;
-  color: var(--primary-lighter);
-  width: 40px;
-  height: 40px;
+  color: grey;
+  width: 30px;
+  height: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid lightgray;
 }
 
 .menu-text {
-  padding-left: 8px;
   font-size: 14px;
-  width: 100px;
-  height: 100%;
-
-  @media (max-width: 850px) {
-    display: none;
-  }
+  text-align: center;
 }
 </style>
