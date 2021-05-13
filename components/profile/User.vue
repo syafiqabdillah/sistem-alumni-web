@@ -4,6 +4,12 @@
       {{ profile.fullname }}
     </h2>
     <RegisterReviewData :data="profile" />
+    <Spacer />
+    <small class="text-center">Ingin mengubah data?</small>
+    <div class="button green" @click="hubungiAdmin">
+      <i class="icofont-whatsapp"></i>
+      Hubungi admin
+    </div>
   </div>
 </template>
 
@@ -27,10 +33,16 @@ export default {
       }
       this.$store.dispatch('datadiri/setForm', formDataDiri)
     },
+    hubungiAdmin() {
+      window.open(this.linkWhatsApp, '__blank')
+    },
   },
   computed: {
     profile() {
       return this.$getJwtData()
+    },
+    linkWhatsApp() {
+      return `https://wa.me/${'+6285249903865'}?text=Hai admin, saya ingin mengubah data alumni`
     },
   },
   mounted() {

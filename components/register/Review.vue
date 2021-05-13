@@ -58,10 +58,9 @@ export default {
       this.$store.dispatch('register/setCurrentPage', 'data alumni')
     },
     showModalSuccess() {
-      this.$store.dispatch(
-        'modal/setMessage',
-        'Berhasil mendaftar sebagai alumni'
-      )
+      this.$store.dispatch('modal/setMessages', [
+        'Berhasil mendaftar sebagai alumni',
+      ])
       this.$store.dispatch('modal/setModalSuccess')
       this.$store.dispatch('modal/showModal')
     },
@@ -94,10 +93,10 @@ export default {
         .then(() => {
           this.showModalSuccess()
           setTimeout(() => {
-      this.$store.dispatch('dataemail/resetForm')
-      this.$store.dispatch('datadiri/resetForm')
-      this.$store.dispatch('dataalumni/resetForm')
-      this.$router.push('/login')
+            this.$store.dispatch('dataemail/resetForm')
+            this.$store.dispatch('datadiri/resetForm')
+            this.$store.dispatch('dataalumni/resetForm')
+            this.$router.push('/login')
           }, 1700)
         })
         .catch(() => {

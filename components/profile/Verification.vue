@@ -26,7 +26,7 @@
           v-if="activeTab === 'verified'"
         />
       </div>
-      <Loading v-if="loadingUsers" />
+      <Loading v-if="loadingUsers" :showMessage="false" />
     </div>
   </div>
 </template>

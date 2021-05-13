@@ -10,6 +10,7 @@ const INITIAL_STATE = {
   showModalLoading: false,
   // Modal Confirmation
   messageConfirmation: '',
+  messagesConfirmation: [],
   showModalConfirmation: false,
   socials: [
     {
@@ -65,6 +66,9 @@ const modal = {
     setMessageConfirmation(state, payload) {
       state.messageConfirmation = payload
     },
+    setMessagesConfirmation(state, payload) {
+      state.messagesConfirmation = payload
+    },
     setModalConfirmationVisibility(state, payload) {
       state.showModalConfirmation = payload
     },
@@ -106,6 +110,9 @@ const modal = {
     },
     setMessageConfirmation(state, payload) {
       state.commit('setMessageConfirmation', payload)
+    },
+    setMessagesConfirmation(state, messages) {
+      state.commit('setMessagesConfirmation', messages)
     },
     setModalConfirmationVisibility(state, payload) {
       state.commit('setModalConfirmationVisibility', payload)

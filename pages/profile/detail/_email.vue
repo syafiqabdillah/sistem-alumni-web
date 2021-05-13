@@ -2,9 +2,12 @@
   <div class="detail-user" data-aos="fade-up">
     <div class="container">
       <div class="card">
-        <h2 class="title" v-if="!loading">{{ selectedUser.fullname }}</h2>
         <Loading v-if="loading" :showMessage="false" />
-        <RegisterReviewData v-if="!loading && selectedUser" :data="selectedUser" />
+        <h2 class="title" v-if="!loading">{{ selectedUser.fullname }}</h2>
+        <RegisterReviewData
+          v-if="!loading && selectedUser"
+          :data="selectedUser"
+        />
         <div class="contact" v-if="!loading">
           <a :href="waLink(selectedUser)" target="_blank">
             <i class="icofont-whatsapp" :style="'color: #1CA951'"></i>
@@ -57,10 +60,11 @@ export default {
       window.history.back()
     },
     verifikasi() {
-      this.$store.dispatch(
-        'modal/setMessageConfirmation',
-        `Apakah yakin ingin verifikasi data untuk alumni ${this.selectedUser.fullname}?`
-      )
+      const messages = [
+        `Apakah yakin ingin verifikasi data untuk alumni ${this.selectedUser.fullname}?`,
+        `Verifikasi oleh: ${this.$getJwtData()['fullname']}`,
+      ]
+      this.$store.dispatch('modal/setMessagesConfirmation', messages)
       this.$store.dispatch('modal/setModalConfirmationVisibility', true)
     },
     confirmVerification() {

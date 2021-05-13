@@ -46,7 +46,7 @@ export default {
   computed: {
     cta() {
       return this.$loggedIn() ? {
-        link: "/profile",
+        link: "/profile?page=user",
         text: "Ke Halaman Profil"
       } : {
         link: "/register",

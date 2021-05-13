@@ -7,6 +7,9 @@
       <div class="modal-body">
         <i class="icofont-question"></i>
         <p>{{ modal.messageConfirmation }}</p>
+        <p v-for="message in modal.messagesConfirmation" :key="message">
+          {{ message }}
+        </p>
         <div class="actions">
           <div class="button grey" @click="close">Tidak</div>
           <div class="button green" @click="confirm">Ya</div>
@@ -49,13 +52,13 @@ export default {
       this.$axios
         .post('users/verify', data)
         .then(() => {
-          this.$showModalSuccess(
-            this,
-            `Berhasil verifikasi data ${this.selectedUser.fullname}. Mengembalikan ke halaman admin.`
-          )
+          this.$showModalSuccess(this, [
+            `Berhasil verifikasi data ${this.selectedUser.fullname}`,
+            'Mengembalikan ke halaman verifikasi',
+          ])
           setTimeout(() => {
             this.$resetModal(this)
-            this.$router.push('/profile?menu=admin')
+            this.$router.push('/profile?page=verification')
           }, 3000)
         })
         .catch((err) => {
@@ -110,10 +113,6 @@ export default {
   justify-content: center;
   align-items: center;
   text-align: center;
-
-  p {
-    padding: 1em 0;
-  }
 
   i {
     font-size: 2em;

@@ -74,10 +74,9 @@ export default {
           .then((jwt) => {
             this.$getCookieManager().set('jwt', jwt)
             const user = this.$decodeJwt(jwt)
-            this.$showModalSuccess(
-              this,
-              `Selamat datang kembali, ${user.fullname}`
-            )
+            this.$showModalSuccess(this, [
+              `Selamat datang kembali, ${user.fullname}`,
+            ])
             setTimeout(() => {
               this.$resetModal(this)
               location.href = '/profile'

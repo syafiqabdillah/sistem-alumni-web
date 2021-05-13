@@ -11,13 +11,13 @@ export default ({ app }, inject) => {
   const isEmpty = (s) => {
     return !(s && s.length > 0)
   }
-  const showModalSuccess = (context, message) => {
-    context.$store.dispatch('modal/setMessage', message)
+  const showModalSuccess = (context, messages) => {
+    context.$store.dispatch('modal/setMessages', messages)
     context.$store.dispatch('modal/setModalSuccess')
     context.$store.dispatch('modal/showModal')
   }
-  const showModalError = (context, message) => {
-    context.$store.dispatch('modal/setMessage', message)
+  const showModalError = (context, messages) => {
+    context.$store.dispatch('modal/setMessages', messages)
     context.$store.dispatch('modal/setModalError')
     context.$store.dispatch('modal/showModal')
   }
