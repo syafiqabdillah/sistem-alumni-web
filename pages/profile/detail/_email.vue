@@ -2,9 +2,9 @@
   <div class="detail-user" data-aos="fade-up">
     <div class="container">
       <div class="card">
-        <h2 class="title">{{ selectedUser.fullname }}</h2>
+        <h2 class="title" v-if="!loading">{{ selectedUser.fullname }}</h2>
         <Loading v-if="loading" :showMessage="false" />
-        <RegisterReviewData v-if="!loading" :data="selectedUser" />
+        <RegisterReviewData v-if="!loading && selectedUser" :data="selectedUser" />
         <div class="contact" v-if="!loading">
           <a :href="waLink(selectedUser)" target="_blank">
             <i class="icofont-whatsapp" :style="'color: #1CA951'"></i>
@@ -46,8 +46,8 @@ export default {
     this.$preventUnauthorizedAccess(this)
   },
   mounted() {
-    this.fetchAlumni()
     this.$store.dispatch('navbar/setTitle', 'Detail Data Alumni')
+    this.fetchAlumni()
   },
   beforeDestroy() {
     this.$store.dispatch('navbar/resetTitle')

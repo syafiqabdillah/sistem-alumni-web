@@ -5,6 +5,7 @@
       :key="unit.key"
       :unit="unit"
     />
+    <ShareSocial />
   </div>
 </template>
 

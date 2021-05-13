@@ -55,6 +55,9 @@ const datadiri = {
     resetForm(state) {
       state.form = Object.assign({}, INITIAL_FORM)
     },
+    setForm(state, form) {
+      state.form = form
+    }
   },
   actions: {
     setInput(state, payload) {
@@ -67,6 +70,9 @@ const datadiri = {
     resetForm(state) {
       state.commit('resetForm')
     },
+    setForm(state, form) {
+      state.commit('setForm', form)
+    }
   },
 }
 

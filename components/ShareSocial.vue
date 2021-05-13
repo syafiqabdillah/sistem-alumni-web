@@ -34,20 +34,23 @@ export default {
 <style scoped lang="scss">
 .shares {
   text-align: center;
-
-  .socials {
-    display: flex;
-    justify-content: center;
-    gap: 1.5em;
-  }
-  .social {
-    margin-top: 1em;
-  }
-  a {
-    text-decoration: none;
-  }
-  i {
-    font-size: 2rem;
-  }
+  margin-top: 1em;
+}
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 1.5em;
+}
+.social {
+  margin-top: 1em;
+}
+a {
+  text-decoration: none;
+}
+i {
+  font-size: 2rem;
+}
+p {
+  margin: 0;
 }
 </style>

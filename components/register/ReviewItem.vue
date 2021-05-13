@@ -21,6 +21,7 @@ export default {
 .review-item {
   width: 100%;
   display: flex;
+  flex-direction: column;
   font-size: 14px;
   margin-bottom: 1em;
 
@@ -32,6 +33,7 @@ export default {
     /* max-width: 150px; */
     color: var(--grey);
     padding-right: 1em;
+    font-size: 10px;
   }
   .value {
     overflow-x: scroll;
