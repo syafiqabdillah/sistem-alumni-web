@@ -1,16 +1,20 @@
 <template>
   <div class="sidebar">
     <div
+      v-for="menu in availableMenu"
+      :key="menu.title"
       :class="{
         menu: 'menu',
         active: profile.activePage === menu.title,
       }"
-      data-aos="fade-right"
-      v-for="menu in availableMenu"
-      :key="menu.title"
       @click="chooseMenu(menu.title)"
     >
-      <i :class="menu.icon"></i>
+      <div class="menu-icon">
+        <i :class="menu.icon"></i>
+      </div>
+      <div class="menu-text">
+        {{ menu.text }}
+      </div>
     </div>
   </div>
 </template>
@@ -27,16 +31,19 @@ export default {
       setActivePage: 'profile/setActivePage',
     }),
     chooseMenu(title) {
-      this.setActivePage(title)
-      this.$router.push('/profile?page=' + title)
-    }
+      if (this.profile.activePage !== title) {
+        console.log(`klik ${title}`)
+        this.setActivePage(title)
+        this.$router.push('/profile?page=' + title)
+      }
+    },
   },
   computed: {
     ...mapState({
       profile: (state) => state.profile,
     }),
     userData() {
-      return this.$getJwtData();
+      return this.$getJwtData()
     },
     availableMenu() {
       return this.$getJwtData()['is_admin']
@@ -54,35 +61,55 @@ export default {
   position: fixed;
   left: 0;
   top: var(--nav-height);
-  max-width: 60px;
   height: 100%;
   padding: 20px 10px;
   background-color: var(--bg);
+}
+.menu {
+  display: flex;
+  margin-bottom: 1em;
+  align-items: center;
 
-  .menu {
+  z-index: 2;
+
+  &:hover {
     cursor: pointer;
-    background-color: var(--bg);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    margin-bottom: 1em;
-    font-size: 20px;
-    color: var(--primary-lighter);
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid lightgray;
-
-    &.active {
-      border: 2px solid var(--primary-lighter);
-    }
   }
 
-  & > * {
-    cursor: pointer;
+  &.active .menu-icon {
+    border: 2px solid var(--primary-lighter);
+  }
+
+  &.active .menu-text {
+    color: var(--primary);
+    font-weight: 500;
+  }
+}
+.menu-icon {
+  cursor: pointer;
+  background-color: var(--bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 20px;
+  color: var(--primary-lighter);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid lightgray;
+}
+
+.menu-text {
+  padding-left: 8px;
+  font-size: 14px;
+  width: 100px;
+  height: 100%;
+
+  @media (max-width: 850px) {
+    display: none;
   }
 }
 </style>

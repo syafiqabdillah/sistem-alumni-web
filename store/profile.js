@@ -6,12 +6,14 @@ const profile = {
       {
         title: 'user',
         icon: 'icofont-user',
-        admin_only: false
+        admin_only: false,
+        text: 'Profil'
       },
       {
         title: 'verification',
         icon: 'icofont-dashboard-web',
-        admin_only: true
+        admin_only: true,
+        text: 'Verifikasi'
       },
     ],
   }),

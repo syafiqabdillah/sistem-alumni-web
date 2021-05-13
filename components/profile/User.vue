@@ -1,5 +1,8 @@
 <template>
-  <div class="card">
+  <div class="card" data-aos="fade-up">
+    <h2 class="title">
+      {{profile.fullname}}
+    </h2>
     <RegisterReviewData :data="profile" />
   </div>
 </template>

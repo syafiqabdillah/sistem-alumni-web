@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard">
-    <div class="card">
+    <div class="card" data-aos="fade-up">
       <div class="tabs" v-if="!loadingUsers">
         <div
           :class="{
@@ -11,6 +11,7 @@
           :key="tab.key"
           @click="setActiveTab(tab.key)"
         >
+          <i :class="tab.icon"></i>
           {{ tab.text }}
         </div>
       </div>
@@ -47,7 +48,7 @@ export default {
     this.$setNavbarTitle(this, 'Verifikasi Data Alumni')
   },
   beforeDestroy() {
-    this.$resetNavbarTitle(this);
+    this.$resetNavbarTitle(this)
   },
   data() {
     return {
@@ -55,10 +56,12 @@ export default {
         {
           text: 'Belum terverifikasi',
           key: 'unverified',
+          icon: 'icofont-info-circle',
         },
         {
           text: 'Terverifikasi',
           key: 'verified',
+          icon: 'icofont-verification-check',
         },
       ],
       activeTab: 'unverified',
@@ -96,15 +99,13 @@ export default {
   margin-bottom: 1rem;
   overflow-x: scroll;
   color: grey;
-
-  @media (max-width: 500px) {
-    font-size: 14px;
-  }
+  font-size: 14px;
 }
 .tab {
   flex: 1;
   padding: 0.25em 1em;
   border-radius: 5px;
+  text-align: center;
   &:hover {
     cursor: pointer;
 

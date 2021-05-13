@@ -2,9 +2,8 @@
   <div class="profile" v-if="loggedIn">
      <ProfileSideBar />
     <div class="content">
-      <ProfileUser data-aos="fade-up" v-if="profile.activePage === 'user'" />
+      <ProfileUser v-if="profile.activePage === 'user'" />
       <ProfileVerification
-        data-aos="fade-up"
         v-if="profile.activePage === 'verification'"
       />
     </div>
