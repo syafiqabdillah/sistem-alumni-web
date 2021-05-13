@@ -69,7 +69,8 @@ export default {
     manifest: {
       lang: 'en',
       short_name: 'Sistem Alumni Asy Syaamil',
-      name: 'Asy Syaamil'
+      name: 'Asy Syaamil',
+      background_color: '#f7f7f7'
     }
   },
 
