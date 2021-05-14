@@ -56,7 +56,7 @@ export default ({ app }, inject) => {
     context.$store.dispatch('navbar/resetTitle')
   }
   const getAdminContact = () => {
-    return '+625249903865'
+    return '+6285249903865'
   }
   inject('isMobile', isMobile)
   inject('validateEmail', validateEmail)
