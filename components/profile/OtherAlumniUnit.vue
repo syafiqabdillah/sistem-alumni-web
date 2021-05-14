@@ -1,5 +1,5 @@
 <template>
-  <div class="card unit" data-aos="fade-up">
+  <div class="card unit" data-aos="fade-up" @click="toAlumniPage(unit.key)">
     <img :src="unit.src" :alt="unit.name" />
     <div class="text">
       <div class="name">
@@ -12,12 +12,7 @@
         <div v-else>...</div>
       </div>
     </div>
-    <div
-      class="to-alumni-page button green"
-      @click.self="toAlumniPage(unit.key)"
-    >
-      Lihat Halaman Alumni
-    </div>
+    <div v-if="isVerifiedAlumni" class="to-alumni-page button green">Lihat Halaman Alumni</div>
   </div>
 </template>
 
@@ -31,6 +26,14 @@ export default {
   },
   props: {
     unit: Object,
+  },
+  computed: {
+    isVerifiedAlumni() {
+      return (
+        this.$getJwtData()[`year_entry_${this.unit.key}`] &&
+        this.$getJwtData()[`verified_date`]
+      )
+    },
   },
   mounted() {
     this.count = null
@@ -46,7 +49,13 @@ export default {
   },
   methods: {
     toAlumniPage(unitKey) {
-      this.$router.push(`/unit?code=${unitKey}`)
+      if (this.isVerifiedAlumni) {
+        this.$router.push(`/unit?code=${unitKey}`)
+      } else {
+        this.$showModalError(this, [
+          'Kamu tidak memiliki akses ke halaman ini'
+        ])
+      }
     },
   },
 }

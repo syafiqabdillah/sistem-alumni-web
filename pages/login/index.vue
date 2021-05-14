@@ -84,7 +84,7 @@ export default {
           })
           .catch((err) => {
             console.log(err)
-            this.$showModalError(this, `Gagal login`)
+            this.$showModalError(this, [`Gagal login`])
           })
           .finally(() => {
             setTimeout(() => {
