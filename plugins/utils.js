@@ -55,6 +55,9 @@ export default ({ app }, inject) => {
   const resetNavbarTitle = (context) => {
     context.$store.dispatch('navbar/resetTitle')
   }
+  const getAdminContact = () => {
+    return '+625249903865'
+  }
   inject('isMobile', isMobile)
   inject('validateEmail', validateEmail)
   inject('isEmpty', isEmpty)
@@ -70,4 +73,5 @@ export default ({ app }, inject) => {
   inject('preventUnauthorizedAccess', preventUnauthorizedAccess)
   inject('setNavbarTitle', setNavbarTitle)
   inject('resetNavbarTitle', resetNavbarTitle)
+  inject('getAdminContact', getAdminContact)
 }

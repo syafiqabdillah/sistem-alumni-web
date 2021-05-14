@@ -42,7 +42,7 @@ export default {
       return this.$getJwtData()
     },
     linkWhatsApp() {
-      return `https://wa.me/${'+6285249903865'}?text=Hai admin, saya ingin mengubah data alumni`
+      return `https://wa.me/${this.$getAdminContact()}?text=Hai admin, saya ingin mengubah data alumni saya`
     },
   },
   mounted() {
