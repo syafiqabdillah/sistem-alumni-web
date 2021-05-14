@@ -46,6 +46,7 @@ export default {
   mounted() {
     this.$store.dispatch('dashboard/fetchUserData')
     this.$setNavbarTitle(this, 'Verifikasi Data Alumni')
+    window.scroll(0, 0)
   },
   beforeDestroy() {
     this.$resetNavbarTitle(this)

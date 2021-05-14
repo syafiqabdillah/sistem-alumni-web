@@ -66,6 +66,9 @@ export default {
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
+    meta: {
+      theme_color: '#f7f7f7'
+    },
     manifest: {
       lang: 'en',
       short_name: 'Sistem Alumni Asy Syaamil',

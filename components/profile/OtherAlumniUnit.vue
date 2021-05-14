@@ -51,10 +51,6 @@ export default {
     toAlumniPage(unitKey) {
       if (this.isVerifiedAlumni) {
         this.$router.push(`/unit?code=${unitKey}`)
-      } else {
-        this.$showModalError(this, [
-          'Kamu tidak memiliki akses ke halaman ini'
-        ])
       }
     },
   },

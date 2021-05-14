@@ -1,5 +1,5 @@
 <template>
-  <div class="unit" v-if="validCode">
+  <div class="unit" data-aos="fade-up" v-if="validCode">
     <div class="banner">
       <img :src="imageBanner" alt="banner" />
     </div>
