@@ -1,9 +1,17 @@
-const MOCK = {
+const MOCK_FORM = {
   year_entry_tk: null,
   year_entry_sd: 2003,
   year_entry_smp: 2009,
   year_entry_sma: null,
   activity: "kerja"
+}
+
+const MOCK_VALIDATION = {
+  year_entry_tk: true,
+  year_entry_sd: true,
+  year_entry_smp: true,
+  year_entry_sma: true,
+  activity: true
 }
 
 const INITIAL_FORM = {
@@ -17,7 +25,7 @@ const INITIAL_FORM = {
 const datadiri = {
   namespaced: true,
   state: () => ({
-    form: Object.assign({}, INITIAL_FORM),
+    form: Object.assign({}, process.env.useMock ? MOCK_FORM : INITIAL_FORM)
   }),
   mutations: {
     setInput(state, payload) {

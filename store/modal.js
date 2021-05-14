@@ -120,6 +120,15 @@ const modal = {
     resetModalConfirmation(state) {
       state.commit('resetModalConfirmation')
     },
+    showFeatureInProgress(state) {
+      const messages = [
+        '🛠️',
+        'Fitur sedang dalam pengembangan',
+        'Harap menunggu kabar dari kami',
+      ]
+      state.commit('setMessages', messages)
+      state.commit('showModal')
+    },
   },
 }
 

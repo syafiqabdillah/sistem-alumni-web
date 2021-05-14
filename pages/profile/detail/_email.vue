@@ -110,7 +110,7 @@ export default {
 
 <style scoped lang="scss">
 .title {
-  margin-bottom: 1em;
+  margin-bottom: 1.5em;
 }
 .card {
   display: flex;
@@ -121,7 +121,13 @@ export default {
   margin: 2em 0;
   font-size: 14px;
   display: flex;
+  justify-content: center;
   flex-direction: column;
-  gap: 1em;
+  flex-wrap: wrap;
+  gap: 1.5em;
+
+  @media (min-width: 500px) {
+    flex-direction: row;
+  }
 }
 </style>

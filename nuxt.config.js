@@ -79,7 +79,8 @@ export default {
   },
 
   env: {
-    isProduction: process.env.NODE_ENV === 'production'
+    isProduction: process.env.NODE_ENV === 'production',
+    useMock: false
   },
 
   generate: {

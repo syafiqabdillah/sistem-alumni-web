@@ -4,7 +4,6 @@
       {{ profile.fullname }}
     </h2>
     <RegisterReviewData :data="profile" />
-    <Spacer />
     <small class="text-center">Ingin mengubah data?</small>
     <div class="button green" @click="hubungiAdmin">
       <i class="icofont-whatsapp"></i>
@@ -55,7 +54,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.card {
-  max-width: 360px;
+.title {
+  margin-bottom: 1.5em;
 }
 </style>

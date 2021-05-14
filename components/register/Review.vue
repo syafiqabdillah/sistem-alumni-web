@@ -60,12 +60,15 @@ export default {
     showModalSuccess() {
       this.$store.dispatch('modal/setMessages', [
         'Berhasil mendaftar sebagai alumni',
+        'Mengalihkan ke halaman login',
       ])
       this.$store.dispatch('modal/setModalSuccess')
       this.$store.dispatch('modal/showModal')
     },
     showModalError() {
-      this.$store.dispatch('modal/setMessage', 'Gagal mendaftar sebagai alumni')
+      this.$store.dispatch('modal/setMessages', [
+        'Gagal mendaftar sebagai alumni',
+      ])
       this.$store.dispatch('modal/setModalError')
       this.$store.dispatch('modal/showModal')
     },
@@ -96,6 +99,8 @@ export default {
             this.$store.dispatch('dataemail/resetForm')
             this.$store.dispatch('datadiri/resetForm')
             this.$store.dispatch('dataalumni/resetForm')
+            this.$store.dispatch('register/setCurrentPage', 'email')
+            this.$store.dispatch('modal/hideModal')
             this.$router.push('/login')
           }, 1700)
         })
@@ -108,13 +113,14 @@ export default {
         })
     },
   },
-  mounted() {
-    console.log(process.env.isProduction)
-  },
+  mounted() {},
 }
 </script>
 
 <style scoped lang="scss">
+.title {
+  margin-bottom: 1.5em;
+}
 .konfirmasi {
   display: flex;
   flex-direction: column;

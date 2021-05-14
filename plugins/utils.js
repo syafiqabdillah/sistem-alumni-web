@@ -58,6 +58,9 @@ export default ({ app }, inject) => {
   const getAdminContact = () => {
     return '+6285249903865'
   }
+  const useMock = () => {
+    return true
+  }
   inject('isMobile', isMobile)
   inject('validateEmail', validateEmail)
   inject('isEmpty', isEmpty)
@@ -74,4 +77,5 @@ export default ({ app }, inject) => {
   inject('setNavbarTitle', setNavbarTitle)
   inject('resetNavbarTitle', resetNavbarTitle)
   inject('getAdminContact', getAdminContact)
+  inject('useMock', useMock)
 }

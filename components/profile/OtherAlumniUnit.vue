@@ -46,17 +46,7 @@ export default {
   },
   methods: {
     toAlumniPage(unitKey) {
-      console.log(unitKey)
-      const messages = [
-        '🛠️',
-        'Fitur sedang dalam pengembangan',
-        'Harap menunggu kabar dari kami'
-      ]
-      this.$store.dispatch(
-        'modal/setMessages',
-        messages
-      )
-      this.$store.dispatch('modal/showModal')
+      this.$router.push(`/unit?code=${unitKey}`)
     },
   },
 }

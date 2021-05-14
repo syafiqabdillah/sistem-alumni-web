@@ -1,7 +1,13 @@
-const MOCK = {
-  email: 'abdillah.syafiq@gmail.com',
+const MOCK_FORM = {
+  email: 'syafiq.abdillah@mail.com',
   password: 'password123',
   confirmPassword: 'password123',
+}
+
+const MOCK_VALIDATION = {
+  email: true,
+  password: true,
+  confirmPassword: true,
 }
 
 const INITIAL_FORM = {
@@ -13,8 +19,8 @@ const INITIAL_FORM = {
 const dataemail = {
   namespaced: true,
   state: () => ({
-    form: Object.assign({}, INITIAL_FORM),
-    validation: Object.assign({}, INITIAL_FORM),
+    form: Object.assign({}, process.env.useMock ? MOCK_FORM : INITIAL_FORM),
+    validation: Object.assign({}, process.env.useMock ? MOCK_VALIDATION : INITIAL_FORM),
   }),
   mutations: {
     setInput(state, payload) {

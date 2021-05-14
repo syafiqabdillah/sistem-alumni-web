@@ -1,4 +1,4 @@
-const MOCK = {
+const MOCK_FORM = {
   fullname: 'Syafiq Abdillah U',
   birthplace: 'Bontang',
   birthdate: '1997-03-03',
@@ -7,6 +7,17 @@ const MOCK = {
   address: 'Jl. Kepodang S22',
   parentName: 'Isro Umarghani',
   parentPhone: null,
+}
+
+const MOCK_VALIDATION = {
+  fullname: true,
+  birthplace: true,
+  birthdate: true,
+  gender: true,
+  phone: true,
+  address: true,
+  parentName: true,
+  parentPhone: true,
 }
 
 const INITIAL_FORM = {
@@ -23,8 +34,8 @@ const INITIAL_FORM = {
 const datadiri = {
   namespaced: true,
   state: () => ({
-    form: Object.assign({}, INITIAL_FORM),
-    validation: Object.assign({}, INITIAL_FORM)
+    form: Object.assign({}, process.env.useMock ? MOCK_FORM : INITIAL_FORM),
+    validation: Object.assign({}, process.env.useMock ? MOCK_VALIDATION : INITIAL_FORM)
   }),
   mutations: {
     setInput(state, payload) {

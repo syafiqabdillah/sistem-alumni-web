@@ -4,7 +4,7 @@
       <div class="brand" @click="toPage('/home')">
         <img src="~/assets/images/logo.jpeg" alt="" />
       </div>
-      <div class="page-title">
+      <div class="page-title" data-aos="zoom-in">
         {{ pageTitle }}
       </div>
       <div class="menu">
