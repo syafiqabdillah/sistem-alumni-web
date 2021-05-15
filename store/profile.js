@@ -3,6 +3,7 @@ const profile = {
   state: () => ({
     activePage: 'user',
     verified: false,
+    loadingVerified: true,
     menus: [
       {
         title: 'user',
@@ -30,8 +31,8 @@ const profile = {
         icon: 'icofont-architecture-alt',
         admin_only: true,
         verified_only: true,
-        text: 'User Conf.'
-      }
+        text: 'User Conf.',
+      },
     ],
   }),
   mutations: {
@@ -40,7 +41,10 @@ const profile = {
     },
     setVerified(state, verified) {
       state.verified = verified
-    }
+    },
+    setLoadingVerified(state, loading) {
+      state.loadingVerified = loading
+    },
   },
   actions: {
     setActivePage(state, page) {
@@ -48,7 +52,10 @@ const profile = {
     },
     setVerified(state, verified) {
       state.commit('setVerified', verified)
-    }
+    },
+    setLoadingVerified(state, loading) {
+      state.commit('setLoadingVerified', loading)
+    },
   },
 }
 

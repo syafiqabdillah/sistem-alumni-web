@@ -56,7 +56,7 @@ export default {
       // hapus cookie
       this.$getCookieManager().remove('jwt')
       // alihkan ke beranda
-      location.href = '/'
+      location.replace('/home')
     },
   },
   computed: {

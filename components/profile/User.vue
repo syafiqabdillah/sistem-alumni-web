@@ -3,10 +3,9 @@
     <h2 class="title">
       {{ profile.fullname }}
     </h2>
-    <small class="text-center status" v-if="verified !== null">
-      {{ verified === false ? 'Menunggu Verifikasi Admin' : '' }}
+    <small class="text-center status" v-if="!loadingVerified">
+      {{ verified ? 'Terverifikasi':'Menunggu verifikasi' }}
     </small>
-    <small class="text-center" v-else>...</small>
     <Spacer />
     <RegisterReviewData :data="profile" />
     <Spacer />
@@ -27,6 +26,7 @@ export default {
       this.setFormDataDiri()
     },
     checkVerified() {
+      this.$store.dispatch('profile/setLoadingVerified', true)
       this.$axios
         .post(`/users/check-verified`, {
           jwt: this.$getCookieManager().get('jwt'),
@@ -36,6 +36,9 @@ export default {
         })
         .catch((err) => {
           console.log(err)
+        })
+        .finally(() => {
+          this.$store.dispatch('profile/setLoadingVerified', false)
         })
     },
     setFormDataDiri() {
@@ -58,6 +61,7 @@ export default {
   computed: {
     ...mapState({
       verified: (state) => state.profile.verified,
+      loadingVerified: (state) => state.profile.loadingVerified,
     }),
     profile() {
       return this.$getJwtData()

@@ -75,11 +75,12 @@ export default {
             this.$getCookieManager().set('jwt', jwt)
             const user = this.$decodeJwt(jwt)
             this.$showModalSuccess(this, [
-              `Selamat datang kembali, ${user.fullname}`,
+              `Selamat datang kembali`,
+              user.fullname
             ])
             setTimeout(() => {
               this.$resetModal(this)
-              this.$router.push('/profile?page=user')
+              location.assign('/profile?page=user')
             }, 1700)
           })
           .catch((err) => {
