@@ -202,7 +202,6 @@ export default {
     lanjutkan() {
       this.$showModalLoading(this)
       var form = Object.assign({}, this.form)
-      console.log(JSON.stringify(form))
       this.$axios
         .post(`users/update`, form)
         .then((res) => {
