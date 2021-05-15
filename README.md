@@ -21,7 +21,11 @@ $ npm install
 ``` bash
 $ npm run build 
 ```
-5. Put `.env` file sent by email to `sistem-alumni-web` directory
+5. Put `.env` file sent by email to `sistem-alumni-web` directory. This file contains 2 environtment variables like so
+```
+BASE_API_URL=https://sistem-alumni-asysyaamil-api.herokuapp.com
+PORT=3000
+```
 6. Run the application
 ``` bash
 $ npm run start
@@ -29,12 +33,10 @@ $ npm run start
 7. Now you're application will run on port 3000
 ## Change Application's Port
 1. Stop the application process
-2. Open `nuxt.config.js` with your text editor of choice 
-3. Change the port setting 
+2. Open `.env` with your text editor of choice 
+3. Change the `PORT` value
 ```
-server: {
-  port: 1234 // default: 3000
-},
+PORT=1234
 ```
 4. Start the application 
 ```
