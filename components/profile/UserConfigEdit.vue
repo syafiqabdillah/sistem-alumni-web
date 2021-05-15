@@ -136,6 +136,19 @@
       :onBlur="() => {}"
       placeholder="Ceritakan aktivitas kamu saat ini"
     />
+    <div class="checkbox-admin">
+      <input
+        type="checkbox"
+        class="asy"
+        id="is_admin"
+        name="is_admin"
+        :value="form.is_admin == 1 ? 0 : 1"
+        :checked="form.is_admin"
+        @input="handleInputChange"
+      />
+      <label class="asy" for="is_admin"> admin </label>
+    </div>
+
     <Navigator
       :backFunction="kembali"
       :nextFunction="lanjutkan"
@@ -204,8 +217,12 @@ export default {
       var form = Object.assign({}, this.form, {
         year_entry_tk: this.form.year_entry_tk ? this.form.year_entry_tk : null,
         year_entry_sd: this.form.year_entry_sd ? this.form.year_entry_sd : null,
-        year_entry_smp: this.form.year_entry_smp ? this.form.year_entry_smp : null,
-        year_entry_sma: this.form.year_entry_sma ? this.form.year_entry_sma : null,
+        year_entry_smp: this.form.year_entry_smp
+          ? this.form.year_entry_smp
+          : null,
+        year_entry_sma: this.form.year_entry_sma
+          ? this.form.year_entry_sma
+          : null,
       })
       this.$axios
         .post(`users/update`, form)
@@ -292,4 +309,14 @@ export default {
 }
 </script>
 
-<style></style>
+<style scoped lang="scss">
+.checkbox-admin {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  input, label {
+    width: initial;
+    margin: 0;
+  }
+}
+</style>
