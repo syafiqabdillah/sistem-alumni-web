@@ -50,7 +50,7 @@ export default {
         text: "Ke Halaman Profil"
       } : {
         link: "/register",
-        text: "Bergabung Sekarang"
+        text: "Masuk Sebagai Alumni"
       }
     }
   }

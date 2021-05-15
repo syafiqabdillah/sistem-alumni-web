@@ -28,10 +28,15 @@ npm run start
 ```
 7. Now you're application will run on port 3000
 ## Change Application's Port
-1. Open `nuxt.config.js` with your text editor of choice 
-2. Change the port setting 
+1. Stop the application process
+2. Open `nuxt.config.js` with your text editor of choice 
+3. Change the port setting 
 ```
 server: {
   port: 1234 // default: 3000
 },
+```
+4. Start the application 
+```
+$ npm run build && npm run start
 ```
