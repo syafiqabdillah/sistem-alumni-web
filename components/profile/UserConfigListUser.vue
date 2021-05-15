@@ -1,5 +1,5 @@
 <template>
-  <div class="user-config-list-user">
+  <div class="user-config-list-user" data-aos="fade-up">
     <Loading :showMessage="false" v-if="loadingUsers" />
     <div v-else class="users">
       <input
@@ -61,6 +61,7 @@ export default {
   },
   mounted() {
     this.fetchUsers()
+    window.scroll(0, 0)
   },
 }
 </script>

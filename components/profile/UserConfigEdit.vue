@@ -1,5 +1,5 @@
 <template>
-  <div class="edit">
+  <div class="edit" data-aos="fade-up">
     <div class="text-center">
       {{ form.fullname }}
     </div>
@@ -279,6 +279,11 @@ export default {
       key: 'jwt',
       value: this.$getCookieManager().get('jwt'),
     })
+    window.scroll(0, 0)
+  },
+  beforeDestroy() {
+    this.$store.dispatch('userconfig/reset')
+    this.$store.dispatch('userconfig/setActivePage', 'list')
   },
 }
 </script>

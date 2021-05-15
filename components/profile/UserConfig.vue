@@ -21,6 +21,7 @@ export default {
   },
   mounted() {
     this.$setNavbarTitle(this, 'User Config')
+    window.scroll(0, 0)
   },
   beforeDestroy() {
     this.$resetNavbarTitle(this)
