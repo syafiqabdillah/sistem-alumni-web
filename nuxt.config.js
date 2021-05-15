@@ -1,4 +1,7 @@
 export default {
+  server: {
+    port: 3000 // default: 3000
+  },
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
 
@@ -55,7 +58,7 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseUrl: "https://sistem-alumni-asysyaamil-api.herokuapp.com"
+    baseUrl: process.env.BASE_API_URL
   },
 
   publicRuntimeConfig: {
@@ -83,7 +86,7 @@ export default {
 
   env: {
     isProduction: process.env.NODE_ENV === 'production',
-    useMock: false
+    useMock: false,
   },
 
   generate: {

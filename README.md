@@ -1,20 +1,37 @@
-# web
+# Sistem Alumni - Frontend Web
+Author: Syafiq Abdillah Umarghanis abdillah.syafiq@gmail.com
+## System Requirements
+- Git
+- Node 12.x
+## Production Setup
 
-## Build Setup
-
-```bash
-# install dependencies
-$ yarn install
-
-# serve with hot reload at localhost:3000
-$ yarn dev
-
-# build for production and launch server
-$ yarn build
-$ yarn start
-
-# generate static project
-$ yarn generate
+1. Clone app's repository using git
+``` bash
+$ git clone https://github.com/syafiqabdillah/sistem-alumni-web
 ```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+2. Change current directory to `sistem-alumni-web`
+``` bash
+$ cd sistem-alumni-web
+``` 
+3. Install all dependencies 
+``` bash
+$ npm install
+```
+4. Build the application
+``` bash
+npm run build 
+```
+5. Put `.env` file sent by email to `sistem-alumni-web` directory
+6. Run the application
+``` bash
+npm run start
+```
+7. Now you're application will run on port 3000
+## Change Application's Port
+1. Open `nuxt.config.js` with your text editor of choice 
+2. Change the port setting 
+```
+server: {
+  port: 1234 // default: 3000
+},
+```
