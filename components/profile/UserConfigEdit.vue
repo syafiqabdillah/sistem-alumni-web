@@ -201,7 +201,12 @@ export default {
     },
     lanjutkan() {
       this.$showModalLoading(this)
-      var form = Object.assign({}, this.form)
+      var form = Object.assign({}, this.form, {
+        year_entry_tk: this.form.year_entry_tk ? this.form.year_entry_tk : null,
+        year_entry_sd: this.form.year_entry_sd ? this.form.year_entry_sd : null,
+        year_entry_smp: this.form.year_entry_smp ? this.form.year_entry_smp : null,
+        year_entry_sma: this.form.year_entry_sma ? this.form.year_entry_sma : null,
+      })
       this.$axios
         .post(`users/update`, form)
         .then((res) => {
