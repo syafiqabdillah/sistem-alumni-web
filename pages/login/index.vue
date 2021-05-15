@@ -80,7 +80,7 @@ export default {
             ])
             setTimeout(() => {
               this.$resetModal(this)
-              location.assign('/profile?page=user')
+              location.assign('/')
             }, 1700)
           })
           .catch((err) => {

@@ -76,7 +76,7 @@ export default {
           }
         : {
             link: '/register',
-            text: 'Bergabung dengan Kami',
+            text: 'Masuk Sebagai Alumni',
           }
     },
   },

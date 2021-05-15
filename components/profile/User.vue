@@ -3,7 +3,12 @@
     <h2 class="title">
       {{ profile.fullname }}
     </h2>
-    <small class="text-center status" v-if="!loadingVerified">
+    <small :class="{
+      'text-center': 'text-center',
+      'status': 'status',
+      'green': verified,
+      'orange': !verified
+    }" v-if="!loadingVerified">
       {{ verified ? 'Terverifikasi':'Menunggu verifikasi' }}
     </small>
     <Spacer />
@@ -83,9 +88,17 @@ export default {
 
 <style scoped lang="scss">
 .status {
-  background-color: var(--secondary);
   width: initial;
   padding: 0 1em;
   border-radius: 3px;
+  color: var(--bg);
+
+  &.green {
+    background-color: var(--primary);
+  }
+
+  &.orange {
+    background-color: darkorange;
+  }
 }
 </style>
