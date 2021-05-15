@@ -19,12 +19,12 @@ $ npm install
 ```
 4. Build the application
 ``` bash
-npm run build 
+$ npm run build 
 ```
 5. Put `.env` file sent by email to `sistem-alumni-web` directory
 6. Run the application
 ``` bash
-npm run start
+$ npm run start
 ```
 7. Now you're application will run on port 3000
 ## Change Application's Port
