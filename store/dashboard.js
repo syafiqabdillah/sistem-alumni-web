@@ -32,7 +32,7 @@ const dashboard = {
       state.commit('setUserData', [])
       state.commit('setLoading', true)
       this.$axios
-        .get('users')
+        .get(`users/?jwt=${this.$getCookieManager().get('jwt')}`)
         .then((res) => {
           state.commit('setUserData', res.data)
         })

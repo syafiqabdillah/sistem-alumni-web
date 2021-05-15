@@ -6,6 +6,7 @@
       <ProfileUser v-if="profile.activePage === 'user'" />
       <ProfileOtherAlumni v-if="profile.activePage === 'group'" />
       <ProfileVerification v-if="profile.activePage === 'verification'" />
+      <ProfileUserConfig v-if="profile.activePage === 'user-config'" />
     </div>
   </div>
 </template>

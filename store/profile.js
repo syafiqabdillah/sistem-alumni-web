@@ -2,6 +2,7 @@ const profile = {
   namespaced: true,
   state: () => ({
     activePage: 'user',
+    verified: false,
     menus: [
       {
         title: 'user',
@@ -24,17 +25,30 @@ const profile = {
         verified_only: true,
         text: 'Verifikasi',
       },
+      {
+        title: 'user-config',
+        icon: 'icofont-architecture-alt',
+        admin_only: true,
+        verified_only: true,
+        text: 'User Conf.'
+      }
     ],
   }),
   mutations: {
     setActivePage(state, page) {
       state.activePage = page
     },
+    setVerified(state, verified) {
+      state.verified = verified
+    }
   },
   actions: {
     setActivePage(state, page) {
       state.commit('setActivePage', page)
     },
+    setVerified(state, verified) {
+      state.commit('setVerified', verified)
+    }
   },
 }
 

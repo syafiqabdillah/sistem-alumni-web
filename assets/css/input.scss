@@ -11,6 +11,10 @@ textarea.asy {
   font-family: 'Poppins';
   font-size: 12px;
 
+  &:disabled {
+    color: var(--dark);
+  }
+
   &:focus {
     box-shadow: 0 0 3px var(--secondary);
   }

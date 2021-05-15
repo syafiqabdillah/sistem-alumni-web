@@ -79,7 +79,7 @@ export default {
             ])
             setTimeout(() => {
               this.$resetModal(this)
-              location.href = '/profile'
+              this.$router.push('/profile?page=user')
             }, 1700)
           })
           .catch((err) => {

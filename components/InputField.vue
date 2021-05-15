@@ -1,6 +1,8 @@
 <template>
   <div>
-    <label class="asy" for="fullname">{{ label }} <span v-if="required">*</span></label>
+    <label class="asy" for="fullname"
+      >{{ label }} <span v-if="required">*</span></label
+    >
     <input
       :ref="id"
       v-if="type !== 'textarea'"
@@ -15,8 +17,9 @@
       :class="{
         valid: valid === true,
         error: valid === false,
-        asy: 'asy'
+        asy: 'asy',
       }"
+      :disabled="disabled"
     />
     <textarea
       v-else
@@ -29,7 +32,7 @@
       :class="{
         valid: valid === true,
         error: valid === false,
-        asy: 'asy'
+        asy: 'asy',
       }"
       :rows="rows"
     />
@@ -56,7 +59,7 @@ export default {
     onChange: Function,
     onBlur: {
       type: Function,
-      default: () => {}
+      default: () => {},
     },
     errorMessage: String,
     rows: {
@@ -69,8 +72,12 @@ export default {
     },
     placeholder: {
       type: String,
-      default: ""
-    }
+      default: '',
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
   },
 }
 </script>

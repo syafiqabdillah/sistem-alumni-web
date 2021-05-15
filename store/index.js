@@ -7,6 +7,7 @@ import modal from './modal'
 import profile from './profile'
 import dashboard from './dashboard'
 import navbar from './navbar'
+import userconfig from './userconfig'
 
 new Vuex.Store({
   state: {},
@@ -21,5 +22,6 @@ new Vuex.Store({
     profile,
     dashboard,
     navbar,
+    userconfig
   },
 })

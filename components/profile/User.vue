@@ -3,7 +3,13 @@
     <h2 class="title">
       {{ profile.fullname }}
     </h2>
+    <small class="text-center status" v-if="verified !== null">
+      {{ verified === false ? 'Menunggu Verifikasi Admin' : '' }}
+    </small>
+    <small class="text-center" v-else>...</small>
+    <Spacer />
     <RegisterReviewData :data="profile" />
+    <Spacer />
     <small class="text-center">Ingin mengubah data?</small>
     <div class="button green" @click="hubungiAdmin">
       <i class="icofont-whatsapp"></i>
@@ -13,11 +19,24 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'User',
   methods: {
     edit() {
       this.setFormDataDiri()
+    },
+    checkVerified() {
+      this.$axios
+        .post(`/users/check-verified`, {
+          jwt: this.$getCookieManager().get('jwt'),
+        })
+        .then((res) => {
+          this.$store.dispatch('profile/setVerified', res.data.verified)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
     },
     setFormDataDiri() {
       const formDataDiri = {
@@ -37,6 +56,9 @@ export default {
     },
   },
   computed: {
+    ...mapState({
+      verified: (state) => state.profile.verified,
+    }),
     profile() {
       return this.$getJwtData()
     },
@@ -47,6 +69,7 @@ export default {
   mounted() {
     window.scroll(0, 0)
     this.$setNavbarTitle(this, 'Profil Alumni')
+    this.checkVerified()
   },
   beforeDestroy() {
     this.$resetNavbarTitle(this)
@@ -55,7 +78,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.title {
-  margin-bottom: 1.5em;
+.status {
+  background-color: var(--secondary);
+  width: initial;
+  padding: 0 1em;
+  border-radius: 3px;
 }
 </style>
