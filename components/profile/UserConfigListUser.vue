@@ -12,6 +12,9 @@
       <div class="user" v-for="user in computedUsers" :key="user.email">
         <div class="name">
           {{ user.fullname }}
+          <small>
+            {{ user.is_admin ? 'admin' : null }}
+          </small>
         </div>
         <div class="button grey" @click="editUser(user)">
           <i class="icofont-settings-alt"></i>edit
