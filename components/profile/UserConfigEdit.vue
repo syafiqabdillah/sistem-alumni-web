@@ -143,7 +143,7 @@
         id="is_admin"
         name="is_admin"
         :value="form.is_admin == 1 ? 0 : 1"
-        :checked="form.is_admin"
+        :checked="form.is_admin == 1"
         @input="handleInputChange"
       />
       <label class="asy" for="is_admin"> admin </label>
