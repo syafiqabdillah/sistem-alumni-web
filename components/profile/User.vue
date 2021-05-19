@@ -12,7 +12,8 @@
       {{ verified ? 'Terverifikasi':'Menunggu verifikasi' }}
     </small>
     <Spacer />
-    <RegisterReviewData :data="profile" />
+    <RegisterReviewData v-if="profile" :data="profile" />
+    <Loading :showMessage="false" v-else />
     <Spacer />
     <small class="text-center">Ingin mengubah data?</small>
     <div class="button green" @click="hubungiAdmin">

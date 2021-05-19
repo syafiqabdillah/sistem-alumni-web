@@ -45,8 +45,13 @@ export default {
   methods: {
     fetchUsers() {
       this.loadingUsers = true
+      const config = {
+        headers: {
+          Authorization: `Bearer ${this.$getCookieManager().get('jwt')}`
+        }
+      }
       this.$axios
-        .get(`users/?jwt=${this.$getCookieManager().get('jwt')}`)
+        .get(`users`, config)
         .then((res) => {
           this.users = res.data
         })

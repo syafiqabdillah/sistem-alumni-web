@@ -31,8 +31,13 @@ const dashboard = {
     fetchUserData(state) {
       state.commit('setUserData', [])
       state.commit('setLoading', true)
+      const config = {
+        headers: {
+          Authorization: `Bearer ${this.$getCookieManager().get('jwt')}`
+        }
+      }
       this.$axios
-        .get(`users/?jwt=${this.$getCookieManager().get('jwt')}`)
+        .get(`users`, config)
         .then((res) => {
           state.commit('setUserData', res.data)
         })

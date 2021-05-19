@@ -58,7 +58,8 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseUrl: process.env.BASE_API_URL
+    // baseUrl: process.env.BASE_API_URL,
+    baseUrl: 'http://localhost:8000',
   },
 
   publicRuntimeConfig: {
@@ -75,7 +76,7 @@ export default {
     manifest: {
       lang: 'en',
       short_name: 'Sistem Alumni Asy Syaamil',
-      name: 'Asy Syaamil',
+      name: 'Sistem Alumni',
       background_color: '#f7f7f7'
     }
   },

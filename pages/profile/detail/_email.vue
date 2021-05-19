@@ -3,33 +3,35 @@
     <div class="container">
       <div class="card">
         <Loading v-if="loading" :showMessage="false" />
-        <h2 class="title" v-if="!loading">{{ selectedUser.fullname }}</h2>
-        <RegisterReviewData
-          v-if="!loading && selectedUser"
-          :data="selectedUser"
-        />
-        <div class="contact" v-if="!loading">
-          <a :href="waLink(selectedUser)" target="_blank">
-            <i class="icofont-whatsapp" :style="'color: #1CA951'"></i>
-            Hubungi via WhatsApp
-          </a>
-          <a :href="`mailto:${selectedUser.email}`">
-            <i class="icofont-mail" target="_blank"></i>
-            Hubungi via email
-          </a>
-          <a :href="`tel:${selectedUser.phone}`">
-            <i class="icofont-phone"></i>
-            Hubungi via telepon
-          </a>
-        </div>
-        <div class="actions" v-if="!loading">
-          <Navigator
-            :backFunction="kembali"
-            :nextFunction="verifikasi"
-            :showNextButton="!selectedUser.verified_date"
-            nextText="Verifikasi"
-            :showNextIcon="false"
+        <div v-else>
+          <h2 class="title">{{ selectedUser.fullname }}</h2>
+          <RegisterReviewData
+            v-if="selectedUser"
+            :data="selectedUser"
           />
+          <div class="contact">
+            <a :href="waLink(selectedUser)" target="_blank">
+              <i class="icofont-whatsapp" :style="'color: #1CA951'"></i>
+              Hubungi via WhatsApp
+            </a>
+            <a :href="`mailto:${selectedUser.email}`">
+              <i class="icofont-mail" target="_blank"></i>
+              Hubungi via email
+            </a>
+            <a :href="`tel:${selectedUser.phone}`">
+              <i class="icofont-phone"></i>
+              Hubungi via telepon
+            </a>
+          </div>
+          <div class="actions">
+            <Navigator
+              :backFunction="kembali"
+              :nextFunction="verifikasi"
+              :showNextButton="!selectedUser.verified_date"
+              nextText="Verifikasi"
+              :showNextIcon="false"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -73,8 +75,14 @@ export default {
     fetchAlumni() {
       this.$store.dispatch('dashboard/setLoading', true)
       const email = this.$route.params.email
+      const jwt = this.$getCookieManager().get('jwt')
+      const config = {
+        headers: {
+          Authorization: `Bearer ${jwt}`,
+        },
+      }
       this.$axios
-        .get('/users/by-email?email=' + email)
+        .get(`/users/by-email?email=${email}`, config)
         .then((res) => {
           this.$store.dispatch('dashboard/setSelectedUser', res.data)
         })

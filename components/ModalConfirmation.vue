@@ -47,10 +47,14 @@ export default {
       const adminJwt = this.$getCookieManager().get('jwt')
       const data = {
         email: this.selectedUser.email,
-        jwt: adminJwt,
+      }
+      const config = {
+        headers: {
+          Authorization: `Bearer ${adminJwt}`
+        }
       }
       this.$axios
-        .post('users/verify', data)
+        .post('users/verify', data, config)
         .then(() => {
           this.$showModalSuccess(this, [
             `Berhasil verifikasi data ${this.selectedUser.fullname}`,
@@ -100,7 +104,6 @@ export default {
   border: 1px solid var(--grey);
   border-radius: 0.5rem;
   width: 420px; /* Could be more or less, depending on screen size */
-  max-height: 48%;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -133,6 +136,5 @@ h2 {
   display: flex;
   width: 100%;
   gap: 8px;
-  padding-top: 1em;
 }
 </style>
