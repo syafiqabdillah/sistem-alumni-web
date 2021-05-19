@@ -1,25 +1,31 @@
 <template>
-  <div class="card" data-aos="fade-up">
-    <h2 class="title">
-      {{ profile.fullname }}
-    </h2>
-    <small :class="{
-      'text-center': 'text-center',
-      'status': 'status',
-      'green': verified,
-      'orange': !verified
-    }" v-if="!loadingVerified">
-      {{ verified ? 'Terverifikasi':'Menunggu verifikasi' }}
-    </small>
-    <Spacer />
-    <RegisterReviewData v-if="profile" :data="profile" />
-    <Loading :showMessage="false" v-else />
-    <Spacer />
-    <small class="text-center">Ingin mengubah data?</small>
-    <div class="button green" @click="hubungiAdmin">
-      <i class="icofont-whatsapp"></i>
-      Hubungi admin
+  <div>
+    <div class="card" data-aos="fade-up">
+      <h2 class="title">
+        {{ profile.fullname }}
+      </h2>
+      <small
+        :class="{
+          'text-center': 'text-center',
+          status: 'status',
+          green: verified,
+          orange: !verified,
+        }"
+        v-if="!loadingVerified"
+      >
+        {{ verified ? 'Terverifikasi' : 'Menunggu verifikasi' }}
+      </small>
+      <Spacer />
+      <RegisterReviewData v-if="profile" :data="profile" />
+      <Loading :showMessage="false" v-else />
+      <Spacer />
+      <small class="text-center">Ingin mengubah data?</small>
+      <div class="button green" @click="hubungiAdmin">
+        <i class="icofont-whatsapp"></i>
+        Hubungi admin
+      </div>
     </div>
+    <ProfileUserChangePassword />
   </div>
 </template>
 

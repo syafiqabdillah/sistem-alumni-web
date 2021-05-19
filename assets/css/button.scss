@@ -37,6 +37,17 @@ button[type='submit'] {
     }
   }
 
+  &.white-green {
+    background-color: var(--bg);
+    color: var(--primary);
+    border: 2px solid var(--primary);
+
+    &:hover {
+      background-color: var(--primary);
+      color: var(--bg);
+    }
+  }
+
   &.disabled {
     background-color: grey;
     color: var(--bg);

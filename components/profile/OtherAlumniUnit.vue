@@ -1,5 +1,10 @@
 <template>
-  <div class="card unit" data-aos="fade-up" @click="toAlumniPage(unit.key)">
+  <div
+    class="card unit"
+    data-aos="fade-up"
+    data-aos-offset="0"
+    @click="toAlumniPage(unit.key)"
+  >
     <img :src="unit.src" :alt="unit.name" />
     <div class="text">
       <div class="name">
@@ -12,7 +17,9 @@
         <div v-else>...</div>
       </div>
     </div>
-    <div v-if="isVerifiedAlumni" class="to-alumni-page button green">Lihat Halaman Alumni</div>
+    <div v-if="isVerifiedAlumni" class="to-alumni-page button green">
+      Lihat Halaman Alumni
+    </div>
   </div>
 </template>
 

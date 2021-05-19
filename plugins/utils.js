@@ -15,11 +15,17 @@ export default ({ app }, inject) => {
     context.$store.dispatch('modal/setMessages', messages)
     context.$store.dispatch('modal/setModalSuccess')
     context.$store.dispatch('modal/showModal')
+    setTimeout(() => {
+      context.$store.dispatch('modal/resetModal')
+    }, 2000)
   }
   const showModalError = (context, messages) => {
     context.$store.dispatch('modal/setMessages', messages)
     context.$store.dispatch('modal/setModalError')
     context.$store.dispatch('modal/showModal')
+    setTimeout(() => {
+      context.$store.dispatch('modal/resetModal')
+    }, 2000)
   }
   const resetModal = (context) => {
     context.$store.dispatch('modal/resetModal')
