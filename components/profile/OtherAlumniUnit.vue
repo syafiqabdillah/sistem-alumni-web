@@ -38,7 +38,7 @@ export default {
   mounted() {
     this.count = null
     this.$axios
-      .get(`users/alumni-count?unit=${this.unit.key}`)
+      .get(`/api/users/alumni-count?unit=${this.unit.key}`)
       .then((res) => {
         this.count = res.data.count
       })

@@ -34,7 +34,7 @@ export default {
     checkVerified() {
       this.$store.dispatch('profile/setLoadingVerified', true)
       this.$axios
-        .post(`/users/check-verified`, {
+        .post(`/api/users/check-verified`, {
           jwt: this.$getCookieManager().get('jwt'),
         })
         .then((res) => {

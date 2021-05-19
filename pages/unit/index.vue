@@ -71,9 +71,8 @@ export default {
       this.alumniList = []
       this.loadingAlumni = true
       this.$axios
-        .get(`users/alumni?unit=${this.$route.query.code}`)
+        .get(`/api/users/alumni?unit=${this.$route.query.code}`)
         .then((res) => {
-          console.log(res.data)
           this.alumniList = res.data
         })
         .catch((err) => {

@@ -70,7 +70,7 @@ export default {
       if (this.formValid) {
         this.$showModalLoading(this)
         this.$axios
-          .$post('users/login', this.form)
+          .$post('/api/users/login', this.form)
           .then((jwt) => {
             this.$getCookieManager().set('jwt', jwt)
             const user = this.$decodeJwt(jwt)

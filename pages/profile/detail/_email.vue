@@ -82,7 +82,7 @@ export default {
         },
       }
       this.$axios
-        .get(`/users/by-email?email=${email}`, config)
+        .get(`/api/users/by-email?email=${email}`, config)
         .then((res) => {
           this.$store.dispatch('dashboard/setSelectedUser', res.data)
         })

@@ -54,7 +54,7 @@ export default {
         }
       }
       this.$axios
-        .post('users/verify', data, config)
+        .post('/api/users/verify', data, config)
         .then(() => {
           this.$showModalSuccess(this, [
             `Berhasil verifikasi data ${this.selectedUser.fullname}`,

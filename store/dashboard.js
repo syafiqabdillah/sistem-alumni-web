@@ -37,7 +37,7 @@ const dashboard = {
         }
       }
       this.$axios
-        .get(`users`, config)
+        .get(`/api/users`, config)
         .then((res) => {
           state.commit('setUserData', res.data)
         })

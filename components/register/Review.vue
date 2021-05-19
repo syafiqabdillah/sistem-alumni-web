@@ -92,7 +92,7 @@ export default {
       }
       this.$store.dispatch('modal/showModalLoading')
       this.$axios
-        .$post('users', data)
+        .$post('/api/users', data)
         .then(() => {
           this.showModalSuccess()
           setTimeout(() => {

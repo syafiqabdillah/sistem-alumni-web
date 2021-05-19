@@ -225,7 +225,7 @@ export default {
           : null,
       })
       this.$axios
-        .post(`users/update`, form)
+        .post(`/api/users/update`, form)
         .then((res) => {
           this.$showModalSuccess(this, [
             'Berhasil update user',

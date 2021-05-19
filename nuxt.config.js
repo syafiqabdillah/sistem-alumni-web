@@ -47,18 +47,24 @@ export default {
   buildModules: [
   ],
 
-  // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     'vue-social-sharing/nuxt',
   ],
 
-  // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     baseUrl: process.env.BASE_API_URL,
+    proxy: true
+  },
+
+  proxy: {
+    '/api/': {
+      target: process.env.BASE_API_URL,
+      pathRewrite: {
+        '^/api/': ''
+      }
+    },
   },
 
   publicRuntimeConfig: {

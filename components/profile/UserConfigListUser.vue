@@ -51,7 +51,7 @@ export default {
         }
       }
       this.$axios
-        .get(`users`, config)
+        .get(`/api/users`, config)
         .then((res) => {
           this.users = res.data
         })
