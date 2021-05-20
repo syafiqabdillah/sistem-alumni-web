@@ -26,7 +26,7 @@ export default {
     },
     showMessage: {
       type: Boolean,
-      default: true
+      default: false
     },
     size: {
       type: String,

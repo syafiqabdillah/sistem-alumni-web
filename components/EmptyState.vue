@@ -1,5 +1,5 @@
 <template>
-  <div class="empty-state">
+  <div class="empty-state" data-aos="fade-up">
     <img :src="src" alt="Not found">
     <p>{{text}}</p>
   </div>

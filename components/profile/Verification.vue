@@ -1,7 +1,7 @@
 <template>
   <div class="dashboard">
     <div class="card" data-aos="fade-up">
-      <div class="tabs" v-if="!loadingUsers">
+      <div class="tabs">
         <div
           :class="{
             tab: 'tab',
@@ -16,17 +16,14 @@
         </div>
       </div>
       <!-- User Table -->
-      <div class="lists" v-if="!loadingUsers">
-        <ProfileListUser
-          :users="unverifiedUsers"
+      <div class="lists">
+        <ProfileVerificationUnverifiedUsers
           v-if="activeTab === 'unverified'"
         />
-        <ProfileListUser
-          :users="verifiedUsers"
+        <ProfileVerificationVerifiedUsers
           v-if="activeTab === 'verified'"
         />
       </div>
-      <Loading v-if="loadingUsers" :showMessage="false" />
     </div>
   </div>
 </template>
@@ -34,7 +31,7 @@
 <script>
 import { mapState } from 'vuex'
 export default {
-  name: 'Dashboard',
+  name: 'Verification',
   head() {
     return {
       title: 'Verifikasi Data Alumni',
@@ -44,7 +41,6 @@ export default {
     this.$preventUnauthorizedAccess(this)
   },
   mounted() {
-    this.$store.dispatch('dashboard/fetchUserData')
     this.$setNavbarTitle(this, 'Verifikasi Data Alumni')
     window.scroll(0, 0)
   },
@@ -71,18 +67,7 @@ export default {
   computed: {
     ...mapState({
       users: (state) => state.dashboard.users.data,
-      loadingUsers: (state) => state.dashboard.users.loading,
     }),
-    unverifiedUsers() {
-      return this.users.filter((user) => {
-        return user.verified_date === null
-      })
-    },
-    verifiedUsers() {
-      return this.users.filter((user) => {
-        return user.verified_date
-      })
-    },
   },
   methods: {
     setActiveTab(tabName) {

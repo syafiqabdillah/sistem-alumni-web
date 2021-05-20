@@ -1,5 +1,5 @@
 <template>
-  <div class="list-user-item" data-aos="fade-up">
+  <div class="list-user-item" data-aos="fade-up" data-aos-offset="0">
     <div class="card">
       <div class="detail">
         <div class="fullname">
@@ -35,9 +35,13 @@ export default {
   name: 'ListUserItem',
   props: {
     user: Object,
-    showDetail: Function,
-    verifikasi: Function,
   },
+  methods: {
+    showDetail(user) {
+      this.$store.dispatch('dashboard/setSelectedUser', user)
+      this.$router.push('/profile/detail/' + user.email)
+    },
+  }
 }
 </script>
 
