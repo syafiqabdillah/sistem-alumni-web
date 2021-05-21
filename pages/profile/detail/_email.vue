@@ -4,9 +4,7 @@
       <div class="card">
         <Loading v-if="loading" :showMessage="false" />
         <div v-if="!loading && selectedUser">
-          <div class="avatar">
-            <img :src="avatarImageSrc" alt="" />
-          </div>
+          <Avatar :user="selectedUser" />
           <h2 class="title">{{ selectedUser.fullname }}</h2>
           <RegisterReviewData v-if="selectedUser" :data="selectedUser" />
           <div class="contact">
@@ -146,21 +144,6 @@ export default {
 
   @media (min-width: 500px) {
     flex-direction: row;
-  }
-}
-.avatar {
-  height: var(--avatar-size);
-  width: var(--avatar-size);
-  margin: 1em auto;
-  border-radius: 50%;
-  position: relative;
-
-  img {
-    height: 100%;
-    width: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-    transition: 200ms all;
   }
 }
 </style>
