@@ -67,6 +67,13 @@ export default ({ app }, inject) => {
   const useMock = () => {
     return true
   }
+  const getConfigAxios = () => {
+    return {
+      headers: {
+        Authorization: `Bearer ${Cookie.get('jwt')}`
+      }
+    }
+  }
   inject('isMobile', isMobile)
   inject('validateEmail', validateEmail)
   inject('isEmpty', isEmpty)
@@ -84,4 +91,5 @@ export default ({ app }, inject) => {
   inject('resetNavbarTitle', resetNavbarTitle)
   inject('getAdminContact', getAdminContact)
   inject('useMock', useMock)
+  inject('getConfigAxios', getConfigAxios)
 }
