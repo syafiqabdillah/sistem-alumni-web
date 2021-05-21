@@ -3,37 +3,42 @@
     <div class="banner">
       <img :src="imageBanner" alt="banner" />
     </div>
-    <Loading :showMessage="false" v-if="loadingAlumni" />
-    <div class="alumni-list-container w-656" v-if="!loadingAlumni">
+    <Loading :showMessage="false" v-if="usersLoading" />
+    <div class="alumni-list-container w-656" v-else>
       <input
         placeholder="Cari"
         type="text"
-        class="asy valid"
+        class="asy"
         v-model="searchQuery"
       />
       <Spacer />
-      <div class="alumni-list">
-        <div
-          class="alumni"
-          v-for="alumni in computedAlumniList"
-          :key="alumni.email"
-        >
-          <Avatar :user="alumni" size="sm" />
-          <div class="name">
-            {{ alumni.fullname }}
+      <div v-if="users.length > 0">
+        <div class="alumni-list">
+          <div class="alumni" v-for="alumni in users" :key="alumni.email">
+            <Avatar :user="alumni" />
+            <div class="name">
+              {{ alumni.fullname }}
+            </div>
           </div>
         </div>
+        <!-- Pagination -->
+        <Spacer />
+        <Pagination
+        :goToPage="fetchAlumni"
+        :pagination="pagination"
+        />
+        <Spacer />
       </div>
-      <EmptyState v-if="computedAlumniList.length === 0" />
-      <Spacer />
+      <EmptyState v-else />
       <ShareSocial />
+      <Spacer />
     </div>
-    <Spacer />
   </div>
 </template>
 
 <script>
 export default {
+  name: "Unit",
   data() {
     return {
       codes: ['tk', 'sd', 'smp', 'sma'],
@@ -51,36 +56,37 @@ export default {
         sd: 'SDIT Asy Syaamiil',
         tk: 'TKIT Qurrota Ayun',
       },
-      alumniList: [],
-      loadingAlumni: true,
+      users: [],
+      usersLoading: true,
+      pagination: null
     }
   },
   computed: {
     imageBanner() {
       return this.images[this.$route.query.code]
     },
-    computedAlumniList() {
-      return this.alumniList.filter((alumni) => {
-        return alumni.fullname
-          .toLowerCase()
-          .includes(this.searchQuery.toLowerCase())
-      })
-    },
   },
   methods: {
-    fetchAlumni() {
+    fetchAlumni(page) {
       this.alumniList = []
-      this.loadingAlumni = true
+      this.usersLoading = true
+      const config = {
+        headers: {
+          Authorization: `Bearer ${this.$getCookieManager().get('jwt')}`,
+        },
+      }
       this.$axios
-        .get(`/api/users/alumni?unit=${this.$route.query.code}`)
+        .get(`/api/users/alumni?unit=${this.$route.query.code}&page=${page}&query=${this.searchQuery.toLowerCase()}`, config)
         .then((res) => {
-          this.alumniList = res.data
+          this.users = res.data.users
+          this.pagination = res.data.pagination
+          console.log(JSON.parse(JSON.stringify(res.data.pagination)))
         })
         .catch((err) => {
           console.log(err)
         })
         .finally(() => {
-          this.loadingAlumni = false
+          this.usersLoading = false
         })
     },
   },
@@ -101,7 +107,7 @@ export default {
       this,
       'Alumni ' + this.unitName[this.$route.query.code]
     )
-    this.fetchAlumni()
+    this.fetchAlumni(1)
   },
   beforeDestroy() {
     this.$resetNavbarTitle(this)
@@ -110,6 +116,16 @@ export default {
 </script>
 
 <style scoped lang="scss">
+input.asy {
+  &:focus {
+    box-shadow: none;
+    border: 1px solid var(--primary);
+  }
+}
+.name {
+  width: 100%;
+  text-align: center;
+}
 .alumni-list-container {
   padding: 1em;
 }
@@ -121,14 +137,18 @@ export default {
   gap: 1em;
 }
 .alumni {
-  border: 2px solid var(--primary);
+  border: 1px solid lightgrey;
+  background: white;
   padding: 0.5rem 1rem;
   border-radius: 5px;
   transition: 200ms all;
-  font-size: 0.75rem;
+  font-size: .8rem;
+  flex-basis: 30%;
+  flex-grow: 1;
 
   &:hover {
     transform: translateY(-8px);
+    border-color: var(--primary);
   }
 }
 .unit {

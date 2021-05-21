@@ -12,7 +12,7 @@
       </div>
       <div class="count">
         <span v-if="count">
-          <span class="bold"> {{ count }}</span> alumni terdaftar</span
+          <span class="bold"> {{ count - 1 }}</span> alumni terdaftar</span
         >
         <div v-else>...</div>
       </div>

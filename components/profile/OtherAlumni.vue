@@ -35,13 +35,13 @@ export default {
         {
           name: 'SDIT Asy Syaamil',
           src: require('~/assets/images/home-sd.jpg'),
-          count: 0,
+          count: null,
           key: 'sd',
         },
         {
           name: 'TKIT Qurrota Ayun',
           src: require('~/assets/images/home-tk.jpg'),
-          count: 0,
+          count: null,
           key: 'tk',
         },
       ],
@@ -50,6 +50,7 @@ export default {
   mounted() {
     window.scroll(0, 0)
     this.$setNavbarTitle(this, 'Alumni Terdaftar')
+    this.checkVerified()
   },
   beforeDestroy() {
     this.$resetNavbarTitle(this)

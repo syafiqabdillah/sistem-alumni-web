@@ -38,13 +38,13 @@ button[type='submit'] {
   }
 
   &.white-green {
-    background-color: var(--bg);
+    background-color: white;
     color: var(--primary);
     border: 2px solid var(--primary);
 
     &:hover {
       background-color: var(--primary);
-      color: var(--bg);
+      color: white;
     }
   }
 

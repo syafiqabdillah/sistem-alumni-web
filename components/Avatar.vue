@@ -1,34 +1,48 @@
 <template>
-  <div :class="{
-    'avatar' : 'avatar',
-    'small' : size === 'sm'
-  }">
-    <img ref="image" :src="srcImage" :alt="user.fullname" @error="setAltImage" />
+  <div
+    :class="{
+      avatar: 'avatar',
+      small: size === 'sm',
+    }"
+  >
+    <img
+      ref="image"
+      :src="srcImage"
+      :alt="user.fullname"
+      @error="setAltImage"
+    />
   </div>
 </template>
 
 <script>
 export default {
-  name: "Avatar",
+  name: 'Avatar',
   data() {
     return {
-      altImage: require('~/assets/images/user.svg')
+      altImage: require('~/assets/images/user.svg'),
     }
   },
   props: {
     user: Object,
-    size: String
+    size: {
+      type: String,
+      default: 'md',
+    },
   },
   methods: {
     setAltImage(e) {
-      this.$refs.image.src = this.altImage
-    }
+      if (this.$refs['image']) {
+        this.$refs.image.src = this.altImage
+      }
+    },
   },
   computed: {
     srcImage() {
-      return `/api/users/profile-picture?id=${this.user.id}`
-    }
-  }
+      return this.user.profile_picture
+        ? `/api/users/profile-picture?id=${this.user.id}`
+        : this.altImage
+    },
+  },
 }
 </script>
 
@@ -41,8 +55,8 @@ export default {
   position: relative;
 
   &.small {
-    height: calc(.5 * var(--avatar-size));
-    width: calc(.5 * var(--avatar-size));
+    height: calc(0.5 * var(--avatar-size));
+    width: calc(0.5 * var(--avatar-size));
   }
 
   img {

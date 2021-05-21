@@ -1,8 +1,13 @@
 <template>
   <div>
     <div class="card" data-aos="fade-up">
-      <div class="avatar">
-        <img :src="avatarImageSrc" alt="" @error="setDefaultImage" ref="image" />
+      <div class="avatar" :key="imageKey">
+        <img
+          :src="avatarImageSrc"
+          alt=""
+          @error="setDefaultImage"
+          ref="image"
+        />
         <div class="edit" @click.self="openFileSelector">
           <i class="icofont-image" @click.self="openFileSelector"> </i>
           <input
@@ -32,7 +37,7 @@
       <Spacer />
       <RegisterReviewData v-if="profile" :data="profile" />
       <Loading :showMessage="false" v-else />
-      <Spacer />
+      <Spacer :height="1" />
       <small class="text-center">Ingin mengubah data?</small>
       <div class="button green" @click="hubungiAdmin">
         <i class="icofont-whatsapp"></i>
@@ -51,7 +56,8 @@ export default {
     return {
       profilePicture: null,
       existingProfilePicture: null,
-      defaultImage: require('~/assets/images/user.svg')
+      defaultImage: require('~/assets/images/user.svg'),
+      imageKey: null,
     }
   },
   methods: {
@@ -65,7 +71,10 @@ export default {
       this.$refs.file.click()
     },
     loadProfilePicture() {
-      this.existingProfilePicture = `/api/users/profile-picture?id=${this.$getJwtData()['id']}`
+      this.imageKey = Date.now()
+      this.existingProfilePicture = `/api/users/profile-picture?id=${
+        this.$getJwtData()['id']
+      }`
     },
     inputProfilePicture(e) {
       const file = e.target.files[0]
@@ -81,14 +90,20 @@ export default {
         const id = this.$getJwtData()['id']
         var formData = new FormData()
         formData.append('file', this.profilePicture)
+        this.$showModalLoading(this)
         this.$axios
           .post(`/api/users/upload-profile-picture?id=${id}`, formData, config)
-          .then((res) => {
-            this.loadProfilePicture()
+          .then(() => {
+            location.reload()
           })
           .catch((err) => {
             console.log(err)
           })
+          .finally(() => {
+            this.$hideModalLoading(this)
+          })
+      } else {
+        alert('Ukuran gambar terlalu besar')
       }
     },
     fileSizeValid(file) {
@@ -139,8 +154,10 @@ export default {
       return `https://wa.me/${this.$getAdminContact()}?text=Hai admin, saya ingin mengubah data alumni saya`
     },
     avatarImageSrc() {
-      return this.existingProfilePicture ? this.existingProfilePicture : this.defaultImage
-    }
+      return this.existingProfilePicture
+        ? this.existingProfilePicture
+        : this.defaultImage
+    },
   },
   mounted() {
     window.scroll(0, 0)
