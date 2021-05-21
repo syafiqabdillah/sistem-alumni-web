@@ -2,7 +2,7 @@
   <div>
     <div class="card" data-aos="fade-up">
       <div class="avatar">
-        <img :src="avatarImageSrc" alt="" />
+        <img :src="avatarImageSrc" alt="" @error="setDefaultImage" ref="image" />
         <div class="edit" @click.self="openFileSelector">
           <i class="icofont-image" @click.self="openFileSelector"> </i>
           <input
@@ -57,6 +57,9 @@ export default {
   methods: {
     edit() {
       this.setFormDataDiri()
+    },
+    setDefaultImage() {
+      this.$refs.image.src = this.defaultImage
     },
     openFileSelector() {
       this.$refs.file.click()
