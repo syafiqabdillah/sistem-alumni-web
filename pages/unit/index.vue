@@ -158,7 +158,7 @@ input.asy {
 .alumni {
   border: 1px solid lightgrey;
   background: white;
-  padding: 0.5rem 1rem;
+  padding: 1rem;
   border-radius: 5px;
   transition: 200ms all;
   font-size: 0.8rem;

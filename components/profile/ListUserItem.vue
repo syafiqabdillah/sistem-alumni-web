@@ -55,7 +55,7 @@ export default {
       this.$router.push('/profile/detail/' + user.email)
     },
     loadImage() {
-      this.existingImage = `/api/users/profile-picture?id=${this.user.id}`
+      this.existingImage = `/api/users/profile-picture?filename=${this.user.profile_picture}`
     }
   },
   mounted() {

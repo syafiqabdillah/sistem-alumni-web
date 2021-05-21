@@ -39,7 +39,7 @@ export default {
   computed: {
     srcImage() {
       return this.user.profile_picture
-        ? `/api/users/profile-picture?id=${this.user.id}`
+        ? `/api/users/profile-picture?filename=${this.user.profile_picture}`
         : this.altImage
     },
   },

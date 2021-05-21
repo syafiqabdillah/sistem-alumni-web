@@ -117,7 +117,7 @@ export default {
     },
     avatarImageSrc() {
       return this.selectedUser.profile_picture
-        ? `/api/users/profile-picture?id=${this.selectedUser.id}`
+        ? `/api/users/profile-picture?filename=${this.selectedUser.profile_picture}`
         : this.defaultImage
     },
   },
