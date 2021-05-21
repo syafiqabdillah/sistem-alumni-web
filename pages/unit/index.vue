@@ -3,15 +3,13 @@
     <div class="banner">
       <img :src="imageBanner" alt="banner" />
     </div>
+    <div class="input-container">
+      <input placeholder="Cari" type="text" class="asy" v-model="searchQuery" />
+    </div>
+
     <Loading :showMessage="false" v-if="usersLoading" />
     <div class="alumni-list-container w-656" v-else>
-      <input
-        placeholder="Cari"
-        type="text"
-        class="asy"
-        v-model="searchQuery"
-      />
-      <Spacer />
+      <Spacer :height="1" />
       <div v-if="users.length > 0">
         <div class="alumni-list">
           <div class="alumni" v-for="alumni in users" :key="alumni.email">
@@ -23,10 +21,7 @@
         </div>
         <!-- Pagination -->
         <Spacer />
-        <Pagination
-        :goToPage="fetchAlumni"
-        :pagination="pagination"
-        />
+        <Pagination :goToPage="fetchAlumni" :pagination="pagination" />
         <Spacer />
       </div>
       <EmptyState v-else />
@@ -38,12 +33,13 @@
 
 <script>
 export default {
-  name: "Unit",
+  name: 'Unit',
   data() {
     return {
       codes: ['tk', 'sd', 'smp', 'sma'],
       validCode: false,
       searchQuery: '',
+      isTyping: false,
       images: {
         sma: require('~/assets/images/home-sma2.jpg'),
         smp: require('~/assets/images/home-smp.jpg'),
@@ -58,8 +54,19 @@ export default {
       },
       users: [],
       usersLoading: true,
-      pagination: null
+      pagination: null,
     }
+  },
+  watch: {
+    searchQuery() {
+      this.isTyping = true
+      setTimeout(() => {
+        if (!this.isTyping && !this.usersLoading) {
+          this.fetchAlumni(1)
+        }
+      }, 1000)
+      this.isTyping = false
+    },
   },
   computed: {
     imageBanner() {
@@ -76,7 +83,12 @@ export default {
         },
       }
       this.$axios
-        .get(`/api/users/alumni?unit=${this.$route.query.code}&page=${page}&query=${this.searchQuery.toLowerCase()}`, config)
+        .get(
+          `/api/users/alumni?unit=${
+            this.$route.query.code
+          }&page=${page}&query=${this.searchQuery.toLowerCase()}`,
+          config
+        )
         .then((res) => {
           this.users = res.data.users
           this.pagination = res.data.pagination
@@ -116,7 +128,14 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.input-container {
+  margin: 1em;
+  margin-bottom: 0;
+  display: flex;
+  justify-content: center;
+}
 input.asy {
+  max-width: 500px;
   &:focus {
     box-shadow: none;
     border: 1px solid var(--primary);
@@ -142,7 +161,7 @@ input.asy {
   padding: 0.5rem 1rem;
   border-radius: 5px;
   transition: 200ms all;
-  font-size: .8rem;
+  font-size: 0.8rem;
   flex-basis: 30%;
   flex-grow: 1;
 
