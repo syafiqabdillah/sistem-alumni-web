@@ -42,7 +42,7 @@ export default {
     },
     loadProfilePicture() {
       this.existingProfilePicture = this.user.profile_picture
-        ? `/api/users/profile-picture?id=${this.user.id}`
+        ? `/api/users/profile-picture?filename=${this.user.profile_picture}`
         : this.defaultImage
     },
     async inputProfilePicture(e) {
