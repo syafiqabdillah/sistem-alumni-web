@@ -1,25 +1,28 @@
 <template>
   <div class="user-config-list-user" data-aos="fade-up">
-    <Loading :showMessage="false" v-if="loadingUsers" />
+    <Loading :showMessage="false" v-if="usersLoading" />
     <div v-else class="users">
       <input
         type="text"
-        class="asy valid"
+        class="asy"
         v-model="searchQuery"
         placeholder="Cari alumni"
       />
       <Spacer />
-      <div class="user" v-for="user in computedUsers" :key="user.email">
-        <div class="name">
-          {{ user.fullname }}
-          <small>
-            {{ user.is_admin ? 'admin' : null }}
-          </small>
-        </div>
-        <div class="button grey" @click="editUser(user)">
-          <i class="icofont-settings-alt"></i>edit
+      <div class="users">
+        <div class="user" v-for="user in users" :key="user.email">
+          <div class="name">
+            {{ user.fullname }}
+            <small>
+              {{ user.is_admin ? 'admin' : null }}
+            </small>
+          </div>
+          <div class="button grey" @click="editUser(user)">
+            <i class="icofont-settings-alt"></i>edit
+          </div>
         </div>
       </div>
+      <Pagination :goToPage="fetchUsers" :pagination="paginationData" />
     </div>
   </div>
 </template>
@@ -29,37 +32,42 @@ export default {
   data() {
     return {
       users: [],
-      loadingUsers: true,
+      usersLoading: true,
       searchQuery: '',
+      paginationData: null,
+      isTyping: false
     }
   },
-  computed: {
-    computedUsers() {
-      return this.users.filter((user) => {
-        return user.fullname
-          .toLowerCase()
-          .includes(this.searchQuery.toLowerCase())
-      })
+  watch: {
+    searchQuery() {
+      this.isTyping = true
+      setTimeout(() => {
+        if (!this.isTyping && !this.usersLoading) {
+          this.fetchUsers(1)
+        }
+      }, 1000)
+      this.isTyping = false
     },
   },
   methods: {
-    fetchUsers() {
-      this.loadingUsers = true
+    fetchUsers(page) {
+      this.usersLoading = true
       const config = {
         headers: {
-          Authorization: `Bearer ${this.$getCookieManager().get('jwt')}`
-        }
+          Authorization: `Bearer ${this.$getCookieManager().get('jwt')}`,
+        },
       }
       this.$axios
-        .get(`/api/users`, config)
+        .get(`/api/users?query=${this.searchQuery}&page=${page}`, config)
         .then((res) => {
-          this.users = res.data
+          this.users = res.data.users
+          this.paginationData = res.data.pagination
         })
         .catch((err) => {
           console.log(err)
         })
         .finally(() => {
-          this.loadingUsers = false
+          this.usersLoading = false
         })
     },
     editUser(user) {
@@ -68,13 +76,19 @@ export default {
     },
   },
   mounted() {
-    this.fetchUsers()
+    this.fetchUsers(1)
     window.scroll(0, 0)
   },
 }
 </script>
 
 <style scoped lang="scss">
+input.asy {
+  &:focus {
+    box-shadow: none;
+    border: 1px solid var(--primary);
+  }
+}
 .users {
   display: flex;
   flex-direction: column;

@@ -54,6 +54,24 @@ export default {
   beforeDestroy() {
     this.$resetNavbarTitle(this)
   },
+  methods: {
+    checkVerified() {
+      this.$store.dispatch('profile/setLoadingVerified', true)
+      this.$axios
+        .post(`/api/users/check-verified`, {
+          jwt: this.$getCookieManager().get('jwt'),
+        })
+        .then((res) => {
+          this.$store.dispatch('profile/setVerified', res.data.verified)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+        .finally(() => {
+          this.$store.dispatch('profile/setLoadingVerified', false)
+        })
+    },
+  }
 }
 </script>
 

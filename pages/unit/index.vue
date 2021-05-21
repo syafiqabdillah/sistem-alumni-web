@@ -18,6 +18,7 @@
           v-for="alumni in computedAlumniList"
           :key="alumni.email"
         >
+          <Avatar :user="alumni" size="sm" />
           <div class="name">
             {{ alumni.fullname }}
           </div>

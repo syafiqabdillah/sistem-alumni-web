@@ -1,6 +1,20 @@
 <template>
   <div>
     <div class="card" data-aos="fade-up">
+      <div class="avatar">
+        <img :src="avatarImageSrc" alt="" />
+        <div class="edit" @click.self="openFileSelector">
+          <i class="icofont-image" @click.self="openFileSelector"> </i>
+          <input
+            @input="inputProfilePicture"
+            ref="file"
+            class="inputfile"
+            type="file"
+            id="file"
+          />
+          <label for="file">Upload</label>
+        </div>
+      </div>
       <h2 class="title">
         {{ profile.fullname }}
       </h2>
@@ -33,9 +47,49 @@
 import { mapState } from 'vuex'
 export default {
   name: 'User',
+  data() {
+    return {
+      profilePicture: null,
+      existingProfilePicture: null,
+      defaultImage: require('~/assets/images/user.svg')
+    }
+  },
   methods: {
     edit() {
       this.setFormDataDiri()
+    },
+    openFileSelector() {
+      this.$refs.file.click()
+    },
+    loadProfilePicture() {
+      this.existingProfilePicture = `/api/users/profile-picture?id=${this.$getJwtData()['id']}`
+    },
+    inputProfilePicture(e) {
+      const file = e.target.files[0]
+      this.profilePicture = file
+
+      if (this.fileSizeValid(this.profilePicture)) {
+        const config = {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            Authorization: `Bearer ${this.$getCookieManager().get('jwt')}`,
+          },
+        }
+        const id = this.$getJwtData()['id']
+        var formData = new FormData()
+        formData.append('file', this.profilePicture)
+        this.$axios
+          .post(`/api/users/upload-profile-picture?id=${id}`, formData, config)
+          .then((res) => {
+            this.loadProfilePicture()
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+      }
+    },
+    fileSizeValid(file) {
+      return file.size / 1024 / 1024 < 2
     },
     checkVerified() {
       this.$store.dispatch('profile/setLoadingVerified', true)
@@ -81,9 +135,13 @@ export default {
     linkWhatsApp() {
       return `https://wa.me/${this.$getAdminContact()}?text=Hai admin, saya ingin mengubah data alumni saya`
     },
+    avatarImageSrc() {
+      return this.existingProfilePicture ? this.existingProfilePicture : this.defaultImage
+    }
   },
   mounted() {
     window.scroll(0, 0)
+    this.loadProfilePicture()
     this.$setNavbarTitle(this, 'Profil Alumni')
     this.checkVerified()
   },
@@ -106,6 +164,59 @@ export default {
 
   &.orange {
     background-color: darkorange;
+  }
+}
+.avatar {
+  height: calc(1.5 * var(--avatar-size));
+  width: calc(1.5 * var(--avatar-size));
+  margin: 1em auto;
+  border-radius: 50%;
+  position: relative;
+
+  img {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: 200ms all;
+    background: lightgrey;
+  }
+
+  .edit {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--primary);
+    opacity: 0;
+    border-radius: 50%;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 0.8;
+      background: var(--bg);
+    }
+
+    label {
+      font-size: 0.8rem;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .inputfile {
+      width: 0.1px;
+      height: 0.1px;
+      opacity: 0;
+      overflow: hidden;
+      position: absolute;
+      z-index: -1;
+    }
   }
 }
 </style>

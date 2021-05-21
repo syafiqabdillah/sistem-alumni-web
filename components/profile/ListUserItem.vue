@@ -1,6 +1,12 @@
 <template>
   <div class="list-user-item" data-aos="fade-up" data-aos-offset="0">
     <div class="card">
+      <div class="left">
+        <div class="avatar">
+        <div class="image-container">
+          <img :src="avatarImageSrc" alt="">
+        </div>
+      </div>
       <div class="detail">
         <div class="fullname">
           {{ user.fullname }}
@@ -20,6 +26,7 @@
           </div>
         </div>
       </div>
+      </div>
       <div class="action">
         <div class="button grey sm" @click="showDetail(user)">
           <i class="icofont-ui-search"></i>
@@ -36,16 +43,34 @@ export default {
   props: {
     user: Object,
   },
+  data() {
+    return {
+      existingImage: null,
+      defaultImage: require('~/assets/images/user.svg')
+    }
+  },
   methods: {
     showDetail(user) {
       this.$store.dispatch('dashboard/setSelectedUser', user)
       this.$router.push('/profile/detail/' + user.email)
     },
+    loadImage() {
+      this.existingImage = `/api/users/profile-picture?id=${this.user.id}`
+    }
+  },
+  mounted() {
+    this.loadImage();
+  },
+  computed: {
+    avatarImageSrc() {
+      return this.user.profile_picture ? this.existingImage : this.defaultImage
+    }
   }
 }
 </script>
 
 <style scoped lang="scss">
+
 .year-entries {
   margin: 0.5rem 0;
 }
@@ -87,6 +112,26 @@ export default {
 
   &:hover {
     border-color: var(--primary-lighter);
+  }
+}
+.left {
+  display: flex;
+  gap: 1em;
+}
+.avatar {
+  height: inherit;
+  width: var(--avatar-size);
+  display: flex;
+  align-items: center;
+  .image-container {
+    width: var(--avatar-size);
+    height: var(--avatar-size);
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
   }
 }
 </style>

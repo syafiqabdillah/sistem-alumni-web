@@ -9,8 +9,7 @@
           :key="user.email"
         />
         <Pagination
-          :currentPage="currentPage"
-          :totalPage="totalPage"
+          :pagination="paginationData"
           :goToPage="fetchUsers"
         />
       </div>
@@ -29,10 +28,7 @@ export default {
       isTyping: false,
       users: [],
       usersLoading: true,
-      currentPage: 1,
-      prevPage: null,
-      nextPage: null,
-      totalPage: 1,
+      paginationData: null
     }
   },
   watch: {
@@ -40,8 +36,7 @@ export default {
       this.isTyping = true
       setTimeout(() => {
         if (!this.isTyping && !this.usersLoading) {
-          console.log('trigger fetch')
-          this.fetchUsers()
+          this.fetchUsers(1)
         }
       }, 1000)
       this.isTyping = false
@@ -60,8 +55,7 @@ export default {
         .get(`/api/users/verified?query=${this.query}&page=${page}`, config)
         .then((res) => {
           this.users = res.data.users
-          this.totalPage = res.data.totalPage
-          this.currentPage = res.data.currentPage
+          this.paginationData = res.data.pagination
         })
         .catch((err) => {
           console.log(err)

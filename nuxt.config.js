@@ -93,6 +93,7 @@ export default {
   env: {
     isProduction: process.env.NODE_ENV === 'production',
     useMock: false,
+    BASE_API_URL: process.env.BASE_API_URL
   },
 
   generate: {

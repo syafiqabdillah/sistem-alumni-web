@@ -2,7 +2,7 @@ const profile = {
   namespaced: true,
   state: () => ({
     activePage: 'user',
-    verified: false,
+    verified: null,
     loadingVerified: true,
     menus: [
       {

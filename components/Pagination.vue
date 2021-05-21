@@ -1,17 +1,22 @@
 <template>
-  <div class="pagination">
-    <div @click="goToPage(1)" class="double-prev" v-if="prev">&lt;&lt;</div>
-    <div @click="goToPage(prev)" class="prev" v-if="prev">&lt;</div>
-    <div @click="goToPage(prev)" class="number prev" v-if="prev">
-      {{ prev }}
+  <div class="pagination-container">
+    <div class="pagination">
+      <div @click="goToPage(1)" class="double-prev" v-if="prev">&lt;&lt;</div>
+      <div @click="goToPage(prev)" class="prev" v-if="prev">&lt;</div>
+      <div @click="goToPage(prev)" class="number prev" v-if="prev">
+        {{ prev }}
+      </div>
+      <div class="number active">{{ pagination.currentPage }}</div>
+      <div @click="goToPage(next)" class="number next" v-if="next">
+        {{ next }}
+      </div>
+      <div @click="goToPage(next)" class="next" v-if="next">&gt;</div>
+      <div @click="goToPage(totalPage)" class="double-next" v-if="next">
+        &gt;&gt;
+      </div>
     </div>
-    <div class="number active">{{ currentPage }}</div>
-    <div @click="goToPage(next)" class="number next" v-if="next">
-      {{ next }}
-    </div>
-    <div @click="goToPage(next)" class="next" v-if="next">&gt;</div>
-    <div @click="goToPage(totalPage)" class="double-next" v-if="next">
-      &gt;&gt;
+    <div class="description">
+      {{ description }}
     </div>
   </div>
 </template>
@@ -20,24 +25,43 @@
 export default {
   name: 'Pagination',
   props: {
-    currentPage: Number,
-    totalPage: Number,
     goToPage: Function,
+    pagination: Object,
   },
   computed: {
     prev() {
-      return this.currentPage > 1 ? this.currentPage - 1 : null
+      return this.pagination.currentPage > 1
+        ? this.pagination.currentPage - 1
+        : null
     },
     next() {
-      return this.currentPage < this.totalPage ? this.currentPage + 1 : null
+      return this.pagination.currentPage < this.pagination.totalPage
+        ? this.pagination.currentPage + 1
+        : null
+    },
+    description() {
+      const firstData =
+        (this.pagination.currentPage - 1) * this.pagination.perPage + 1
+      const lastData =
+        this.pagination.currentPage === this.pagination.totalPage
+          ? this.pagination.totalData
+          : firstData + this.pagination.perPage - 1
+      return `${firstData} - ${lastData} dari ${this.pagination.totalData}`
     },
   },
 }
 </script>
 
 <style scoped lang="scss">
+.description {
+  text-align: center;
+  width: 100%;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  color: grey;
+}
 .pagination {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   display: flex;
   justify-content: center;
   gap: 0.5rem;
@@ -50,15 +74,21 @@ export default {
 
   & > * {
     width: 30px;
-    text-align: center;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: 1px solid lightgrey;
-    border-radius: 5px;
+    border-radius: 50%;
+
+    &:hover {
+      border-color: var(--primary);
+    }
   }
 
   .number {
     &.active {
       color: var(--primary);
-      font-weight: 700;
       border-color: var(--primary);
     }
   }

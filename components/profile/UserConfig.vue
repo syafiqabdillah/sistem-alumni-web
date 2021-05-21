@@ -11,6 +11,11 @@
 import { mapState } from 'vuex'
 export default {
   name: 'UserConfig',
+  head() {
+    return {
+      title: "User Config"
+    }
+  },
   computed: {
     ...mapState({
       userconfig: (state) => state.userconfig,

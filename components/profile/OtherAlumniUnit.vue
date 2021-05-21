@@ -24,37 +24,45 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'OtherAlumniUnits',
   data() {
     return {
       count: null,
+      isVerified: null,
     }
   },
   props: {
     unit: Object,
   },
   computed: {
+    ...mapState({
+      verified: (state) => state.profile.verified,
+    }),
     isVerifiedAlumni() {
       return (
-        this.$getJwtData()[`year_entry_${this.unit.key}`] &&
-        this.$getJwtData()[`verified_date`]
+        this.$getJwtData()[`year_entry_${this.unit.key}`] && this.verified
       )
     },
   },
   mounted() {
-    this.count = null
-    this.$axios
-      .get(`/api/users/alumni-count?unit=${this.unit.key}`)
-      .then((res) => {
-        this.count = res.data.count
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-      .finally(() => {})
+    this.loadCount()
+    
   },
   methods: {
+    loadCount() {
+      this.count = null
+      this.$axios
+        .get(`/api/users/alumni-count?unit=${this.unit.key}`)
+        .then((res) => {
+          this.count = res.data.count
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+        .finally(() => {})
+    },
     toAlumniPage(unitKey) {
       if (this.isVerifiedAlumni) {
         this.$router.push(`/unit?code=${unitKey}`)
