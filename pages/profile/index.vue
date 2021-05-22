@@ -21,10 +21,13 @@ export default {
     }
   },
   mounted() {
+    // page ditentuin 
     if (this.$route.query.page !== undefined) {
       const page = this.$route.query.page
       this.$router.push('/profile?page=' + page)
       this.$store.dispatch('profile/setActivePage', page)
+    } else {
+      console.log('EYO')
     }
     window.scroll(0, 0)
   },

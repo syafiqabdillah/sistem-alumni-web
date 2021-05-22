@@ -1,6 +1,6 @@
 const INITIAL_STATE = {
   title: "",
-  showLogo: true
+  showLogo: true,
 }
 
 const navbar = {

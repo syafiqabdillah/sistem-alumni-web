@@ -3,6 +3,7 @@
     <div class="banner">
       <img :src="imageBanner" alt="banner" />
     </div>
+    <UnitChart v-if="!usersLoading" :users="users" :unit="$route.query.code" />
     <div class="input-container">
       <input placeholder="Cari" type="text" class="asy" v-model="searchQuery" />
     </div>
@@ -21,7 +22,11 @@
         </div>
         <!-- Pagination -->
         <Spacer />
-        <Pagination :goToPage="fetchAlumni" :pagination="pagination" />
+        <Pagination
+          v-if="pagination"
+          :goToPage="fetchAlumni"
+          :pagination="pagination"
+        />
         <Spacer />
       </div>
       <EmptyState v-else />
@@ -92,7 +97,6 @@ export default {
         .then((res) => {
           this.users = res.data.users
           this.pagination = res.data.pagination
-          console.log(JSON.parse(JSON.stringify(res.data.pagination)))
         })
         .catch((err) => {
           console.log(err)
@@ -131,8 +135,7 @@ export default {
 
 <style scoped lang="scss">
 .input-container {
-  margin: 1em;
-  margin-bottom: 0;
+  margin: 0 1em;
   display: flex;
   justify-content: center;
 }
