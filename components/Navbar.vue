@@ -2,10 +2,16 @@
   <div class="navbar">
     <nav>
       <div class="brand" @click="toPage('/home')">
-        <img src="~/assets/images/logo.jpeg" alt="" />
+        <img
+          data-aos="fade-right"
+          src="~/assets/images/logo.jpeg"
+          alt="Asy Syaamil Logo"
+          v-if="navbar.showLogo"
+        />
+        <i @click="back" class="icofont-rounded-left" v-else></i>
       </div>
       <div class="page-title" data-aos="zoom-in">
-        {{ pageTitle }}
+        {{ navbar.title }}
       </div>
       <div class="menu">
         <NuxtLink to="/home">Beranda</NuxtLink>
@@ -18,7 +24,7 @@
           :class="{ toggle: 'toggle', show: showMenuMobile }"
           @click="toggleShowMenuMobile"
         >
-          <i :class="{ 'icofont-rounded-down': 'icofont-rounded-down' }"></i>
+          <i class="icofont-rounded-down"></i>
         </div>
         <div
           :class="{ dropdown: 'dropdown', show: showMenuMobile }"
@@ -39,6 +45,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   data() {
     return {
@@ -58,22 +65,29 @@ export default {
       // alihkan ke beranda
       location.replace('/home')
     },
+    back() {
+      this.$router.go(-1)
+    },
   },
   computed: {
+    ...mapState({
+      navbar: (state) => state.navbar,
+    }),
     activeShowMenuMobile() {
       return this.showMenuMobile ? ' active' : ''
     },
     loggedIn() {
       return this.$loggedIn()
     },
-    pageTitle() {
-      return this.$store.state.navbar.title;
-    }
   },
 }
 </script>
 
 <style lang="scss" scoped>
+i {
+  font-size: 2rem;
+  color: var(--primary);
+}
 .navbar {
   width: 100%;
   position: fixed;

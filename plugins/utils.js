@@ -1,5 +1,8 @@
 import jwt_decode from 'jwt-decode'
 import Cookie from 'js-cookie'
+
+import { setShowLogo } from './utils/navbar'
+
 export default ({ app }, inject) => {
   const isMobile = () => {
     return window.innerWidth < 500
@@ -92,4 +95,6 @@ export default ({ app }, inject) => {
   inject('getAdminContact', getAdminContact)
   inject('useMock', useMock)
   inject('getConfigAxios', getConfigAxios)
+  // Navbar
+  inject('setShowLogo', setShowLogo)
 }

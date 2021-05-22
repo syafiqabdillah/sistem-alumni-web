@@ -1,7 +1,7 @@
 <template>
   <div class="profile" v-if="loggedIn">
-    <ProfileSideBar />
-    <ProfileBottomMenu />
+    <ProfileNavigationSideBar />
+    <ProfileNavigationBottomMenu />
     <div class="profile-content">
       <ProfileUser v-if="profile.activePage === 'user'" />
       <ProfileOtherAlumni v-if="profile.activePage === 'group'" />

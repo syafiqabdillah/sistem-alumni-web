@@ -115,6 +115,7 @@ export default {
     }
   },
   mounted() {
+    this.$setShowLogo(this, false)
     this.$setNavbarTitle(
       this,
       'Alumni ' + this.unitName[this.$route.query.code]
@@ -123,6 +124,7 @@ export default {
   },
   beforeDestroy() {
     this.$resetNavbarTitle(this)
+    this.$setShowLogo(this, true)
   },
 }
 </script>
