@@ -1,7 +1,7 @@
 <template>
   <div class="profile" v-if="loggedIn">
-    <ProfileSideBar />
-    <ProfileBottomMenu />
+    <ProfileNavigationSideBar />
+    <ProfileNavigationBottomMenu />
     <div class="profile-content">
       <ProfileUser v-if="profile.activePage === 'user'" />
       <ProfileOtherAlumni v-if="profile.activePage === 'group'" />
@@ -21,10 +21,13 @@ export default {
     }
   },
   mounted() {
+    // page ditentuin 
     if (this.$route.query.page !== undefined) {
       const page = this.$route.query.page
       this.$router.push('/profile?page=' + page)
       this.$store.dispatch('profile/setActivePage', page)
+    } else {
+      console.log('EYO')
     }
     window.scroll(0, 0)
   },

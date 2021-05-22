@@ -1,5 +1,6 @@
 const INITIAL_STATE = {
-  title: ""
+  title: "",
+  showLogo: true,
 }
 
 const navbar = {
@@ -11,6 +12,9 @@ const navbar = {
     },
     resetTitle(state) {
       state.title = ""
+    },
+    setShowLogo(state, payload) {
+      state.showLogo = payload
     }
   },
   actions: {
@@ -19,6 +23,9 @@ const navbar = {
     },
     resetTitle(state) {
       state.commit('resetTitle')
+    },
+    setShowLogo(state, payload) {
+      state.commit('setShowLogo', payload)
     }
   },
 }
