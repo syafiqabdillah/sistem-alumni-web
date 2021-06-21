@@ -1,5 +1,4 @@
-# Sistem Alumni - Frontend Web
-![Heroku](https://heroku-badge.herokuapp.com/?app=sistem-alumni-web)
+# Sistem Alumni Yayasan Asy Syaamil
 
 Author: Syafiq Abdillah Umarghanis abdillah.syafiq@gmail.com
 ## System Requirements
