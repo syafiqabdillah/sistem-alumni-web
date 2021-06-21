@@ -43,3 +43,24 @@ PORT=1234
 ```
 $ npm run build && npm run start
 ```
+## How to Update
+1. Stop the application process 
+```bash
+$ killall node
+```
+2. Pull the updated version from 
+```bash
+$ git pull 
+```
+3. Reinstall dependencies 
+```bash
+$ npm install
+``` 
+4. Rebuild the application
+```bash
+$ npm run build
+```
+5. Run the application
+```bash
+$ npm run start
+```
