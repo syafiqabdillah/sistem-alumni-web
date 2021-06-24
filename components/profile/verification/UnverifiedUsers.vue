@@ -8,10 +8,7 @@
           v-for="user in users"
           :key="user.email"
         />
-        <Pagination
-          :goToPage="fetchUsers"
-          :pagination="paginationData"
-        />
+        <Pagination :goToPage="fetchUsers" :pagination="paginationData" />
       </div>
       <EmptyState v-else />
     </div>
@@ -37,14 +34,16 @@ export default {
     }
   },
   watch: {
-    query() {
-      this.isTyping = true
-      setTimeout(() => {
-        if (!this.isTyping && !this.usersLoading) {
-          this.fetchUsers(1)
-        }
-      }, 1000)
-      this.isTyping = false
+    query(prevState, nextState) {
+      if (prevState !== nextState) {
+        this.isTyping = true
+        setTimeout(() => {
+          if (!this.isTyping && !this.usersLoading) {
+            this.fetchUsers(1)
+          }
+        }, 1000)
+        this.isTyping = false
+      }
     },
   },
   methods: {

@@ -11,7 +11,7 @@
         {{ next }}
       </div>
       <div @click="goToPage(next)" class="next" v-if="next">&gt;</div>
-      <div @click="goToPage(totalPage)" class="double-next" v-if="next">
+      <div @click="goToPage(pagination.totalPage)" class="double-next" v-if="next">
         &gt;&gt;
       </div>
     </div>
