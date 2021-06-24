@@ -71,7 +71,7 @@ export default {
           })
           .catch((err) => {
             console.log(err)
-            this.$showModalError(this, ['Gagal ubah foto profil'])
+            this.$showModalError(this, ['Gagal ubah foto profil'], false)
           })
           .finally(() => {
             this.$hideModalLoading(this)

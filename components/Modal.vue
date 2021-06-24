@@ -33,6 +33,10 @@
             </div>
           </div>
         </div>
+        <div class="hubungi-admin" @click="hubungiAdmin" v-if="modal.isModalError">
+          <i class="icofont-whatsapp"></i>
+          Hubungi admin
+        </div>
       </div>
     </div>
   </div>
@@ -71,6 +75,10 @@ export default {
     close() {
       this.$store.dispatch('modal/resetModal')
     },
+    hubungiAdmin() {
+      const url = this.$getAdminWhatsappContact()
+      window.open(url, '_blank')
+    }
   },
   computed: {
     ...mapState({
@@ -153,6 +161,16 @@ h2 {
   }
   i {
     font-size: 2rem;
+  }
+}
+.hubungi-admin {
+  color: var(--primary);
+  i {
+    font-size: 1rem;
+  }
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
   }
 }
 </style>

@@ -238,7 +238,7 @@ export default {
           }, 2000)
         })
         .catch((err) => {
-          this.$showModalError(this, ['Gagal update user', err])
+          this.$showModalError(this, ['Gagal update user', err], false)
         })
         .finally(() => {
           this.$hideModalLoading(this)

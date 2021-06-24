@@ -22,13 +22,15 @@ export default ({ app }, inject) => {
       context.$store.dispatch('modal/resetModal')
     }, 2000)
   }
-  const showModalError = (context, messages) => {
+  const showModalError = (context, messages, autohide=true) => {
     context.$store.dispatch('modal/setMessages', messages)
     context.$store.dispatch('modal/setModalError')
     context.$store.dispatch('modal/showModal')
-    setTimeout(() => {
-      context.$store.dispatch('modal/resetModal')
-    }, 2000)
+    if (autohide) {
+      setTimeout(() => {
+        context.$store.dispatch('modal/resetModal')
+      }, 2000)
+    }
   }
   const resetModal = (context) => {
     context.$store.dispatch('modal/resetModal')
@@ -67,6 +69,9 @@ export default ({ app }, inject) => {
   const getAdminContact = () => {
     return '+6285249903865'
   }
+  const getAdminWhatsappContact = () => {
+    return `https://wa.me/+6285249903865?text=Hai admin Sistem Alumni Asy Syaamil, saya ingin bertanya`
+  }
   const useMock = () => {
     return true
   }
@@ -93,6 +98,7 @@ export default ({ app }, inject) => {
   inject('setNavbarTitle', setNavbarTitle)
   inject('resetNavbarTitle', resetNavbarTitle)
   inject('getAdminContact', getAdminContact)
+  inject('getAdminWhatsappContact', getAdminWhatsappContact)
   inject('useMock', useMock)
   inject('getConfigAxios', getConfigAxios)
   // Navbar

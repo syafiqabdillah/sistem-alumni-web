@@ -128,7 +128,7 @@ export default {
           })
           .catch((err) => {
             console.log(err)
-            this.$showModalError(this, ['Gagal mengganti password'])
+            this.$showModalError(this, ['Gagal mengganti password'], false)
           })
           .finally(() => {
             this.$hideModalLoading(this)
